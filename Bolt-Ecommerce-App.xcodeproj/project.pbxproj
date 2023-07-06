@@ -7,23 +7,67 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C1AE2BB0C5794E50B70AEB4 /* Pods_Bolt_Ecommerce_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDD8F1F8EA1AFF143A091F21 /* Pods_Bolt_Ecommerce_App.framework */; };
+		F22FF0AA2A5561FE0037E7F4 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F22FF0A92A5561FE0037E7F4 /* Home.storyboard */; };
+		F22FF0AC2A55869E0037E7F4 /* UITextFieldExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22FF0AB2A55869E0037E7F4 /* UITextFieldExt.swift */; };
+		F22FF0AF2A55A5C10037E7F4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22FF0AE2A55A5C10037E7F4 /* Constants.swift */; };
+		F22FF0B22A55DBE60037E7F4 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22FF0B02A55DBE60037E7F4 /* CategoryCell.swift */; };
+		F22FF0B32A55DBE60037E7F4 /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F22FF0B12A55DBE60037E7F4 /* CategoryCell.xib */; };
+		F22FF0B52A56179D0037E7F4 /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22FF0B42A56179D0037E7F4 /* SignupVC.swift */; };
+		F22FF0B72A561C4D0037E7F4 /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22FF0B62A561C4D0037E7F4 /* GlobalFunctions.swift */; };
+		F2C1F00D2A568E1E0019A8D9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F2C1F00C2A568E1E0019A8D9 /* GoogleService-Info.plist */; };
+		F2C615722A548E99009B9887 /* User.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F2C615702A548E99009B9887 /* User.xcdatamodeld */; };
+		F2C615742A549055009B9887 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C615732A549055009B9887 /* CoreDataStack.swift */; };
+		F2C6157F2A54AF84009B9887 /* UserItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C6157D2A54AF84009B9887 /* UserItem+CoreDataClass.swift */; };
+		F2C615802A54AF84009B9887 /* UserItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C6157E2A54AF84009B9887 /* UserItem+CoreDataProperties.swift */; };
 		F2DF68D82A53ED0000FC8E82 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DF68D72A53ED0000FC8E82 /* AppDelegate.swift */; };
 		F2DF68DA2A53ED0000FC8E82 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DF68D92A53ED0000FC8E82 /* SceneDelegate.swift */; };
-		F2DF68DC2A53ED0100FC8E82 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DF68DB2A53ED0100FC8E82 /* ViewController.swift */; };
+		F2DF68DC2A53ED0100FC8E82 /* FirstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DF68DB2A53ED0100FC8E82 /* FirstVC.swift */; };
 		F2DF68DF2A53ED0100FC8E82 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2DF68DD2A53ED0100FC8E82 /* Main.storyboard */; };
 		F2DF68E12A53ED0400FC8E82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2DF68E02A53ED0400FC8E82 /* Assets.xcassets */; };
 		F2DF68E42A53ED0400FC8E82 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2DF68E22A53ED0400FC8E82 /* LaunchScreen.storyboard */; };
+		F2DF68F02A53F76500FC8E82 /* Segoe UI Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F2DF68EC2A53F76500FC8E82 /* Segoe UI Italic.ttf */; };
+		F2DF68F12A53F76500FC8E82 /* Segoe UI.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F2DF68ED2A53F76500FC8E82 /* Segoe UI.ttf */; };
+		F2DF68F22A53F76500FC8E82 /* Segoe UI Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F2DF68EE2A53F76500FC8E82 /* Segoe UI Bold.ttf */; };
+		F2DF68F32A53F76500FC8E82 /* Segoe UI Bold Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F2DF68EF2A53F76500FC8E82 /* Segoe UI Bold Italic.ttf */; };
+		F2DF68F62A541C3E00FC8E82 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DF68F52A541C3E00FC8E82 /* LoginVC.swift */; };
+		F2DF68F92A542AB600FC8E82 /* UIViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DF68F82A542AB600FC8E82 /* UIViewExt.swift */; };
+		F2DF68FC2A5443C700FC8E82 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DF68FB2A5443C700FC8E82 /* User.swift */; };
+		F2DF68FE2A54488300FC8E82 /* HomeVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DF68FD2A54488300FC8E82 /* HomeVc.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7089AB308CB86FA0384E165E /* Pods-Bolt-Ecommerce-App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bolt-Ecommerce-App.debug.xcconfig"; path = "Target Support Files/Pods-Bolt-Ecommerce-App/Pods-Bolt-Ecommerce-App.debug.xcconfig"; sourceTree = "<group>"; };
+		9BA45701C6247A641EBA5445 /* Pods-Bolt-Ecommerce-App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bolt-Ecommerce-App.release.xcconfig"; path = "Target Support Files/Pods-Bolt-Ecommerce-App/Pods-Bolt-Ecommerce-App.release.xcconfig"; sourceTree = "<group>"; };
+		BDD8F1F8EA1AFF143A091F21 /* Pods_Bolt_Ecommerce_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bolt_Ecommerce_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F22FF0A92A5561FE0037E7F4 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		F22FF0AB2A55869E0037E7F4 /* UITextFieldExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExt.swift; sourceTree = "<group>"; };
+		F22FF0AE2A55A5C10037E7F4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		F22FF0B02A55DBE60037E7F4 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		F22FF0B12A55DBE60037E7F4 /* CategoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCell.xib; sourceTree = "<group>"; };
+		F22FF0B42A56179D0037E7F4 /* SignupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
+		F22FF0B62A561C4D0037E7F4 /* GlobalFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalFunctions.swift; sourceTree = "<group>"; };
+		F2C1F00C2A568E1E0019A8D9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F2C615712A548E99009B9887 /* User.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = User.xcdatamodel; sourceTree = "<group>"; };
+		F2C615732A549055009B9887 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		F2C6157D2A54AF84009B9887 /* UserItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserItem+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		F2C6157E2A54AF84009B9887 /* UserItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserItem+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		F2DF68D42A53ED0000FC8E82 /* Bolt-Ecommerce-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bolt-Ecommerce-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2DF68D72A53ED0000FC8E82 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F2DF68D92A53ED0000FC8E82 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F2DF68DB2A53ED0100FC8E82 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F2DF68DB2A53ED0100FC8E82 /* FirstVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstVC.swift; sourceTree = "<group>"; };
 		F2DF68DE2A53ED0100FC8E82 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F2DF68E02A53ED0400FC8E82 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F2DF68E32A53ED0400FC8E82 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F2DF68E52A53ED0400FC8E82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F2DF68EC2A53F76500FC8E82 /* Segoe UI Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Segoe UI Italic.ttf"; sourceTree = "<group>"; };
+		F2DF68ED2A53F76500FC8E82 /* Segoe UI.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Segoe UI.ttf"; sourceTree = "<group>"; };
+		F2DF68EE2A53F76500FC8E82 /* Segoe UI Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Segoe UI Bold.ttf"; sourceTree = "<group>"; };
+		F2DF68EF2A53F76500FC8E82 /* Segoe UI Bold Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Segoe UI Bold Italic.ttf"; sourceTree = "<group>"; };
+		F2DF68F52A541C3E00FC8E82 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		F2DF68F82A542AB600FC8E82 /* UIViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExt.swift; sourceTree = "<group>"; };
+		F2DF68FB2A5443C700FC8E82 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		F2DF68FD2A54488300FC8E82 /* HomeVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVc.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +75,96 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C1AE2BB0C5794E50B70AEB4 /* Pods_Bolt_Ecommerce_App.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		90715BA610699B2A17BEE3F5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7089AB308CB86FA0384E165E /* Pods-Bolt-Ecommerce-App.debug.xcconfig */,
+				9BA45701C6247A641EBA5445 /* Pods-Bolt-Ecommerce-App.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		D75243E4FB38615988055935 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BDD8F1F8EA1AFF143A091F21 /* Pods_Bolt_Ecommerce_App.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F22FF0A52A5561410037E7F4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F2DF68DD2A53ED0100FC8E82 /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F22FF0A62A5561A80037E7F4 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				F22FF0A52A5561410037E7F4 /* Views */,
+				F2DF68DB2A53ED0100FC8E82 /* FirstVC.swift */,
+				F2DF68F52A541C3E00FC8E82 /* LoginVC.swift */,
+				F22FF0B42A56179D0037E7F4 /* SignupVC.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		F22FF0A72A5561D80037E7F4 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				F22FF0A82A5561EA0037E7F4 /* Views */,
+				F2DF68FD2A54488300FC8E82 /* HomeVc.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		F22FF0A82A5561EA0037E7F4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F22FF0A92A5561FE0037E7F4 /* Home.storyboard */,
+				F22FF0B02A55DBE60037E7F4 /* CategoryCell.swift */,
+				F22FF0B12A55DBE60037E7F4 /* CategoryCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F22FF0AD2A55A5990037E7F4 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F22FF0AE2A55A5C10037E7F4 /* Constants.swift */,
+				F22FF0B62A561C4D0037E7F4 /* GlobalFunctions.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		F2C6156F2A548E6D009B9887 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				F2C6157D2A54AF84009B9887 /* UserItem+CoreDataClass.swift */,
+				F2C6157E2A54AF84009B9887 /* UserItem+CoreDataProperties.swift */,
+				F2C615702A548E99009B9887 /* User.xcdatamodeld */,
+				F2C615732A549055009B9887 /* CoreDataStack.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		F2DF68CB2A53ED0000FC8E82 = {
 			isa = PBXGroup;
 			children = (
 				F2DF68D62A53ED0000FC8E82 /* Bolt-Ecommerce-App */,
 				F2DF68D52A53ED0000FC8E82 /* Products */,
+				90715BA610699B2A17BEE3F5 /* Pods */,
+				D75243E4FB38615988055935 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +179,57 @@
 		F2DF68D62A53ED0000FC8E82 /* Bolt-Ecommerce-App */ = {
 			isa = PBXGroup;
 			children = (
+				F2C1F00C2A568E1E0019A8D9 /* GoogleService-Info.plist */,
+				F22FF0AD2A55A5990037E7F4 /* Helpers */,
+				F2C6156F2A548E6D009B9887 /* CoreData */,
+				F2DF68FA2A5443B600FC8E82 /* Model */,
+				F2DF68F72A542A9300FC8E82 /* Extensions */,
+				F2DF68F42A541C1900FC8E82 /* Controllers */,
 				F2DF68D72A53ED0000FC8E82 /* AppDelegate.swift */,
 				F2DF68D92A53ED0000FC8E82 /* SceneDelegate.swift */,
-				F2DF68DB2A53ED0100FC8E82 /* ViewController.swift */,
-				F2DF68DD2A53ED0100FC8E82 /* Main.storyboard */,
 				F2DF68E02A53ED0400FC8E82 /* Assets.xcassets */,
 				F2DF68E22A53ED0400FC8E82 /* LaunchScreen.storyboard */,
 				F2DF68E52A53ED0400FC8E82 /* Info.plist */,
+				F2DF68EB2A53F76500FC8E82 /* segoe-ui-4-cufonfonts */,
 			);
 			path = "Bolt-Ecommerce-App";
+			sourceTree = "<group>";
+		};
+		F2DF68EB2A53F76500FC8E82 /* segoe-ui-4-cufonfonts */ = {
+			isa = PBXGroup;
+			children = (
+				F2DF68EC2A53F76500FC8E82 /* Segoe UI Italic.ttf */,
+				F2DF68ED2A53F76500FC8E82 /* Segoe UI.ttf */,
+				F2DF68EE2A53F76500FC8E82 /* Segoe UI Bold.ttf */,
+				F2DF68EF2A53F76500FC8E82 /* Segoe UI Bold Italic.ttf */,
+			);
+			path = "segoe-ui-4-cufonfonts";
+			sourceTree = "<group>";
+		};
+		F2DF68F42A541C1900FC8E82 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F22FF0A62A5561A80037E7F4 /* Login */,
+				F22FF0A72A5561D80037E7F4 /* Home */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		F2DF68F72A542A9300FC8E82 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F2DF68F82A542AB600FC8E82 /* UIViewExt.swift */,
+				F22FF0AB2A55869E0037E7F4 /* UITextFieldExt.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F2DF68FA2A5443B600FC8E82 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F2DF68FB2A5443C700FC8E82 /* User.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +239,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F2DF68E82A53ED0400FC8E82 /* Build configuration list for PBXNativeTarget "Bolt-Ecommerce-App" */;
 			buildPhases = (
+				BF44E57D3A03E1F0A037BE52 /* [CP] Check Pods Manifest.lock */,
 				F2DF68D02A53ED0000FC8E82 /* Sources */,
 				F2DF68D12A53ED0000FC8E82 /* Frameworks */,
 				F2DF68D22A53ED0000FC8E82 /* Resources */,
+				144D0E8FE5934022B26A77A7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -126,21 +293,83 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2DF68E42A53ED0400FC8E82 /* LaunchScreen.storyboard in Resources */,
+				F2DF68F22A53F76500FC8E82 /* Segoe UI Bold.ttf in Resources */,
 				F2DF68E12A53ED0400FC8E82 /* Assets.xcassets in Resources */,
+				F2DF68F12A53F76500FC8E82 /* Segoe UI.ttf in Resources */,
+				F2DF68F02A53F76500FC8E82 /* Segoe UI Italic.ttf in Resources */,
+				F2DF68F32A53F76500FC8E82 /* Segoe UI Bold Italic.ttf in Resources */,
 				F2DF68DF2A53ED0100FC8E82 /* Main.storyboard in Resources */,
+				F2C1F00D2A568E1E0019A8D9 /* GoogleService-Info.plist in Resources */,
+				F22FF0B32A55DBE60037E7F4 /* CategoryCell.xib in Resources */,
+				F22FF0AA2A5561FE0037E7F4 /* Home.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		144D0E8FE5934022B26A77A7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Bolt-Ecommerce-App/Pods-Bolt-Ecommerce-App-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Bolt-Ecommerce-App/Pods-Bolt-Ecommerce-App-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Bolt-Ecommerce-App/Pods-Bolt-Ecommerce-App-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BF44E57D3A03E1F0A037BE52 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Bolt-Ecommerce-App-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F2DF68D02A53ED0000FC8E82 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F2DF68DC2A53ED0100FC8E82 /* ViewController.swift in Sources */,
+				F2C615722A548E99009B9887 /* User.xcdatamodeld in Sources */,
+				F2DF68FE2A54488300FC8E82 /* HomeVc.swift in Sources */,
+				F2DF68F92A542AB600FC8E82 /* UIViewExt.swift in Sources */,
+				F22FF0B22A55DBE60037E7F4 /* CategoryCell.swift in Sources */,
+				F22FF0AC2A55869E0037E7F4 /* UITextFieldExt.swift in Sources */,
+				F2C615742A549055009B9887 /* CoreDataStack.swift in Sources */,
+				F22FF0B52A56179D0037E7F4 /* SignupVC.swift in Sources */,
+				F2DF68DC2A53ED0100FC8E82 /* FirstVC.swift in Sources */,
+				F2C6157F2A54AF84009B9887 /* UserItem+CoreDataClass.swift in Sources */,
+				F22FF0AF2A55A5C10037E7F4 /* Constants.swift in Sources */,
+				F22FF0B72A561C4D0037E7F4 /* GlobalFunctions.swift in Sources */,
+				F2DF68FC2A5443C700FC8E82 /* User.swift in Sources */,
 				F2DF68D82A53ED0000FC8E82 /* AppDelegate.swift in Sources */,
+				F2DF68F62A541C3E00FC8E82 /* LoginVC.swift in Sources */,
 				F2DF68DA2A53ED0000FC8E82 /* SceneDelegate.swift in Sources */,
+				F2C615802A54AF84009B9887 /* UserItem+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +511,7 @@
 		};
 		F2DF68E92A53ED0400FC8E82 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7089AB308CB86FA0384E165E /* Pods-Bolt-Ecommerce-App.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -309,6 +539,7 @@
 		};
 		F2DF68EA2A53ED0400FC8E82 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9BA45701C6247A641EBA5445 /* Pods-Bolt-Ecommerce-App.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -356,6 +587,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F2C615702A548E99009B9887 /* User.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F2C615712A548E99009B9887 /* User.xcdatamodel */,
+			);
+			currentVersion = F2C615712A548E99009B9887 /* User.xcdatamodel */;
+			path = User.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F2DF68CC2A53ED0000FC8E82 /* Project object */;
 }
