@@ -11,7 +11,8 @@ import FirebaseCore
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    lazy var coreDataStack: CoreDataStack = .init(modelName: "User")
+
+    lazy var coreDataStack: CoreDataStack = .init(modelName: "CategoryItem")
 
       static let sharedAppDelegate: AppDelegate = {
           guard let delegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -24,6 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
+//        saveData { finished in
+//            print("data saved")
+//        }
         return true
     }
 

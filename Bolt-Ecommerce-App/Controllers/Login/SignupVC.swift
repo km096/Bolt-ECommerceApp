@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ProgressHUD
 
 class SignupVC: UIViewController {
     
@@ -23,9 +24,9 @@ class SignupVC: UIViewController {
     
     //Buttons
     @IBOutlet weak var signupButton: UIButton!
+    @IBOutlet weak var resendEmailButton: UIButton!
     
     //Vars
-    var users = [UserItem]()
     var isClicked = false
     var isLogin = true
 
@@ -33,20 +34,18 @@ class SignupVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        getUser()
         setTextFieldsDelegstes()
         updateUIForSignupButton()
         // Do any additional setup after loading the view.
     }
     
     //MARK: - IBActions
-
     @IBAction func backButtonPressed(_ sender: Any) {
         dismiss(animated: true)
     }
     
     @IBAction func signupButtonPressed(_ sender: Any) {
-        isValidData() ? registerUser() : displayError(viewController: self, message: Constants.ErrorMessage.allFieldsRequired)
+        isValidData() ? registerUser() : ProgressHUD.showFailed(Constants.ErrorMessage.allFieldsRequired)
     }
     
     @IBAction func loginButtonPressed(_ sender: Any) {
@@ -54,14 +53,20 @@ class SignupVC: UIViewController {
     }
     
     @IBAction func eyeButtonPressed(_ sender: UIButton) {
-        if isClicked {
-            passwordTextField.isSecureTextEntry = false
-            sender.setImage(UIImage(systemName: "eye.slash.fill"), for: .normal)
-        } else {
-            passwordTextField.isSecureTextEntry = true
-            sender.setImage(UIImage(systemName: "eye.fill"), for: .normal)
-        }
+//        if isClicked {
+//            passwordTextField.isSecureTextEntry = false
+//            sender.setImage(UIImage(systemName: "eye.slash.fill"), for: .normal)
+//        } else {
+//            passwordTextField.isSecureTextEntry = true
+//            sender.setImage(UIImage(systemName: "eye.fill"), for: .normal)
+//        }
+        securePasswordButtonPressed(isClicked, passwordTextField, sender)
         isClicked.toggle()
+    }
+    
+    
+    @IBAction func resendVerifacationEmailButtonPressed(_ sender: Any) {
+        resendEmail()
     }
     
     //MARK: - Setup
@@ -90,11 +95,11 @@ class SignupVC: UIViewController {
     }
     
     private func updateUIForSignupButton() {
-        signupButton.setTitleColor(.white, for: .normal)
+        signupButton.tintColor = .white
         signupButton.setGradientBackground()
+        signupButton.setupButton(cornerRadius: 10)
 
     }
-    
     
     //MARK: - Helpers
     private func isValidData() -> Bool {
@@ -103,51 +108,38 @@ class SignupVC: UIViewController {
             return true
         }
         return false
-        
     }
 
-    
     private func registerUser() {
-        if let user = users.first(where: {$0.email == emailTextField.text}) {
-            //TODO: - display error
-            displayError(viewController: self, message: Constants.ErrorMessage.registeredBefore)
-            user.isLogin = true
-           
-            isLogin = user.isLogin
-        } else {
-            createUser { finished in
-                print("user created")
+        
+        FirebaseUserListener.shared.registerWithEmail(username: nameTextField.text!, email: emailTextField.text!, password: passwordTextField.text!) { [self] error in
+            
+            if error == nil {
+                ProgressHUD.showSucceed("Emai verifacation sent.")
+                self.resendEmailButton.isHidden = false
+            } else {
+                ProgressHUD.showFailed(error?.localizedDescription)
             }
-        
-        
         }
-        
     }
-    
-    private func createUser(completion: (_ finished: Bool) -> ()) {
-        let newUser = UserItem(context: context)
-        newUser.username = nameTextField.text
-        newUser.email = emailTextField.text
-        newUser.password = passwordTextField.text
         
-        do {
-            try context.save()
-            completion(true)
-        } catch {
-            print("Could not save user: \(error.localizedDescription)")
-            completion(false)
+            
+    //TODO: - resend email
+    private func resendEmail() {
+        FirebaseUserListener.shared.resendEmailVerifacation { error in
+            error
+            
+            if error == nil {
+                ProgressHUD.showSucceed("Varifacation email resent")
+            } else {
+                ProgressHUD.showFailed(error?.localizedDescription)
+            }
         }
     }
     
-    private func getUser(){
+//    private func showOrHidePassword() {
+//        securePasswordButtonPressed(isClicked, passwordTextField, <#T##secureButton: UIButton##UIButton#>)
+//    }
         
-        do {
-            users = try context.fetch(UserItem.fetchRequest())
- 
-            print("users num: \(users.count)")
-        } catch {
-            print("Could not fetch: \(error.localizedDescription)")
-        }
-    }
 
 }

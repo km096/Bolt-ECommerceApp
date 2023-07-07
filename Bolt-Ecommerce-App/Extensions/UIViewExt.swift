@@ -28,10 +28,10 @@ extension UIView {
         self.layer.insertSublayer(gradientLayer, at: 0)
     }
     
-    func setShadow() {
+    func setShadow(shadowOpacity: Float, shadowColor: CGColor) {
         self.layer.cornerRadius = 10
-        self.layer.shadowColor = UIColor.lightGray.cgColor
-        self.layer.shadowOpacity = 0.3
+        self.layer.shadowColor = shadowColor
+        self.layer.shadowOpacity = shadowOpacity
         self.layer.shadowOffset = .zero
         self.layer.shadowRadius = 10
     }

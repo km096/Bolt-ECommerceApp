@@ -14,7 +14,7 @@ class FirstVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getUser()
+//        getUser()
         loginButton.setupButton(cornerRadius: 5)
 
     }
@@ -23,31 +23,31 @@ class FirstVC: UIViewController {
   
     
     //MARK: - Helpers
-    private func getUser() {
-        let context = AppDelegate.sharedAppDelegate.coreDataStack.managedContext
-
-        do {
-            let users = try context.fetch(UserItem.fetchRequest())
-            
-            if let user = users.first(where: {$0.isLogin == true}) {
-                print("loged in user: \(user.isLogin)")
-            } else {
-               print("There is no user loged in")
-            }
-        } catch {
-            print("Could not fetch: \(error.localizedDescription)")
-        }
-    }
+//    private func getUser() {
+//        let context = AppDelegate.sharedAppDelegate.coreDataStack.managedContext
+//
+//        do {
+//            let users = try context.fetch(UserItem.fetchRequest())
+//
+//            if let user = users.first(where: {$0.isLogin == true}) {
+//                print("loged in user: \(user.isLogin)")
+//            } else {
+//               print("There is no user loged in")
+//            }
+//        } catch {
+//            print("Could not fetch: \(error.localizedDescription)")
+//        }
+//    }
     
     
     
     //MARK: - Navigation
-    private func goToLoginScreen(_ login: Bool) {
-        let loginView = storyboard?.instantiateViewController(withIdentifier: Constants.Identifiers.loginView) as! LoginVC
-//        loginView.from = LoginStatus.login.rawValue
-//        loginV/iew.fromLogin = login
-        present(loginView, animated: true)
-    }
+//    private func goToLoginScreen(_ login: Bool) {
+//        let loginView = storyboard?.instantiateViewController(withIdentifier: Constants.Identifiers.loginView) as! LoginVC
+////        loginView.from = LoginStatus.login.rawValue
+////        loginV/iew.fromLogin = login
+//        present(loginView, animated: true)
+//    }
     
     
 }

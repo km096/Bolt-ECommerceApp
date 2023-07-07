@@ -11,5 +11,6 @@ target 'Bolt-Ecommerce-App' do
 pod 'FirebaseAuth'
 pod 'FirebaseFirestore'
 pod 'ProgressHUD'
-
+pod 'FirebaseFirestoreSwift'
+pod 'FBSDKLoginKit'
 end

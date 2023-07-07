@@ -7,12 +7,6 @@
 
 import UIKit
 
-func displayError(viewController: UIViewController, message: String) {
-    let alert = UIAlertController(title: "ERROR", message: message, preferredStyle: .alert)
-    alert.addAction(UIAlertAction(title: "OK", style: .default))
-    viewController.present(alert, animated: true)
-}
-
 func isValidEmail(_ emailText: UITextField) -> Bool {
     if let email = emailText.text, !email.isEmpty  {
         let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
@@ -30,14 +24,40 @@ func isValidPassword(_ passwordText: UITextField) -> Bool {
     return false
 }
 
-func getUser() -> [UserItem] {
-    var users = [UserItem]()
-    do {
-        users = try context.fetch(UserItem.fetchRequest())
-
-    } catch {
-        print("Could not fetch: \(error.localizedDescription)")
+func securePasswordButtonPressed(_ isClicked: Bool, _ textField: UITextField, _ secureButton: UIButton) {
+    if isClicked {
+        textField.isSecureTextEntry = false
+        secureButton.setImage(UIImage(systemName: "eye.slash.fill"), for: .normal)
+    } else {
+        textField.isSecureTextEntry = true
+        secureButton.setImage(UIImage(systemName: "eye.fill"), for: .normal)
     }
-    
-    return users
 }
+
+func featured() -> [HomeCategory]{
+    var featured = [HomeCategory]()
+    featured.append(HomeCategory(title: "Woman T-Shirt", price: "$40.00", imageName: "WomanT-Shirt"))
+    featured.append(HomeCategory(title: "Man T-Shirt", price: "$33.00", imageName: "ManT-Shirt"))
+    featured.append(HomeCategory(title: "Woman T-Shirt", price: "$50.00", imageName: "WomanT-Shirt1"))
+    return featured
+}
+
+//func saveData( completion: (_ finished: Bool) -> () ) {
+//
+//    let data = [HomeCategory]()
+//    for i in 0 ..< 5 {
+//        let newItem = CategoryItem(context: managedContext)
+////        newItem.id = append()[i].title
+//        newItem.title = featured()[i].title
+//        newItem.price = featured()[i].title
+//        newItem.imageName = featured()[i].imageName
+//
+//        do {
+//            try managedContext.save()
+//            completion(true)
+//        } catch {
+//            print("could not save : \(error.localizedDescription)")
+//            completion(false)
+//        }
+//    }
+//}

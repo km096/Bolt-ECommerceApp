@@ -6,10 +6,13 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var authListener: AuthStateDidChangeListenerHandle?
+
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -51,18 +54,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     
     func autoLogin() {
-        let context = AppDelegate.sharedAppDelegate.coreDataStack.managedContext
-
-        do {
-            let users = try context.fetch(UserItem.fetchRequest())
-            if let user = users.first(where: {$0.isLogin == true}) {
-//                print("loged in user: \(user.isLogin)")
-
-                goToHomeScreen()
+        authListener = Auth.auth().addStateDidChangeListener({ auth, user in
+            
+            Auth.auth().removeStateDidChangeListener(self.authListener!)
+            if user != nil && userDefaluts.object(forKey: Keys.currentUser.rawValue) != nil {
+                
+                DispatchQueue.main.async {
+                    self.goToHomeScreen()
+                }
             }
-        } catch {
-            print("There is no user loged in")
-        }
+        })
     }
     
     private func goToHomeScreen(){
