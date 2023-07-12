@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeCategoryCell: UICollectionViewCell {
+class ItemCell: UICollectionViewCell {
 
     //MARK: - IbOutlets
     @IBOutlet weak var priceLabel: UILabel!
@@ -22,10 +22,10 @@ class HomeCategoryCell: UICollectionViewCell {
     }
     
     //MARK: - SetupCell
-    func setupCell(homeCategory: HomeCategory) {
-        priceLabel.text = homeCategory.price
-        tShirtTitle.text = homeCategory.title
-        tShirtImageview.image = UIImage(named: homeCategory.imageName ?? "")
+    func setupCell(item: ItemModel) {
+        priceLabel.text = item.price
+        tShirtTitle.text = item.title
+        tShirtImageview.image = UIImage(named: item.imageName ?? "")
 
     }
     

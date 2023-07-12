@@ -18,6 +18,9 @@ struct Constants {
     struct Identifiers {
         static let loginView = "LoginVC"
         static let homeView = "HomeVC"
+        static let itemDetails = "ItemDetailsID"
+        static let segueToItems = "gotToItems"
+        
     }
     
     struct Colors {
@@ -52,68 +55,27 @@ struct Constants {
         }
     }
     
-    struct HomeCategory {
-        
-        struct Titles {
-            static let woman = "Woman T-Shirt"
-            static let man = "Man T-Shirt"
-        }
-        
-        struct Prices {
-            static let woman = "$55.00"
-            static let man = "$34.00"
-        }
-        
-        struct Featured {
-            
-            
-            
-        }
-    }
-    
-    
 }
 
-enum LoginStatus: String {
-    case login = "login"
-    case register = "register"
-}
-
-//enum Category{
-//    case featured
-//    case bestSell
-//
-//}
 
 enum Keys: String {
     case currentUser = "currentUser"
 }
 
-public let userDefaluts = UserDefaults.standard
+public let userDefaults = UserDefaults.standard
+public let managedContext = AppDelegate.sharedAppDelegate.coreDataStack.managedContext
 
 
-struct HomeCategory {
-//    var id: [Int]?
+struct ItemModel {
     var title: String?
     var price: String?
     var imageName: String?
-    
-    init(title: String?, price: String?, imageName: String?) {
-//        self.id = id
-        self.title = title
-        self.price = price
-        self.imageName = imageName
-    }
 }
 
+struct SideMenuModel {
+    var icon: UIImage
+    var title: String
+}
 
-//var id = Array(0...9)
-//var titles: [String] = ["Woman T-Shirt", "Man T-Shirt", "T-Shirt", "Shirt"]
-//var prices: [String] = ["$34.00", "$55.00", "$34.00", "$55.00"]
-//var imageName: [String] = ["WomanT-Shirt", "ManT-Shirt", "WomanT-Shirt1", "WomanT-Shirt2", "ManT-Shirt", "Blazer", "T-Shirt", "Shirt"]
-
-//let featured = HomeCategory(id: id, title: titles, price: prices, imageName: imageName)
-
-let managedContext = AppDelegate.sharedAppDelegate.coreDataStack.managedContext
 
 

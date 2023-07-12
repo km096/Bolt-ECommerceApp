@@ -28,8 +28,6 @@ class SignupVC: UIViewController {
     
     //Vars
     var isClicked = false
-    var isLogin = true
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,17 +51,9 @@ class SignupVC: UIViewController {
     }
     
     @IBAction func eyeButtonPressed(_ sender: UIButton) {
-//        if isClicked {
-//            passwordTextField.isSecureTextEntry = false
-//            sender.setImage(UIImage(systemName: "eye.slash.fill"), for: .normal)
-//        } else {
-//            passwordTextField.isSecureTextEntry = true
-//            sender.setImage(UIImage(systemName: "eye.fill"), for: .normal)
-//        }
         securePasswordButtonPressed(isClicked, passwordTextField, sender)
         isClicked.toggle()
     }
-    
     
     @IBAction func resendVerifacationEmailButtonPressed(_ sender: Any) {
         resendEmail()
@@ -96,8 +86,8 @@ class SignupVC: UIViewController {
     
     private func updateUIForSignupButton() {
         signupButton.tintColor = .white
-        signupButton.setGradientBackground()
-        signupButton.setupButton(cornerRadius: 10)
+        signupButton.addGradientBackground()
+        signupButton.addCornerRadius(cornerRadius: 10)
 
     }
     
@@ -111,7 +101,6 @@ class SignupVC: UIViewController {
     }
 
     private func registerUser() {
-        
         FirebaseUserListener.shared.registerWithEmail(username: nameTextField.text!, email: emailTextField.text!, password: passwordTextField.text!) { [self] error in
             
             if error == nil {
@@ -123,8 +112,6 @@ class SignupVC: UIViewController {
         }
     }
         
-            
-    //TODO: - resend email
     private func resendEmail() {
         FirebaseUserListener.shared.resendEmailVerifacation { error in
             error
@@ -137,9 +124,4 @@ class SignupVC: UIViewController {
         }
     }
     
-//    private func showOrHidePassword() {
-//        securePasswordButtonPressed(isClicked, passwordTextField, <#T##secureButton: UIButton##UIButton#>)
-//    }
-        
-
 }

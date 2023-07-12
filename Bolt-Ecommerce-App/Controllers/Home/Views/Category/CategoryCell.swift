@@ -35,24 +35,23 @@ class CategoryCell: UICollectionViewCell {
     }
     
     //MARK: - SetupCell
-    func setupCategoryCell(type: Int) {
+    func setupCell(type: Int) {
         switch type{
         case 0 :
-            setCell(CategoryTitle: Constants.Category.Title.women, CategoryColor: Constants.Category.Colors.women)
+            setCell(title: Constants.Category.Title.women, color: Constants.Category.Colors.women)
             
         case 1 :
-            setCell(CategoryTitle: Constants.Category.Title.men, CategoryColor: Constants.Category.Colors.men)
+            setCell(title: Constants.Category.Title.men, color: Constants.Category.Colors.men)
 
         default:
-            setCell(CategoryTitle: Constants.Category.Title.kids, CategoryColor: Constants.Category.Colors.kids)
+            setCell(title: Constants.Category.Title.kids, color: Constants.Category.Colors.kids)
         }
     }
     
-    //MARK: - Helpers
-    private func setCell(CategoryTitle: String, CategoryColor: UIColor) {
-        categoryImageView.image = UIImage(named: CategoryTitle)
-        colorView.backgroundColor = CategoryColor
-        categoryLabel.text = CategoryTitle
+    private func setCell(title: String, color: UIColor) {
+        categoryImageView.image = UIImage(named: title)
+        colorView.backgroundColor = color
+        categoryLabel.text = title
     }
 
 

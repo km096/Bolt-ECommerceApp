@@ -13,4 +13,6 @@ pod 'FirebaseFirestore'
 pod 'ProgressHUD'
 pod 'FirebaseFirestoreSwift'
 pod 'FBSDKLoginKit'
+pod 'SideMenu'
+pod 'Cosmos'
 end

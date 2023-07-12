@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import FBSDKCoreKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -22,6 +23,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         autoLogin()
         guard let _ = (scene as? UIWindowScene) else { return }
     }
+    
+//    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+//        guard let url = URLContexts.first?.url else {
+//            return
+//        }
+//
+//        ApplicationDelegate.shared.application(
+//            UIApplication.shared,
+//            open: url,
+//            sourceApplication: nil,
+//            annotation: [UIApplication.OpenURLOptionsKey.annotation]
+//        )
+//    }
+//
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
@@ -57,7 +72,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         authListener = Auth.auth().addStateDidChangeListener({ auth, user in
             
             Auth.auth().removeStateDidChangeListener(self.authListener!)
-            if user != nil && userDefaluts.object(forKey: Keys.currentUser.rawValue) != nil {
+            if user != nil && userDefaults.object(forKey: Keys.currentUser.rawValue) != nil {
                 
                 DispatchQueue.main.async {
                     self.goToHomeScreen()
@@ -67,7 +82,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     private func goToHomeScreen(){
-        let homeView = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: Constants.Identifiers.homeView) as! HomeVc
+        let homeView = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: Constants.Identifiers.homeView) as! HomeVC
         self.window?.rootViewController = homeView
     }
 

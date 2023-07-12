@@ -10,10 +10,10 @@ import FirebaseAuth
 import FirebaseCore
 
 struct User: Codable, Equatable {
+    
     var id = ""
     var username: String
     var email: String
-//    var password: String
     
     static var currentId: String {
         return Auth.auth().currentUser!.uid
@@ -34,13 +34,7 @@ struct User: Codable, Equatable {
         return nil
     }
     
-    static func == (lfh: User, rhs: User) -> Bool {
-        lfh.id == rhs.id
-    }
-    
 }
-
-
 
 func saveUserLocally(_ user: User) {
     let encode = JSONEncoder()

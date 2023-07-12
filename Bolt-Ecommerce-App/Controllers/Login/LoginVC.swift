@@ -7,9 +7,13 @@
 
 import UIKit
 import ProgressHUD
+import FBSDKLoginKit
+import FirebaseAuth
 
 
 class LoginVC: UIViewController, UITextViewDelegate {
+    
+    
     
     //MARK: - IBOutlets
     //Labels
@@ -23,22 +27,17 @@ class LoginVC: UIViewController, UITextViewDelegate {
     
     //Buttons
     @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var signupButton: UIButton!
-    
+    @IBOutlet weak var FBLoginButton: FBLoginButton!
     
     //MARK: - Vars
-
-    var isLogin = true
     var isClicked = false
         
     //MARK: - ViewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        getUser()
-        setTextFieldsDelegates()
         updateUIForLoginButton()
-        print("is login: \(isLogin)")
+        setTextFieldsDelegates()
     }
     
     //MARK: - IBActions
@@ -52,28 +51,21 @@ class LoginVC: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func eyeButtonPressed(_ sender: UIButton) {
-        if isClicked {
-            passwordTextField.isSecureTextEntry = false
-            sender.setImage(UIImage(systemName: "eye.slash.fill"), for: .normal)
-        } else {
-            passwordTextField.isSecureTextEntry = true
-            sender.setImage(UIImage(systemName: "eye.fill"), for: .normal)
-        }
-//        eyeButtonPressed(isClicked, passwordTextField, sender)
+        securePasswordButtonPressed(isClicked, passwordTextField, sender)
         isClicked.toggle()
     }
     
     @IBAction func forgotPasswordButtonPressed(_ sender: Any) {
-        
+        resetPassword()
     }
     
     @IBAction func backButtonPressed(_ sender: Any) {
         dismiss(animated: true)
     }
     
+    
     //MARK: - Setup
     private func setTextFieldsDelegates() {
-
         emailTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
     }
@@ -95,10 +87,11 @@ class LoginVC: UIViewController, UITextViewDelegate {
         }
     }
     
+    //MARK: - UpadateUI
     private func updateUIForLoginButton() {
         loginButton.tintColor = .white
-        loginButton.setGradientBackground()
-        loginButton.setupButton(cornerRadius: 10)
+        loginButton.addGradientBackground()
+        loginButton.addCornerRadius(cornerRadius: 10)
 
     }
     
@@ -113,7 +106,6 @@ class LoginVC: UIViewController, UITextViewDelegate {
     }
     
     private func loginUser() {
-        
         FirebaseUserListener.shared.loginUserWithEmail(email: emailTextField.text!, password: passwordTextField.text!) { error, isEmailVerified in
             
             if error == nil {
@@ -138,14 +130,14 @@ class LoginVC: UIViewController, UITextViewDelegate {
             }
             
         }
-        
     }
         
-
     // MARK: - Navigation
     private func goToHomeScreen() {
-        let homeView = UIStoryboard(name: Constants.Storyboard.home, bundle: nil).instantiateViewController(withIdentifier: Constants.Identifiers.homeView) as! HomeVc
+        let homeView = UIStoryboard(name: Constants.Storyboard.home, bundle: nil).instantiateViewController(withIdentifier: Constants.Identifiers.homeView) as! HomeVC
+        homeView.modalPresentationStyle = .fullScreen
         present(homeView, animated: true)
     }
 
 }
+
