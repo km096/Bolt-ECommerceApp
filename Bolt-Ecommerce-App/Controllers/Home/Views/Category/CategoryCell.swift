@@ -25,7 +25,7 @@ class CategoryCell: UICollectionViewCell {
     func updateCellViews() {
         colorView.layer.cornerRadius = 10
         colorView.layer.masksToBounds = true
-//        colorView.setShadow(shadowOpacity: 1, shadowColor: UIColor.lightGray.cgColor)
+
         
         categoryImageView.layer.cornerRadius = 10
         categoryImageView.layer.masksToBounds = true

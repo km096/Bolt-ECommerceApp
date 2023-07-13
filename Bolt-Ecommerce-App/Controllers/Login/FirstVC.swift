@@ -17,7 +17,11 @@ class FirstVC: UIViewController {
         loginButton.addCornerRadius(cornerRadius: 5)
         loginButton.addGradientBackground()
 
-    }  
+    }
+    
+//    private func localizeView() {
+//
+//    }
     
 }
 

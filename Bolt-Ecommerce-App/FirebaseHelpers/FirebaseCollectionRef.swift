@@ -14,6 +14,7 @@ enum FCollectionRef: String {
     case user
     case recent
 }
+
 func  firebaseReferance(_ collectionReferance: FCollectionRef) -> CollectionReference {
     return Firestore.firestore().collection(collectionReferance.rawValue)
 }

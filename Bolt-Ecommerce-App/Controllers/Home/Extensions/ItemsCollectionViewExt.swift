@@ -11,7 +11,6 @@ extension ItemsVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return isSearching ? searchedItems.count : getItems().count
-//        return getItems().count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -33,15 +32,12 @@ extension ItemsVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let itemDetailsView = goToVC(storyboardName: Constants.Storyboard.home, identifier: Constants.Identifiers.itemDetails) as? ItemDetailsVC {
-            
-            itemDetailsView.item =  isSearching ?  searchedItems[indexPath.row] : getItems()[indexPath.row]
+        
+        let items = UIStoryboard(name: "Items", bundle: nil).instantiateViewController(withIdentifier: "ItemDetailsID") as? ItemDetailsVC
+        items!.item =  isSearching ?  searchedItems[indexPath.row] : getItems()[indexPath.row]
+        present(items!, animated: true)
 
-            present(itemDetailsView, animated: true)
-        }
     }
-    
-    
     
     
 }

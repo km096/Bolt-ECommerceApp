@@ -33,7 +33,6 @@ struct User: Codable, Equatable {
         }
         return nil
     }
-    
 }
 
 func saveUserLocally(_ user: User) {

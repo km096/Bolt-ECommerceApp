@@ -36,31 +36,20 @@ func securePasswordButtonPressed(_ isClicked: Bool, _ textField: UITextField, _ 
 
 func getItems() -> [ItemModel] {
     
-    let womanTShirt: ItemModel = ItemModel(title: "Woman T-Shirt", price: "$40.00", imageName: "Woman T-Shirt0")
-    let womanTShirt1: ItemModel = ItemModel(title: "Woman T-Shirt", price: "$50.00", imageName: "Woman T-Shirt1")
-    let womanTShirt2: ItemModel = ItemModel(title: "Woman T-Shirt", price: "$35.00", imageName: "Woman T-Shirt2")
-    let manTShirt: ItemModel = ItemModel(title: "Man T-Shirt", price: "$33.00", imageName: "Man T-Shirt0")
-    let manTShirt1: ItemModel = ItemModel(title: "Woman T-Shirt", price: "$65.00", imageName: "Woman T-Shirt1")
-    let shirt: ItemModel = ItemModel(title: "Shirt", price: "$53.00", imageName: "Shirt")
-    let tShirt: ItemModel = ItemModel(title: "T-Shirt", price: "$45.00", imageName: "T-Shirt")
-    let blazer: ItemModel = ItemModel(title: "Blazer", price: "$33.00", imageName: "Blazer")
+    let womanTShirt: ItemModel = ItemModel(id: 0, title: "Woman T-Shirt", price: "$40.00", imageName: "Woman T-Shirt0")
+    let womanTShirt1: ItemModel = ItemModel(id: 1, title: "Woman T-Shirt", price: "$50.00", imageName: "Woman T-Shirt1")
+    let womanTShirt2: ItemModel = ItemModel(id: 2, title: "Woman T-Shirt", price: "$35.00", imageName: "Woman T-Shirt2")
+    let manTShirt: ItemModel = ItemModel(id: 3, title: "Man T-Shirt", price: "$33.00", imageName: "Man T-Shirt0")
+    let manTShirt1: ItemModel = ItemModel(id: 4, title: "Woman T-Shirt", price: "$65.00", imageName: "Woman T-Shirt1")
+    let shirt: ItemModel = ItemModel(id: 5, title: "Shirt", price: "$53.00", imageName: "Shirt")
+    let tShirt: ItemModel = ItemModel(id: 6, title: "T-Shirt", price: "$45.00", imageName: "T-Shirt")
+    let blazer: ItemModel = ItemModel(id: 7, title: "Blazer", price: "$33.00", imageName: "Blazer")
     
     var item = [ItemModel]()
-    var featured = [ItemModel]()
-    var bestSell = [ItemModel]()
 
     item.append(contentsOf: [womanTShirt, womanTShirt1, womanTShirt2, manTShirt, manTShirt1, tShirt, shirt, blazer])
-//    item.shuffle()
-    
-//    for i in 0 ..< item.count {
-//        if i % 2 == 0 {
-//            featured.append(item[i])
-//        } else {
-//            bestSell.append(item[i])
-//        }
-//    }
+
     return item
-//    return (featured, bestSell)
 }
 
 func setCollectionViewSize(collectionView: UICollectionView, collectionViewLayout: UICollectionViewLayout, itemInOneLine: CGFloat) -> CGSize {
@@ -75,13 +64,6 @@ func setCollectionViewSize(collectionView: UICollectionView, collectionViewLayou
 
     return CGSize(width: width / itemInOneLine, height: 270)
 }
-
-func setCollectionViewHeight(collectionView: UICollectionView, collectionViewHeight: NSLayoutConstraint) {
-    let height = collectionView.collectionViewLayout.collectionViewContentSize.height
-    collectionViewHeight.constant = height
-    
-}
-
 
 func goToVC(storyboardName: String, identifier: String) -> UIViewController {
     let vc = UIStoryboard(name: storyboardName, bundle: nil).instantiateViewController(withIdentifier: identifier)

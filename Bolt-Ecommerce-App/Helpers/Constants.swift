@@ -67,6 +67,7 @@ public let managedContext = AppDelegate.sharedAppDelegate.coreDataStack.managedC
 
 
 struct ItemModel {
+    var id: Int?
     var title: String?
     var price: String?
     var imageName: String?

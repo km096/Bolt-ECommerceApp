@@ -14,7 +14,6 @@ class SideMenuVC: UIViewController {
     @IBOutlet weak var sideMenuTableView: UITableView!
     
     //MARK: - Vars
-
     var menus: [SideMenuModel] = [
         SideMenuModel(icon: UIImage(systemName: "house.fill")!, title: "Home"),
         SideMenuModel(icon: UIImage(systemName: "person.fill")!, title: "Profile"),
@@ -60,6 +59,8 @@ class SideMenuVC: UIViewController {
         }
     }
     
+    
+    
 }
 
 
@@ -74,6 +75,7 @@ extension SideMenuVC: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SideMenuCell.identifier, for: indexPath) as? SideMenuCell else {
             fatalError("xib doesn't exist")
         }
+        
         let menu = menus[indexPath.row]
         
         let customSelectionColorView = UIView()

@@ -9,7 +9,7 @@ import UIKit
 import Cosmos
 
 protocol rateViewDelegate {
-    func rating(_ rate: Double)
+    func getRating(_ rating: Double)
 }
 
 class RatePopUpView: UIViewController {
@@ -31,7 +31,7 @@ class RatePopUpView: UIViewController {
     
     func setupRating() {
         rateView.didTouchCosmos = { rating in
-            self.rateDelegate?.rating(rating)
+            self.rateDelegate?.getRating(rating)
         }
     }
 

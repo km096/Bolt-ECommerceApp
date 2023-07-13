@@ -96,8 +96,15 @@ class HomeVC: UIViewController {
         guard let sideMenuView = storyboard?.instantiateViewController(withIdentifier: "SideMenuID") as? SideMenuNavigationController else {
             return
         }
+        var settings = SideMenuSettings()
+        settings.presentationStyle = .menuSlideIn
+        SideMenuManager.default.leftMenuNavigationController?.settings = settings
+        sideMenuView.settings = settings
+
         present(sideMenuView, animated: true)
     }
+    
+    
 
 
 

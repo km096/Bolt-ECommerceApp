@@ -17,17 +17,20 @@ class ItemDetailsVC: UIViewController, rateViewDelegate {
     @IBOutlet weak var rateLabel: UILabel!
     @IBOutlet weak var itemPriceLabel: UILabel!
     
+    //ImageViews
     @IBOutlet weak var itemImageView: UIImageView!
+    
+    //Buttons
     @IBOutlet weak var rateButton: UIButton!
+    @IBOutlet weak var moreButton: UIButton!
     
     //SizeButtonsOutlets
-    @IBOutlet weak var SButton: CustomButton!
-    @IBOutlet weak var MButton: CustomButton!
-    @IBOutlet weak var LButton: CustomButton!
+    @IBOutlet weak var sSizeButton: CustomButton!
+    @IBOutlet weak var mSizeButton: CustomButton!
+    @IBOutlet weak var lSizeButton: CustomButton!
     
     //ColorButtonsOutlets
     @IBOutlet var colorButtons: [UIButton]!
-    
     
     //ViewsOutlets
     @IBOutlet weak var selectColorView: UIView!
@@ -36,14 +39,12 @@ class ItemDetailsVC: UIViewController, rateViewDelegate {
     //Vars
     var selectView = UIView()
     var item = ItemModel()
-    var isColorSelected = false
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         updateUIForTitleLabel()
+        moreButton.addTarget(self, action: #selector(expandLabel), for: .touchUpInside)
     }
 
     //MARK: - IBActions
@@ -53,7 +54,6 @@ class ItemDetailsVC: UIViewController, rateViewDelegate {
     
     @IBAction func rateButtonPressed(_ sender: Any) {
         presentPopUpView()
-
     }
     
     @IBAction func sizeButtonPressed(_ sender: CustomButton) {
@@ -62,19 +62,83 @@ class ItemDetailsVC: UIViewController, rateViewDelegate {
     
     @IBAction func selectSizeButtonPressed(_ sender: Any) {
         selectColorView.isHidden = true
-//        selectSizeView.isHidden = false
     }
     
     @IBAction func selectColorButtonPressed(_ sender: Any) {
         selectColorView.isHidden = false
-//        selectSizeView.isHidden = true
     }
     
     @IBAction func colorButtonPressed(_ sender: UIButton) {
-        checkButtonColor(button: sender)
-        print("Color: \(sender.backgroundColor)")
+        changeButtonColor(button: sender)
     }
     
+    @IBAction func addToCarrtButtonPressed(_ sender: Any) {
+        
+    }
+    
+    @IBAction func buyNowButtonPressed(_ sender: Any) {
+        
+    }
+    
+    
+    
+    //MARK: - Setup
+    private func checkButtonState(button: CustomButton) {
+//        if button == SButton {
+//            SButton.isSelected = button == SButton
+//            MButton.isSelected = false
+//            LButton.isSelected = false
+//        } else if button == MButton {
+//            SButton.isSelected = false
+//            MButton.isSelected =  button == MButton
+//            LButton.isSelected = false
+//        } else if button == LButton {
+//            SButton.isSelected = false
+//            MButton.isSelected = false
+//            LButton.isSelected = button == LButton
+//
+//        }
+        
+        sSizeButton.isSelected = button == sSizeButton
+        mSizeButton.isSelected =  button == mSizeButton
+        lSizeButton.isSelected = button == lSizeButton
+
+
+    }
+    
+    private func changeButtonColor(button: UIButton) {
+        if button == colorButtons[0] {
+            colorButtons[0].alpha = 1
+            for i in colorButtons {
+                if i != colorButtons[0] {
+                    i.alpha = 0.5
+                }
+            }
+        } else if button == colorButtons[1] {
+            colorButtons[1].alpha = 1
+            for i in colorButtons {
+                if i != colorButtons[1] {
+                    i.alpha = 0.5
+                }
+            }
+        } else if button == colorButtons[2] {
+            colorButtons[2].alpha = 1
+            for i in colorButtons {
+                if i != colorButtons[2] {
+                    i.alpha = 0.5
+                }
+            }
+        }
+    }
+    
+    func getRating(_ rating: Double) {
+        rateButton.setTitle(String(describing: rating ), for: .normal)
+        updateRateLabel(rate: rating)
+    }
+    
+    func getProduct() {
+       let product =  getItems().filter({$0.id == item.id})
+    }
     
     //MARK: - UpdateUI
     func setButtonColor(button: CustomButton) {
@@ -89,40 +153,7 @@ class ItemDetailsVC: UIViewController, rateViewDelegate {
        
         checkButtonState(button: button)
     }
-    
-    private func checkButtonState(button: CustomButton) {
-        if button == SButton {
-            SButton.isSelected = true
-            MButton.isSelected = false
-            LButton.isSelected = false
-        } else if button == MButton {
-            SButton.isSelected = false
-            MButton.isSelected = true
-            LButton.isSelected = false
-        } else if button == LButton {
-            SButton.isSelected = false
-            MButton.isSelected = false
-            LButton.isSelected = true
 
-        }
-    }
-    
-    private func checkButtonColor(button: UIButton) {
-        if button == colorButtons[0] {
-            colorButtons[0].layer.borderColor = UIColor.black.cgColor
-            colorButtons[1].layer.borderColor = UIColor.systemBlue.cgColor
-            colorButtons[2].layer.borderColor = UIColor.systemRed.cgColor
-        } else if button == colorButtons[1] {
-            colorButtons[1].layer.borderColor = UIColor.black.cgColor
-            colorButtons[0].layer.borderColor = UIColor.systemBrown.cgColor
-            colorButtons[2].layer.borderColor = UIColor.systemRed.cgColor
-        } else if button == colorButtons[2] {
-            colorButtons[2].layer.borderColor = UIColor.black.cgColor
-            colorButtons[0].layer.borderColor = UIColor.systemBrown.cgColor
-            colorButtons[1].layer.borderColor = UIColor.systemBlue.cgColor
-        }
-    }
-    
     private func updateRateLabel(rate: Double) {
         if rate == 5 {
             rateLabel.text = "Excellent"
@@ -142,6 +173,18 @@ class ItemDetailsVC: UIViewController, rateViewDelegate {
         itemPriceLabel.text = item.price
     }
     
+    @objc func expandLabel() {
+        if moreButton.titleLabel?.text == "More" {
+            moreButton.setTitle("Collapse", for: .normal)
+            decriptionLabel.numberOfLines = 0
+            decriptionLabel.lineBreakMode = .byCharWrapping
+        } else {
+            moreButton.setTitle("More", for: .normal)
+            decriptionLabel.numberOfLines = 3
+            decriptionLabel.lineBreakMode = .byTruncatingTail
+        }
+    }
+        
     //MARK: - PresentPopUpView
     private func presentPopUpView() {
         let popupVC = storyboard?.instantiateViewController(withIdentifier: "ratePopUpID") as! RatePopUpView
@@ -155,10 +198,6 @@ class ItemDetailsVC: UIViewController, rateViewDelegate {
         self.present(popupVC, animated: true, completion: nil)
     }
     
-    func rating(_ rate: Double) {
-        rateButton.setTitle(String(describing: rate ), for: .normal)
-        print("rating: \(rate)")
-        updateRateLabel(rate: rate)
-    }
+    
     
 }
