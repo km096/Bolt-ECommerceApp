@@ -48,7 +48,6 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="49" id="POW-MK-KxB"/>
                                         </constraints>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Log in"/>
                                         <connections>
@@ -87,6 +86,7 @@
                     </view>
                     <connections>
                         <outlet property="loginButton" destination="udh-lt-VXF" id="vWc-Pp-cMB"/>
+                        <outlet property="signUpButton" destination="deZ-Zk-Xxn" id="DYs-Ds-dsi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -116,8 +116,9 @@
                                     <constraint firstAttribute="width" constant="20" id="6cL-2j-G8d"/>
                                     <constraint firstAttribute="height" constant="10" id="flC-op-gSS"/>
                                 </constraints>
+                                <color key="tintColor" red="0.53380037560000004" green="0.53380037560000004" blue="0.53380037560000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="back_arrow"/>
+                                <buttonConfiguration key="configuration" style="plain" image="arrow.backward" catalog="system"/>
                                 <connections>
                                     <action selector="backButtonPressed:" destination="8bQ-xy-cFy" eventType="touchUpInside" id="S4u-6h-q7b"/>
                                 </connections>
@@ -209,9 +210,7 @@
                                 </constraints>
                                 <color key="tintColor" systemColor="tintColor"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Login">
-                                    <fontDescription key="titleFontDescription" name="SegoeUI" family="Segoe UI" pointSize="15"/>
-                                </buttonConfiguration>
+                                <buttonConfiguration key="configuration" style="plain" title="Login"/>
                                 <connections>
                                     <action selector="loginButtonPressed:" destination="8bQ-xy-cFy" eventType="touchUpInside" id="4Jx-iP-yLx"/>
                                 </connections>
@@ -249,24 +248,6 @@
                                     <action selector="forgotPasswordButtonPressed:" destination="8bQ-xy-cFy" eventType="touchUpInside" id="Ja9-Nl-7yV"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="47" translatesAutoresizingMaskIntoConstraints="NO" id="xfN-LA-vRL">
-                                <rect key="frame" x="65" y="600.33333333333337" width="263" height="40"/>
-                                <subviews>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Y7-H0-8dU">
-                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="34.333333333333336"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                    </button>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cQv-Pu-92A">
-                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="34.333333333333336"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="SkC-he-4wq"/>
-                                </constraints>
-                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="MJA-Op-aCB"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -277,9 +258,7 @@
                             <constraint firstItem="MJA-Op-aCB" firstAttribute="trailing" secondItem="wAD-pB-Ux0" secondAttribute="trailing" constant="24" id="BAg-ir-8Ng"/>
                             <constraint firstItem="A11-TN-yf7" firstAttribute="top" secondItem="MJA-Op-aCB" secondAttribute="top" constant="20" id="F6w-vv-emC"/>
                             <constraint firstItem="PA8-9a-2mM" firstAttribute="leading" secondItem="MJA-Op-aCB" secondAttribute="leading" constant="20" id="HFO-r2-dOy"/>
-                            <constraint firstItem="xfN-LA-vRL" firstAttribute="trailing" secondItem="ESC-Rb-3NP" secondAttribute="trailing" id="KcW-fg-SvH"/>
                             <constraint firstItem="Okx-CN-D5u" firstAttribute="leading" secondItem="MJA-Op-aCB" secondAttribute="leading" constant="20" id="Kw4-xl-Yvz"/>
-                            <constraint firstItem="xfN-LA-vRL" firstAttribute="leading" secondItem="ESC-Rb-3NP" secondAttribute="leading" id="Uzq-zV-IDO"/>
                             <constraint firstItem="PA8-9a-2mM" firstAttribute="top" secondItem="wAD-pB-Ux0" secondAttribute="bottom" constant="20" id="Xbw-nI-kxc"/>
                             <constraint firstItem="A11-TN-yf7" firstAttribute="leading" secondItem="MJA-Op-aCB" secondAttribute="leading" constant="30" id="bYa-8O-GDi"/>
                             <constraint firstItem="ESC-Rb-3NP" firstAttribute="centerX" secondItem="Z1e-v7-3De" secondAttribute="centerX" id="fFb-2H-2hb"/>
@@ -287,18 +266,19 @@
                             <constraint firstItem="Okx-CN-D5u" firstAttribute="top" secondItem="A11-TN-yf7" secondAttribute="bottom" constant="30" id="ky0-Uj-Way"/>
                             <constraint firstItem="MJA-Op-aCB" firstAttribute="trailing" secondItem="AC0-aB-e7Z" secondAttribute="trailing" constant="25" id="mhw-uP-Rdv"/>
                             <constraint firstItem="wAD-pB-Ux0" firstAttribute="top" secondItem="Okx-CN-D5u" secondAttribute="bottom" constant="65" id="rN2-8i-S82"/>
-                            <constraint firstItem="xfN-LA-vRL" firstAttribute="top" secondItem="ESC-Rb-3NP" secondAttribute="bottom" constant="30" id="rf2-V2-obY"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="vFn-47-65L"/>
                     <connections>
-                        <outlet property="FBLoginButton" destination="9Y7-H0-8dU" id="5qU-8m-2qQ"/>
+                        <outlet property="dontHaveAnAccountLabel" destination="9da-WC-sQ7" id="gpN-sw-JNv"/>
                         <outlet property="emailLabel" destination="1Bf-Yc-MzY" id="tDE-lq-Uxl"/>
                         <outlet property="emailTextField" destination="1ps-Xd-tnE" id="UDi-5i-RYg"/>
+                        <outlet property="forgotPasswordButton" destination="PA8-9a-2mM" id="azh-CL-M22"/>
                         <outlet property="loginButton" destination="AC0-aB-e7Z" id="dVh-Qo-l7D"/>
                         <outlet property="loginLabel" destination="Okx-CN-D5u" id="0cM-vZ-m10"/>
                         <outlet property="passwordLabel" destination="7Nd-T3-TP4" id="j1J-GO-lcS"/>
                         <outlet property="passwordTextField" destination="x0M-4v-g9c" id="JNa-fv-yzR"/>
+                        <outlet property="signupButton" destination="pGo-Uv-C6f" id="H7v-VL-C5i"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tUq-Ts-v0r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -319,8 +299,9 @@
                                     <constraint firstAttribute="width" constant="20" id="7OV-rO-fX6"/>
                                     <constraint firstAttribute="height" constant="10" id="zgr-e2-1Jg"/>
                                 </constraints>
+                                <color key="tintColor" red="0.53380037560000004" green="0.53380037560000004" blue="0.53380037560000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="back_arrow"/>
+                                <buttonConfiguration key="configuration" style="plain" image="arrow.backward" catalog="system"/>
                                 <connections>
                                     <action selector="backButtonPressed:" destination="8bQ-xy-cFy" eventType="touchUpInside" id="CtJ-PM-F5l"/>
                                     <action selector="backButtonPressed:" destination="8OR-Zn-fUJ" eventType="touchUpInside" id="l15-1Z-EZa"/>
@@ -481,7 +462,7 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SignUp" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AzU-Vv-4st">
-                                <rect key="frame" x="20" y="129" width="353" height="50"/>
+                                <rect key="frame" x="19.999999999999993" y="129" width="96.333333333333314" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="hdg-OO-jBk"/>
                                     <constraint firstAttribute="height" constant="50" id="tDK-p1-fT1"/>
@@ -497,7 +478,6 @@
                             <constraint firstItem="AzU-Vv-4st" firstAttribute="top" secondItem="hrj-iW-fX2" secondAttribute="bottom" constant="30" id="FtS-V5-8W8"/>
                             <constraint firstItem="Kdg-6Y-XLB" firstAttribute="top" secondItem="DUN-HH-xzl" secondAttribute="bottom" constant="20" id="MSh-e2-uDW"/>
                             <constraint firstItem="oYU-tV-BX9" firstAttribute="leading" secondItem="xFG-Oa-8wo" secondAttribute="leading" constant="25" id="NQ3-hS-RSI"/>
-                            <constraint firstItem="xFG-Oa-8wo" firstAttribute="trailing" secondItem="AzU-Vv-4st" secondAttribute="trailing" constant="20" id="Qfj-hq-wAh"/>
                             <constraint firstItem="AjO-h4-M7S" firstAttribute="centerX" secondItem="mjD-gz-WHM" secondAttribute="centerX" id="Yhk-Jk-r5i"/>
                             <constraint firstItem="AjO-h4-M7S" firstAttribute="top" secondItem="oYU-tV-BX9" secondAttribute="bottom" constant="30" id="Z6o-qj-x9I"/>
                             <constraint firstItem="hrj-iW-fX2" firstAttribute="top" secondItem="xFG-Oa-8wo" secondAttribute="top" constant="30" id="eue-7p-xF5"/>
@@ -513,15 +493,17 @@
                     </view>
                     <navigationItem key="navigationItem" id="bfY-XO-hmJ"/>
                     <connections>
+                        <outlet property="alreadyHaveAccountLabel" destination="kc4-Xh-KJq" id="5he-IE-t8n"/>
                         <outlet property="emailLabel" destination="Iz4-ka-mcC" id="t7V-yM-uA2"/>
                         <outlet property="emailTextField" destination="8GR-aK-Z1C" id="GbC-yB-q9l"/>
-                        <outlet property="nameLabel" destination="E3X-BU-3hQ" id="Efs-Ch-HKV"/>
-                        <outlet property="nameTextField" destination="OAU-qb-Uu5" id="1zB-G0-pQu"/>
+                        <outlet property="loginButton" destination="bI6-Xf-bm9" id="Q3U-ex-PMY"/>
                         <outlet property="passwordLabel" destination="M2F-vc-Vcv" id="02M-QG-ksW"/>
                         <outlet property="passwordTextField" destination="8dB-Km-z8b" id="x0X-IX-Kwe"/>
                         <outlet property="resendEmailButton" destination="Kdg-6Y-XLB" id="XFU-DU-8SR"/>
                         <outlet property="signupButton" destination="oYU-tV-BX9" id="kWA-UX-qqr"/>
                         <outlet property="signupLabel" destination="AzU-Vv-4st" id="ha4-xu-wGO"/>
+                        <outlet property="usernameLabel" destination="E3X-BU-3hQ" id="Efs-Ch-HKV"/>
+                        <outlet property="usernameTextField" destination="OAU-qb-Uu5" id="1zB-G0-pQu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V9O-pb-iz5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -530,11 +512,11 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="2ar-3a-ebe"/>
+        <segue reference="PFs-n0-mBN"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Image 1" width="340" height="217"/>
-        <image name="back_arrow" width="22" height="10"/>
+        <image name="arrow.backward" catalog="system" width="128" height="95"/>
         <image name="eye.fill" catalog="system" width="128" height="80"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

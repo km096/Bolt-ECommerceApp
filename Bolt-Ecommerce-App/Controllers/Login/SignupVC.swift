@@ -13,20 +13,22 @@ class SignupVC: UIViewController {
     //MARK: - IBOutlets
     //Labels
     @IBOutlet weak var signupLabel: UILabel!
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var passwordLabel: UILabel!
+    @IBOutlet weak var alreadyHaveAccountLabel: UILabel!
     
     //TextFileds
-    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
     //Buttons
     @IBOutlet weak var signupButton: UIButton!
     @IBOutlet weak var resendEmailButton: UIButton!
+    @IBOutlet weak var loginButton: UIButton!
     
-    //Vars
+    //MARK: - Vars
     var isClicked = false
 
     override func viewDidLoad() {
@@ -34,6 +36,7 @@ class SignupVC: UIViewController {
 
         setTextFieldsDelegstes()
         updateUIForSignupButton()
+        localizeViews()
         // Do any additional setup after loading the view.
     }
     
@@ -50,8 +53,8 @@ class SignupVC: UIViewController {
         dismiss(animated: true)
     }
     
-    @IBAction func eyeButtonPressed(_ sender: UIButton) {
-        securePasswordButtonPressed(isClicked, passwordTextField, sender)
+    @IBAction func showPasswordButtonPressed(_ sender: UIButton) {
+        showPassword(isClicked, passwordTextField, sender)
         isClicked.toggle()
     }
     
@@ -59,9 +62,24 @@ class SignupVC: UIViewController {
         resendEmail()
     }
     
+    //MARK: - Localization
+    private func localizeViews() {
+        signupLabel.text = "signup".localized
+        alreadyHaveAccountLabel.text = "alreadyHaveAccount".localized
+        
+        usernameTextField.placeholder = "username".localized
+        emailTextField.placeholder = "email".localized
+        passwordTextField.placeholder = "password".localized
+        
+        resendEmailButton.setTitle("resendEmail".localized, for: .normal)
+        loginButton.setTitle("login".localized, for: .normal)
+        signupButton.setTitle("signup".localized, for: .normal)
+        
+    }
+    
     //MARK: - Setup
     private func setTextFieldsDelegstes() {
-        nameTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        usernameTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         emailTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
     }
@@ -74,12 +92,12 @@ class SignupVC: UIViewController {
     private func UpdatePlaceHoldersLabels(textField: UITextField) {
         
         switch textField {
-        case nameTextField:
-            nameLabel.text = textField.hasText ? "Name" : ""
+        case usernameTextField:
+            usernameLabel.text = textField.hasText ? "username".localized : ""
         case emailTextField:
-            emailLabel.text = textField.hasText ? "Email" : ""
+            emailLabel.text = textField.hasText ? "email".localized : ""
         default:
-            passwordLabel.text = textField.hasText ? "Password" : ""
+            passwordLabel.text = textField.hasText ? "password".localized : ""
 
         }
     }
@@ -101,7 +119,7 @@ class SignupVC: UIViewController {
     }
 
     private func registerUser() {
-        FirebaseUserListener.shared.registerWithEmail(username: nameTextField.text!, email: emailTextField.text!, password: passwordTextField.text!) { [self] error in
+        FirebaseUserListener.shared.registerWithEmail(username: usernameTextField.text!, email: emailTextField.text!, password: passwordTextField.text!) { [self] error in
             
             if error == nil {
                 ProgressHUD.showSucceed("Emai verifacation sent.")
@@ -114,7 +132,6 @@ class SignupVC: UIViewController {
         
     private func resendEmail() {
         FirebaseUserListener.shared.resendEmailVerifacation { error in
-            error
             
             if error == nil {
                 ProgressHUD.showSucceed("Varifacation email resent")

@@ -20,14 +20,16 @@ class LoginVC: UIViewController, UITextViewDelegate {
     @IBOutlet weak var loginLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var passwordLabel: UILabel!
+    @IBOutlet weak var dontHaveAnAccountLabel: UILabel!
     
     //TextFileds
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
     //Buttons
+    @IBOutlet weak var forgotPasswordButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var FBLoginButton: FBLoginButton!
+    @IBOutlet weak var signupButton: UIButton!
     
     //MARK: - Vars
     var isClicked = false
@@ -38,6 +40,7 @@ class LoginVC: UIViewController, UITextViewDelegate {
 
         updateUIForLoginButton()
         setTextFieldsDelegates()
+        localizeViews()
     }
     
     //MARK: - IBActions
@@ -50,8 +53,8 @@ class LoginVC: UIViewController, UITextViewDelegate {
         }
     }
     
-    @IBAction func eyeButtonPressed(_ sender: UIButton) {
-        securePasswordButtonPressed(isClicked, passwordTextField, sender)
+    @IBAction func showPasswordButtonPressed(_ sender: UIButton) {
+        showPassword(isClicked, passwordTextField, sender)
         isClicked.toggle()
     }
     
@@ -63,6 +66,20 @@ class LoginVC: UIViewController, UITextViewDelegate {
         dismiss(animated: true)
     }
     
+    //MARK: - Localization
+    private func localizeViews() {
+        
+        loginLabel.text = "login".localized
+        dontHaveAnAccountLabel.text = "dontHaveAccuont".localized
+        
+        emailTextField.placeholder = "email".localized
+        passwordTextField.placeholder = "password".localized
+        
+        forgotPasswordButton.setTitle("forgotPassword".localized, for: .normal)
+        loginButton.setTitle("login".localized, for: .normal)
+        signupButton.setTitle("signup".localized, for: .normal)
+
+    }
     
     //MARK: - Setup
     private func setTextFieldsDelegates() {
@@ -71,18 +88,18 @@ class LoginVC: UIViewController, UITextViewDelegate {
     }
     
     @objc func textFieldDidChange(textField: UITextField) {
-        UpdatePlaceHoldersLabels(textField: textField)
+        updatePlaceHoldersLabels(textField: textField)
     }
 
     //MARK: - Animations
-    private func UpdatePlaceHoldersLabels(textField: UITextField) {
+    private func updatePlaceHoldersLabels(textField: UITextField) {
         
         switch textField {
 
         case emailTextField:
-            emailLabel.text = textField.hasText ? "Email" : ""
+            emailLabel.text = textField.hasText ? "email".localized : ""
         default:
-            passwordLabel.text = textField.hasText ? "Password" : ""
+            passwordLabel.text = textField.hasText ? "password".localized : ""
 
         }
     }
@@ -92,7 +109,6 @@ class LoginVC: UIViewController, UITextViewDelegate {
         loginButton.tintColor = .white
         loginButton.addGradientBackground()
         loginButton.addCornerRadius(cornerRadius: 10)
-
     }
     
     //MARK: - Helpers

@@ -12,17 +12,22 @@ class ItemDetailsVC: UIViewController, rateViewDelegate {
     
     //MARK: - IBOutlets
     //Labels
-    @IBOutlet weak var decriptionLabel: UILabel!
-    @IBOutlet weak var ItemTitleLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var decriptionTextLabel: UILabel!
+    @IBOutlet weak var productTitleLabel: UILabel!
     @IBOutlet weak var rateLabel: UILabel!
-    @IBOutlet weak var itemPriceLabel: UILabel!
+    @IBOutlet weak var productPriceLabel: UILabel!
     
     //ImageViews
-    @IBOutlet weak var itemImageView: UIImageView!
+    @IBOutlet weak var productImageView: UIImageView!
     
     //Buttons
     @IBOutlet weak var rateButton: UIButton!
     @IBOutlet weak var moreButton: UIButton!
+    @IBOutlet weak var selectSizeButton: UIButton!
+    @IBOutlet weak var selectColorButton: UIButton!
+    @IBOutlet weak var buyNowButton: UIButton!
+    @IBOutlet weak var addToCartButton: UIButton!
     
     //SizeButtonsOutlets
     @IBOutlet weak var sSizeButton: CustomButton!
@@ -38,12 +43,13 @@ class ItemDetailsVC: UIViewController, rateViewDelegate {
     
     //Vars
     var selectView = UIView()
-    var item = ItemModel()
+    var product = ProductModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         updateUIForTitleLabel()
+        localize()
         moreButton.addTarget(self, action: #selector(expandLabel), for: .touchUpInside)
     }
 
@@ -80,7 +86,15 @@ class ItemDetailsVC: UIViewController, rateViewDelegate {
         
     }
     
-    
+    //MARK: - Localization
+    private func localize() {
+        descriptionLabel.text = "description".localized
+        selectSizeButton.setTitle("selectSize".localized, for: .normal)
+        selectColorButton.setTitle("selectColor".localized, for: .normal)
+        buyNowButton.setTitle("buyNow".localized, for: .normal)
+        addToCartButton.setTitle("addToCart".localized, for: .normal)
+
+    }
     
     //MARK: - Setup
     private func checkButtonState(button: CustomButton) {
@@ -135,11 +149,6 @@ class ItemDetailsVC: UIViewController, rateViewDelegate {
         rateButton.setTitle(String(describing: rating ), for: .normal)
         updateRateLabel(rate: rating)
     }
-    
-    func getProduct() {
-       let product =  getItems().filter({$0.id == item.id})
-    }
-    
     //MARK: - UpdateUI
     func setButtonColor(button: CustomButton) {
         let selectedColor = #colorLiteral(red: 0.4242071807, green: 0.528095901, blue: 0.8550408483, alpha: 1)
@@ -156,32 +165,32 @@ class ItemDetailsVC: UIViewController, rateViewDelegate {
 
     private func updateRateLabel(rate: Double) {
         if rate == 5 {
-            rateLabel.text = "Excellent"
+            rateLabel.text = "excellent".localized
         } else if rate == 4 {
-            rateLabel.text = "Very Good"
+            rateLabel.text = "veryGood".localized
         } else if rate == 3 {
-            rateLabel.text = "Good"
+            rateLabel.text = "good".localized
         } else {
-            rateLabel.text = "Bad"
+            rateLabel.text = "bad".localized
 
         }
     }
     
     private func updateUIForTitleLabel() {
-        itemImageView.image = UIImage(named: item.imageName!)
-        ItemTitleLabel.text = item.title
-        itemPriceLabel.text = item.price
+        productImageView.image = UIImage(named: product.imageName!)
+        productTitleLabel.text = product.title
+        productPriceLabel.text = product.price
     }
     
     @objc func expandLabel() {
-        if moreButton.titleLabel?.text == "More" {
-            moreButton.setTitle("Collapse", for: .normal)
-            decriptionLabel.numberOfLines = 0
-            decriptionLabel.lineBreakMode = .byCharWrapping
+        if moreButton.titleLabel?.text == "more".localized {
+            moreButton.setTitle("collapse".localized, for: .normal)
+            decriptionTextLabel.numberOfLines = 0
+            decriptionTextLabel.lineBreakMode = .byCharWrapping
         } else {
-            moreButton.setTitle("More", for: .normal)
-            decriptionLabel.numberOfLines = 3
-            decriptionLabel.lineBreakMode = .byTruncatingTail
+            moreButton.setTitle("more".localized, for: .normal)
+            decriptionTextLabel.numberOfLines = 3
+            decriptionTextLabel.lineBreakMode = .byTruncatingTail
         }
     }
         

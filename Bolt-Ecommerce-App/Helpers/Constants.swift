@@ -66,7 +66,7 @@ public let userDefaults = UserDefaults.standard
 public let managedContext = AppDelegate.sharedAppDelegate.coreDataStack.managedContext
 
 
-struct ItemModel {
+struct ProductModel {
     var id: Int?
     var title: String?
     var price: String?

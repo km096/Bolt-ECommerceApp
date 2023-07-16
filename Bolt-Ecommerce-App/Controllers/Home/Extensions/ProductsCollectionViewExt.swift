@@ -7,21 +7,21 @@
 
 import UIKit
 
-extension ItemsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension ProductsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return isSearching ? searchedItems.count : getItems().count
+        return isSearching ? searchedItems.count : getProducts().count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath) as? ItemCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath) as? ProductCell else {
             fatalError("xib doesn't exist")
         }
         
         if isSearching {
-            cell.setupCell(item: searchedItems[indexPath.row])
+            cell.setupCell(product: searchedItems[indexPath.row])
         } else {
-            cell.setupCell(item: getItems()[indexPath.row])
+            cell.setupCell(product: getProducts()[indexPath.row])
         }
         
         return cell
@@ -34,7 +34,7 @@ extension ItemsVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let items = UIStoryboard(name: "Items", bundle: nil).instantiateViewController(withIdentifier: "ItemDetailsID") as? ItemDetailsVC
-        items!.item =  isSearching ?  searchedItems[indexPath.row] : getItems()[indexPath.row]
+        items!.product =  isSearching ?  searchedItems[indexPath.row] : getProducts()[indexPath.row]
         present(items!, animated: true)
 
     }

@@ -1,15 +1,43 @@
 
-"lang" = "en";
+"lang" = "ar";
 
 //LoginVC
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
+"login" = "الدخول";
+"signup" = "تسجيل الدخول";
+"username" = "اسم المستخدم";
+"email" = "البريد الالكتروني";
+"password" = "كلمة المرور";
+"forgotPassword" = "هل نسيت كلمة المرور؟";
+"resendEmail" = "اعادة ارسال البريد";
+"dontHaveAccuont" = "لا يوجد لديك حساب ؟";
+"alreadyHaveAccount" = "يوجد لديك حساب ؟";
 
+//Home
+"categories" = "فئات";
+"featured" = "مميزة";
+"bestSell" = "الاكثر مبيعا";
+"seeAll" = "اظهار الكل";
+"searchProduct" = "ابحث عن منتجك";
+"logout" = "الخروج";
+"home" = "الرئيسية";
+"profile" = "الملف الشخصي";
+"settings" = "الاعدادات";
+
+//Products
+"description" = "الوصف";
+"selectSize" = "اختار المقاس";
+"selectColor" = "اختار اللون";
+"buyNow" = "اشتري الان";
+"addToCart" = "اضف الي العرية";
+"more" = "عرض المزيد";
+"collapse" = "عرض القليل";
+"excellent" = "ممتاز";
+"veryGood" = "جيد جدا";
+"good" = "جيد";
+"bad" = "سيئ";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
 

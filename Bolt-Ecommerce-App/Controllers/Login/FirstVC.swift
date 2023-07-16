@@ -11,17 +11,21 @@ class FirstVC: UIViewController {
 
     //MARK: - IBOutlets
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var signUpButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loginButton.addCornerRadius(cornerRadius: 5)
-        loginButton.addGradientBackground()
-
+        updateViews()
     }
     
-//    private func localizeView() {
-//
-//    }
+    private func updateViews() {
+        loginButton.tintColor = .white
+        loginButton.addGradientBackground()
+        loginButton.addCornerRadius(cornerRadius: 5)
+        loginButton.setTitle("login".localized, for: .normal)
+
+        signUpButton.setTitle("signup".localized, for: .normal)
+    }
     
 }
 

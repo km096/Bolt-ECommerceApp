@@ -7,10 +7,10 @@
 
 import UIKit
 
-extension ItemsVC: UISearchBarDelegate {
+extension ProductsVC: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchedItems = getItems().filter({($0.title?.lowercased().contains(searchText.lowercased()))!})
+        searchedItems = getProducts().filter({($0.title?.lowercased().contains(searchText.lowercased()))!})
         isSearching = true
         collectionView.reloadData()
     }

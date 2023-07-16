@@ -24,30 +24,36 @@ func isValidPassword(_ passwordText: UITextField) -> Bool {
     return false
 }
 
-func securePasswordButtonPressed(_ isClicked: Bool, _ textField: UITextField, _ secureButton: UIButton) {
+func showPassword(_ isClicked: Bool, _ textField: UITextField, _ showPassordButton: UIButton) {
     if isClicked {
         textField.isSecureTextEntry = false
-        secureButton.setImage(UIImage(systemName: "eye.slash.fill"), for: .normal)
+        showPassordButton.setImage(UIImage(systemName: "eye.slash.fill"), for: .normal)
     } else {
         textField.isSecureTextEntry = true
-        secureButton.setImage(UIImage(systemName: "eye.fill"), for: .normal)
+        showPassordButton.setImage(UIImage(systemName: "eye.fill"), for: .normal)
     }
 }
 
-func getItems() -> [ItemModel] {
-    
-    let womanTShirt: ItemModel = ItemModel(id: 0, title: "Woman T-Shirt", price: "$40.00", imageName: "Woman T-Shirt0")
-    let womanTShirt1: ItemModel = ItemModel(id: 1, title: "Woman T-Shirt", price: "$50.00", imageName: "Woman T-Shirt1")
-    let womanTShirt2: ItemModel = ItemModel(id: 2, title: "Woman T-Shirt", price: "$35.00", imageName: "Woman T-Shirt2")
-    let manTShirt: ItemModel = ItemModel(id: 3, title: "Man T-Shirt", price: "$33.00", imageName: "Man T-Shirt0")
-    let manTShirt1: ItemModel = ItemModel(id: 4, title: "Woman T-Shirt", price: "$65.00", imageName: "Woman T-Shirt1")
-    let shirt: ItemModel = ItemModel(id: 5, title: "Shirt", price: "$53.00", imageName: "Shirt")
-    let tShirt: ItemModel = ItemModel(id: 6, title: "T-Shirt", price: "$45.00", imageName: "T-Shirt")
-    let blazer: ItemModel = ItemModel(id: 7, title: "Blazer", price: "$33.00", imageName: "Blazer")
-    
-    var item = [ItemModel]()
+func getCurrentLanguage() -> String {
+    print("lang: \(Locale.current.language.languageCode!.identifier)")
 
-    item.append(contentsOf: [womanTShirt, womanTShirt1, womanTShirt2, manTShirt, manTShirt1, tShirt, shirt, blazer])
+    return Locale.current.language.languageCode!.identifier
+}
+
+func getProducts() -> [ProductModel] {
+    
+    let womanTShirt: ProductModel = ProductModel(id: 0, title: "Woman T-Shirt", price: "$40.00", imageName: "Woman T-Shirt0")
+    let womanTShirt1: ProductModel = ProductModel(id: 1, title: "Woman T-Shirt", price: "$50.00", imageName: "Woman T-Shirt1")
+    let manTShirt: ProductModel = ProductModel(id: 2, title: "Man T-Shirt", price: "$33.00", imageName: "Man T-Shirt0")
+    let womanTShirt2: ProductModel = ProductModel(id: 3, title: "Woman T-Shirt", price: "$35.00", imageName: "Woman T-Shirt2")
+    let manTShirt1: ProductModel = ProductModel(id: 4, title: "Woman T-Shirt", price: "$65.00", imageName: "Woman T-Shirt1")
+    let shirt: ProductModel = ProductModel(id: 5, title: "Shirt", price: "$53.00", imageName: "Shirt")
+    let tShirt: ProductModel = ProductModel(id: 6, title: "T-Shirt", price: "$45.00", imageName: "T-Shirt")
+    let blazer: ProductModel = ProductModel(id: 7, title: "Blazer", price: "$33.00", imageName: "Blazer")
+    
+    var item = [ProductModel]()
+
+    item.append(contentsOf: [womanTShirt, womanTShirt1, manTShirt, womanTShirt2, manTShirt1, tShirt, shirt, blazer])
 
     return item
 }

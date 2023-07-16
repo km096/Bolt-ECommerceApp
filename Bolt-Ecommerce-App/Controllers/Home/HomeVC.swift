@@ -19,6 +19,13 @@ class HomeVC: UIViewController {
     @IBOutlet weak var featuredCollectionView: UICollectionView!
     @IBOutlet weak var bestSellCollectionView: UICollectionView!
     
+    //Labels
+    @IBOutlet weak var categoriesLabel: UILabel!
+    @IBOutlet weak var featuredLabel: UILabel!
+    @IBOutlet weak var bestsellLabel: UILabel!
+    
+    @IBOutlet var seeAllButtons: [UIButton]!
+    
     //MARK: - Vars
     var buttonIndex = 0
 
@@ -27,19 +34,11 @@ class HomeVC: UIViewController {
         
         configureCollectionView()
         setupSearchTextFiled()
-        print("collection view: \(featuredCollectionView.frame.height)")
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
+        localizeViews()
+//        getCurrentLanguage()
     }
     
     //MARK: - IBActions
-    @IBAction func sideMenuButtonPressed(_ sender: Any) {
-        showSideMenu()
-    }
-    
     @IBAction func categoriesSeeAllButtonPressed(_ sender: UIButton) {
         
     }
@@ -54,22 +53,7 @@ class HomeVC: UIViewController {
         performSegue(withIdentifier: Constants.Identifiers.segueToItems, sender: sender)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if let itemsView = segue.destination as? ItemsVC {
-            switch buttonIndex {
-            case 1:
-                itemsView.titleText = "Featured"
-            case 2:
-                itemsView.titleText = "Best Sell"
-            default:
-                break
-            }
-        }
-
-    }
-    
-    
+  
     //MARK: - CollectionViews Delegates
     private func configureCollectionView() {
         
@@ -84,29 +68,62 @@ class HomeVC: UIViewController {
         collectionView.register(UINib(nibName: nibName, bundle: nil), forCellWithReuseIdentifier: nibName)
     }
     
+    //MARK: - Localization
+    private func localizeViews() {
+        categoriesLabel.text = "categories".localized
+        featuredLabel.text = "featured".localized
+        bestsellLabel.text = "bestSell".localized
+        
+        seeAllButtons.forEach({$0.setTitle("seeAll".localized, for: .normal)})
+    }
+    
     //MARK: - Setup
     private func setupSearchTextFiled() {
         searchTextField.setPlaceholderColor ( Constants.Colors.searchPlacHolder )
         searchView.addShadow(shadowOpacity: 0.3, shadowColor: UIColor.lightGray.cgColor)
     }
     
-    
-    //MARK: - Navigate
-    private func showSideMenu() {
-        guard let sideMenuView = storyboard?.instantiateViewController(withIdentifier: "SideMenuID") as? SideMenuNavigationController else {
-            return
-        }
+    private func makeSettings() -> SideMenuSettings {
+        let presentationStyle: SideMenuPresentationStyle = .menuSlideIn
         var settings = SideMenuSettings()
-        settings.presentationStyle = .menuSlideIn
-        SideMenuManager.default.leftMenuNavigationController?.settings = settings
-        sideMenuView.settings = settings
-
-        present(sideMenuView, animated: true)
+        settings.presentationStyle = presentationStyle
+        
+        return settings
     }
     
     
+    //MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "showsideMenu" {
+            guard let sideMenuNavigationController = segue.destination as? SideMenuNavigationController else {
+                return
+            }
+            sideMenuNavigationController.settings = makeSettings()
 
-
-
+            if getCurrentLanguage() == "en" {
+                sideMenuNavigationController.leftSide = true
+                SideMenuManager.default.leftMenuNavigationController = sideMenuNavigationController
+            } else {
+                SideMenuManager.default.rightMenuNavigationController = sideMenuNavigationController
+            }
+            
+        } else if segue.identifier == Constants.Identifiers.segueToItems {
+            guard let itemsView = segue.destination as? ProductsVC else {
+                return
+            }
+            
+            switch buttonIndex {
+            case 1:
+                itemsView.titleText = "featured".localized
+            case 2:
+                itemsView.titleText = "bestSell".localized
+            default:
+                break
+            }
+        }
+    }
+    
+    
 }
 

@@ -1,1 +1,42 @@
 
+
+"lang" = "en";
+
+//Main
+"login" = "Login";
+"signup" = "Signup";
+"username" = "Username";
+"email" = "Email";
+"password" = "Password";
+"forgotPassword" = "Forgot Password?";
+"resendEmail" = "Resend Email";
+"dontHaveAccuont" = "Don't have an account?";
+"alreadyHaveAccount" = "Already have an account?";
+
+//Home
+"categories" = "Categories";
+"featured" = "Featured";
+"bestSell" = "Best Sell";
+"seeAll" = "See All";
+"searchProduct" = "Search Your Product";
+"logout" = "Log Out";
+"home" = "Home";
+"profile" = "Profile";
+"settings" = "Settings";
+
+//Products
+"description" = "Descrption";
+"selectSize" = "Select Size";
+"selectColor" = "Select Color";
+"buyNow" = "Buy Now";
+"addToCart" = "Add To Cart";
+"more" = "More";
+"collapse" = "Collapse";
+"excellent" = "Excellent";
+"veryGood" = "Ver Good";
+"good" = "Good";
+"bad" = "Bad";
+"" = "";
+
+
+

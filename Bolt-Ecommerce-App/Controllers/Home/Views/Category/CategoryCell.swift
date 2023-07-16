@@ -17,7 +17,6 @@ class CategoryCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         updateCellViews()
     }
     
@@ -26,7 +25,6 @@ class CategoryCell: UICollectionViewCell {
         colorView.layer.cornerRadius = 10
         colorView.layer.masksToBounds = true
 
-        
         categoryImageView.layer.cornerRadius = 10
         categoryImageView.layer.masksToBounds = true
         
@@ -35,20 +33,20 @@ class CategoryCell: UICollectionViewCell {
     }
     
     //MARK: - SetupCell
-    func setupCell(type: Int) {
-        switch type{
+    func updateCellFor(indexpath: Int) {
+        switch indexpath{
         case 0 :
-            setCell(title: Constants.Category.Title.women, color: Constants.Category.Colors.women)
+            setupCell(title: Constants.Category.Title.women, color: Constants.Category.Colors.women)
             
         case 1 :
-            setCell(title: Constants.Category.Title.men, color: Constants.Category.Colors.men)
+            setupCell(title: Constants.Category.Title.men, color: Constants.Category.Colors.men)
 
         default:
-            setCell(title: Constants.Category.Title.kids, color: Constants.Category.Colors.kids)
+            setupCell(title: Constants.Category.Title.kids, color: Constants.Category.Colors.kids)
         }
     }
     
-    private func setCell(title: String, color: UIColor) {
+    private func setupCell(title: String, color: UIColor) {
         categoryImageView.image = UIImage(named: title)
         colorView.backgroundColor = color
         categoryLabel.text = title
