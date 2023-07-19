@@ -33,6 +33,7 @@
 		F26D29ED2A5F44D8009476A7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F26D29EF2A5F44D8009476A7 /* Localizable.strings */; };
 		F26D29F22A5F4B26009476A7 /* StringExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26D29F12A5F4B26009476A7 /* StringExt.swift */; };
 		F26D29F62A5F6410009476A7 /* Payment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F26D29F52A5F6410009476A7 /* Payment.storyboard */; };
+		F28429D52A67BAB80033DCAA /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28429D42A67BAB80033DCAA /* CheckBox.swift */; };
 		F2A199092A5D95F4001EFBC7 /* RatePopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A199082A5D95F4001EFBC7 /* RatePopUpView.swift */; };
 		F2A1990B2A5DC09A001EFBC7 /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A1990A2A5DC09A001EFBC7 /* PopUpView.swift */; };
 		F2A62E172A5C9EA9005944A0 /* ProductDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A62E162A5C9EA9005944A0 /* ProductDetailsVC.swift */; };
@@ -102,6 +103,7 @@
 		F26D29F02A5F44ED009476A7 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F26D29F12A5F4B26009476A7 /* StringExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExt.swift; sourceTree = "<group>"; };
 		F26D29F52A5F6410009476A7 /* Payment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Payment.storyboard; sourceTree = "<group>"; };
+		F28429D42A67BAB80033DCAA /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		F2A199082A5D95F4001EFBC7 /* RatePopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatePopUpView.swift; sourceTree = "<group>"; };
 		F2A1990A2A5DC09A001EFBC7 /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
 		F2A62E162A5C9EA9005944A0 /* ProductDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsVC.swift; sourceTree = "<group>"; };
@@ -169,13 +171,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		F20875762A67288F00AFE661 /* AddAddress */ = {
+		F20875762A67288F00AFE661 /* Address */ = {
 			isa = PBXGroup;
 			children = (
 				F20875772A6728E800AFE661 /* AddressCell.swift */,
 				F20875782A6728E800AFE661 /* AddressCell.xib */,
 			);
-			path = AddAddress;
+			path = Address;
 			sourceTree = "<group>";
 		};
 		F20C48AF2A574F640072E604 /* Product */ = {
@@ -209,9 +211,6 @@
 			children = (
 				F248E86D2A58BF7600AEA77D /* Extensions */,
 				F22FF0A52A5561410037E7F4 /* Views */,
-				F2DF68DB2A53ED0100FC8E82 /* FirstVC.swift */,
-				F2DF68F52A541C3E00FC8E82 /* LoginVC.swift */,
-				F22FF0B42A56179D0037E7F4 /* SignupVC.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -219,12 +218,9 @@
 		F22FF0A72A5561D80037E7F4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				F28429D72A67F8710033DCAA /* Controllers */,
 				F248E86E2A58BF9900AEA77D /* Extensions */,
 				F22FF0A82A5561EA0037E7F4 /* Views */,
-				F2DF68FD2A54488300FC8E82 /* HomeVC.swift */,
-				F2D5B5E42A5A84650057F043 /* SideMenuVC.swift */,
-				F2D5B5ED2A5ABBFB0057F043 /* ProductsVC.swift */,
-				F2A62E162A5C9EA9005944A0 /* ProductDetailsVC.swift */,
 			);
 			path = Products;
 			sourceTree = "<group>";
@@ -291,12 +287,32 @@
 		F26D29F42A5F63AB009476A7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F20875762A67288F00AFE661 /* AddAddress */,
+				F20875762A67288F00AFE661 /* Address */,
 				F2F385DE2A5FFE8E00924BD9 /* CartCell */,
 				F26D29F52A5F6410009476A7 /* Payment.storyboard */,
 				F208757B2A6733CA00AFE661 /* CartAndPayment.storyboard */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		F28429D62A67F8560033DCAA /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F2F385E32A60033C00924BD9 /* CartVC.swift */,
+				F208757F2A673C4E00AFE661 /* AddressVC.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		F28429D72A67F8710033DCAA /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F2DF68FD2A54488300FC8E82 /* HomeVC.swift */,
+				F2D5B5E42A5A84650057F043 /* SideMenuVC.swift */,
+				F2D5B5ED2A5ABBFB0057F043 /* ProductsVC.swift */,
+				F2A62E162A5C9EA9005944A0 /* ProductDetailsVC.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		F2A199052A5D8B59001EFBC7 /* Extensions */ = {
@@ -311,11 +327,10 @@
 		F2A62E152A5C9E64005944A0 /* Payment */ = {
 			isa = PBXGroup;
 			children = (
+				F28429D62A67F8560033DCAA /* Controllers */,
 				F2F385DB2A5FE4D800924BD9 /* CustomViews */,
 				F2A199052A5D8B59001EFBC7 /* Extensions */,
 				F26D29F42A5F63AB009476A7 /* Views */,
-				F2F385E32A60033C00924BD9 /* CartVC.swift */,
-				F208757F2A673C4E00AFE661 /* AddressVC.swift */,
 			);
 			path = Payment;
 			sourceTree = "<group>";
@@ -400,6 +415,9 @@
 		F2DF68F42A541C1900FC8E82 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F2DF68DB2A53ED0100FC8E82 /* FirstVC.swift */,
+				F2DF68F52A541C3E00FC8E82 /* LoginVC.swift */,
+				F22FF0B42A56179D0037E7F4 /* SignupVC.swift */,
 				F22FF0A62A5561A80037E7F4 /* Login */,
 				F22FF0A72A5561D80037E7F4 /* Products */,
 				F2A62E152A5C9E64005944A0 /* Payment */,
@@ -434,6 +452,7 @@
 				F2A1990A2A5DC09A001EFBC7 /* PopUpView.swift */,
 				F253914D2A5E962200A90F29 /* CustomButton.swift */,
 				F208757D2A67382B00AFE661 /* DashedButton.swift */,
+				F28429D42A67BAB80033DCAA /* CheckBox.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -591,6 +610,7 @@
 				F22FF0B22A55DBE60037E7F4 /* CategoryCell.swift in Sources */,
 				F22FF0AC2A55869E0037E7F4 /* UITextFieldExt.swift in Sources */,
 				F22FF0B52A56179D0037E7F4 /* SignupVC.swift in Sources */,
+				F28429D52A67BAB80033DCAA /* CheckBox.swift in Sources */,
 				F20CF0322A5C4F5F00829E84 /* ProductsCollectionViewExt.swift in Sources */,
 				F2DF68DC2A53ED0100FC8E82 /* FirstVC.swift in Sources */,
 				F2F385E62A60035B00924BD9 /* CartTableViewExt.swift in Sources */,

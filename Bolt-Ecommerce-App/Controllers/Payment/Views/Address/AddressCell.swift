@@ -12,19 +12,28 @@ class AddressCell: UITableViewCell {
     class var identifier: String { return String(describing: self) }
     class var nib: UINib { return UINib(nibName: identifier, bundle: nil) }
 
+    
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var houseNumberLabel: UILabel!
     @IBOutlet weak var roadNumberLabel: UILabel!
     
+    @IBOutlet weak var checkBox: CheckBox!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        updateCheckBox()
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
        
+    }
+    
+    func updateCheckBox() {
+        checkBox.style = .circle
+        checkBox.borderStyle = .rounded
     }
     
 }

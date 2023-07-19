@@ -19,6 +19,7 @@ class AddressVC: UIViewController {
     @IBOutlet weak var addAddressButton: DashedButton!
     @IBOutlet weak var continueToPaymentButton: UIButton!
     
+    var selectedIndex = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
