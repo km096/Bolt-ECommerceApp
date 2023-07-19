@@ -19,9 +19,13 @@
 "bestSell" = "Best Sell";
 "seeAll" = "See All";
 "searchProduct" = "Search Your Product";
-"logout" = "Log Out";
+"logout" = " Log Out";
 "home" = "Home";
 "profile" = "Profile";
+"cart" = "My Cart";
+"favorite" = "Favorite";
+"orders" = "My Orders";
+"language" = "Language";
 "settings" = "Settings";
 
 //Products

@@ -21,6 +21,10 @@
 "logout" = "الخروج";
 "home" = "الرئيسية";
 "profile" = "الملف الشخصي";
+"cart" = "عربة التسوق";
+"favorite" = "المفضلة";
+"orders" = "الطلبات";
+"language" = "اللغة";
 "settings" = "الاعدادات";
 
 //Products

@@ -40,18 +40,18 @@ func getCurrentLanguage() -> String {
     return Locale.current.language.languageCode!.identifier
 }
 
-func getProducts() -> [ProductModel] {
+func getProducts() -> [Product] {
     
-    let womanTShirt: ProductModel = ProductModel(id: 0, title: "Woman T-Shirt", price: "$40.00", imageName: "Woman T-Shirt0")
-    let womanTShirt1: ProductModel = ProductModel(id: 1, title: "Woman T-Shirt", price: "$50.00", imageName: "Woman T-Shirt1")
-    let manTShirt: ProductModel = ProductModel(id: 2, title: "Man T-Shirt", price: "$33.00", imageName: "Man T-Shirt0")
-    let womanTShirt2: ProductModel = ProductModel(id: 3, title: "Woman T-Shirt", price: "$35.00", imageName: "Woman T-Shirt2")
-    let manTShirt1: ProductModel = ProductModel(id: 4, title: "Woman T-Shirt", price: "$65.00", imageName: "Woman T-Shirt1")
-    let shirt: ProductModel = ProductModel(id: 5, title: "Shirt", price: "$53.00", imageName: "Shirt")
-    let tShirt: ProductModel = ProductModel(id: 6, title: "T-Shirt", price: "$45.00", imageName: "T-Shirt")
-    let blazer: ProductModel = ProductModel(id: 7, title: "Blazer", price: "$33.00", imageName: "Blazer")
+    let womanTShirt: Product = Product(id: "0", title: "Woman T-Shirt", price: 40.00, imageName: "Woman T-Shirt0")
+    let womanTShirt1: Product = Product(id: "1", title: "Woman T-Shirt", price: 50.00, imageName: "Woman T-Shirt1")
+    let manTShirt: Product = Product(id: "2", title: "Man T-Shirt", price: 33.00, imageName: "Man T-Shirt0")
+    let womanTShirt2: Product = Product(id: "3", title: "Woman T-Shirt", price: 35.00, imageName: "Woman T-Shirt2")
+    let manTShirt1: Product = Product(id: "4", title: "Woman T-Shirt", price: 65.00, imageName: "Woman T-Shirt1")
+    let shirt: Product = Product(id: "5", title: "Shirt", price: 53.00, imageName: "Shirt")
+    let tShirt: Product = Product(id: "6", title: "T-Shirt", price: 45.00, imageName: "T-Shirt")
+    let blazer: Product = Product(id: "7", title: "Blazer", price: 33.00, imageName: "Blazer")
     
-    var item = [ProductModel]()
+    var item = [Product]()
 
     item.append(contentsOf: [womanTShirt, womanTShirt1, manTShirt, womanTShirt2, manTShirt1, tShirt, shirt, blazer])
 
