@@ -35,8 +35,6 @@ func showPassword(_ isClicked: Bool, _ textField: UITextField, _ showPassordButt
 }
 
 func getCurrentLanguage() -> String {
-    print("lang: \(Locale.current.language.languageCode!.identifier)")
-
     return Locale.current.language.languageCode!.identifier
 }
 
@@ -58,7 +56,7 @@ func getProducts() -> [Product] {
     return item
 }
 
-func setCollectionViewSize(collectionView: UICollectionView, collectionViewLayout: UICollectionViewLayout, itemInOneLine: CGFloat) -> CGSize {
+func setCollectionViewSize(collectionView: UICollectionView, collectionViewLayout: UICollectionViewLayout, itemInOneLine: CGFloat, height: CGFloat) -> CGSize {
     
     let layout = collectionViewLayout as! UICollectionViewFlowLayout
 
@@ -68,7 +66,7 @@ func setCollectionViewSize(collectionView: UICollectionView, collectionViewLayou
     let width = collectionView.frame.width - itemSpacing * (itemInOneLine - 1 )
     layout.minimumLineSpacing = itemSpacing
 
-    return CGSize(width: width / itemInOneLine, height: 270)
+    return CGSize(width: width / itemInOneLine, height: height)
 }
 
 func goToVC(storyboardName: String, identifier: String) -> UIViewController {

@@ -21,7 +21,7 @@ func saveItemLocally(_ product: Product) {
     
     do {
         let data = try encode.encode(product)
-        userDefaults.set(data, forKey: Keys.cartItems.rawValue)
+        userDefaults.set(data, forKey: Key.cartItems.rawValue)
     } catch {
         print("Error saving cart items locally")
     }

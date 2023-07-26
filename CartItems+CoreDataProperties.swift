@@ -23,6 +23,8 @@ extension CartItems {
     @NSManaged public var quantity: Int32
     @NSManaged public var size: String?
     @NSManaged public var color: String?
+//    @NSManaged public var totalPrice: Double
+
 
 
 }

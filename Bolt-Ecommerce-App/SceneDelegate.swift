@@ -50,7 +50,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called as the scene transitions from the foreground to the background.
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
-        AppDelegate.sharedAppDelegate.coreDataStack.saveContext()
+        AppDelegate.sharedAppDelegate.coreDataStackCartItems.saveContext()
+        AppDelegate.sharedAppDelegate.coreDataStackTotalPrice.saveContext()
+        AppDelegate.sharedAppDelegate.coreDataStackAddress.saveContext()
+
     }
 
     
@@ -58,7 +61,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         authListener = Auth.auth().addStateDidChangeListener({ auth, user in
             
             Auth.auth().removeStateDidChangeListener(self.authListener!)
-            if user != nil && userDefaults.object(forKey: Keys.currentUser.rawValue) != nil {
+            if user != nil && userDefaults.object(forKey: Key.currentUser.rawValue) != nil {
                 
                 DispatchQueue.main.async {
                     self.goToHomeScreen()

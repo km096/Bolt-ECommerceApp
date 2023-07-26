@@ -59,7 +59,7 @@ class  FirebaseUserListener {
         
         do {
             try Auth.auth().signOut()
-            userDefaults.removeObject(forKey: Keys.currentUser.rawValue)
+            userDefaults.removeObject(forKey: Key.currentUser.rawValue)
             userDefaults.synchronize()
             
             completion(nil)

@@ -14,8 +14,11 @@ import FBSDKCoreKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
-    lazy var coreDataStack: CoreDataStack = .init(modelName: "CartItems")
+    lazy var coreDataStackCartItems: CoreDataStack = .init(modelName: "CartItems")
+    lazy var coreDataStackTotalPrice: CoreDataStack = .init(modelName: "TotalPrice")
+    lazy var coreDataStackAddress: CoreDataStack = .init(modelName: "Address")
 
+    
       static let sharedAppDelegate: AppDelegate = {
           guard let delegate = UIApplication.shared.delegate as? AppDelegate else {
               fatalError("Unexpected app delegate type, did it change? \(String(describing: UIApplication.shared.delegate))")

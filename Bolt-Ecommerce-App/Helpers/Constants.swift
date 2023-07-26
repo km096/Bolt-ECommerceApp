@@ -22,20 +22,24 @@ struct Constants {
         static let productDetails = "ProductDetailsID"
         static let cart = "CartId"
         static let addAddress = "AddAddressId"
+        static let getLocation = "getLocationID"
+        static let checkout = "checkoutID"
 
         static let segueToItems = "gotToItems"
+        static let segueToPayment = "gotToPayment"
         
     }
     
     struct Colors {
         static let searchPlacHolder = #colorLiteral(red: 0.5778337717, green: 0.5778337717, blue: 0.5778337717, alpha: 1)
+        static let textColor = #colorLiteral(red: 0.4242071807, green: 0.528095901, blue: 0.8550408483, alpha: 1)
     }
 
     struct ErrorMessage {
         static let allFieldsRequired = "All fields are required"
         static let worngEmail = "Wrong email or passwrod"
         static let registeredBefore = "This email is registed before"
-
+        static let addressExsitedBefore = "This address exsited before"
     }
     
     struct Categories {
@@ -46,14 +50,14 @@ struct Constants {
     
 }
 
-enum Sizes: String {
+enum Size: String {
     case small = "Small"
     case medium = "Medium"
     case large = "Large"
 
 }
 
-enum Colors: String {
+enum Color: String {
     case brown = "Brown"
     case blue = "Blue"
     case red = "Red"
@@ -61,14 +65,16 @@ enum Colors: String {
 }
 
 
-enum Keys: String {
+enum Key: String {
     case currentUser = "currentUser"
     case cartItems = "KCARTITEMS"
     case storedImages = "StoredImages"
 }
 
 public let userDefaults = UserDefaults.standard
-public let managedContext = AppDelegate.sharedAppDelegate.coreDataStack.managedContext
+public let managedContextCartItems = AppDelegate.sharedAppDelegate.coreDataStackCartItems.managedContext
+public let managedContextTotalPrice = AppDelegate.sharedAppDelegate.coreDataStackTotalPrice.managedContext
+public let managedContextAddress = AppDelegate.sharedAppDelegate.coreDataStackAddress.managedContext
 
 
 

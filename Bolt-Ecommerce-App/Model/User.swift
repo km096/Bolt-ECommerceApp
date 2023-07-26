@@ -21,7 +21,7 @@ struct User: Codable, Equatable {
     
     static var currentUser: User? {
         if Auth.auth().currentUser != nil {
-            if let dictionary = UserDefaults.standard.data(forKey: Keys.currentUser.rawValue) {
+            if let dictionary = UserDefaults.standard.data(forKey: Key.currentUser.rawValue) {
                 let decoder = JSONDecoder()
                 do {
                     let userObject = try decoder.decode(User.self, from: dictionary)
@@ -40,7 +40,7 @@ func saveUserLocally(_ user: User) {
     
     do {
         let data = try encode.encode(user)
-        UserDefaults.standard.set(data, forKey: Keys.currentUser.rawValue)
+        UserDefaults.standard.set(data, forKey: Key.currentUser.rawValue)
     } catch {
         print("Error saving user data")
     }
