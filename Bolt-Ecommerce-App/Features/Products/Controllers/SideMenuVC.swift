@@ -29,8 +29,13 @@ class SideMenuVC: UIViewController {
         super.viewDidLoad()
 
         configureTableView()
-        showUserInfo()
+        updateUIForUserImage()
         localize()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        showUserInfo()
     }
     
     //MARK: - Table View Delegates
@@ -45,7 +50,7 @@ class SideMenuVC: UIViewController {
     @IBAction func logOutButtonPressed(_ sender: Any) {
         FirebaseUserListener.shared.logOutCurrentUder { error in
             if error == nil {
-                let loginView = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginVC")
+                let loginView = UIStoryboard(name: Constants.Storyboard.main, bundle: nil).instantiateViewController(withIdentifier: Constants.Identifiers.loginView)
                 
                 DispatchQueue.main.async {
                     loginView.modalPresentationStyle = .fullScreen
@@ -56,6 +61,10 @@ class SideMenuVC: UIViewController {
         }
     }
     
+    private func updateUIForUserImage() {
+        userImageView.makeRounded()
+    }
+    
     //MARK: - Localization
     private func localize() {
         logOutButton.setTitle("logout".localized, for: .normal)
@@ -63,9 +72,15 @@ class SideMenuVC: UIViewController {
     
     //MARK: - Setup
     private func showUserInfo() {
-        
         if let user = User.currentUser {
             usernameLabel.text = user.username
+            
+            if user.avatarLink != "" {
+                FileStorage.downloadImage(imageUrl: user.avatarLink) { [weak self] image in
+                    guard let strongSelf = self else { return }
+                    strongSelf.userImageView.image = image
+                }
+            }
         }
     }
 }

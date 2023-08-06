@@ -10,10 +10,6 @@ import CoreData
 import FirebaseAuth
 import ProgressHUD
 
-protocol TotalPriceDelegte {
-    func getTotalPrice(_ totalPrice: Double)
-}
-
 class CartVC: UIViewController {
 
     @IBOutlet weak var cartTableView: UITableView!
@@ -21,14 +17,23 @@ class CartVC: UIViewController {
     
     var continueButton = UIButton()
     var cartItems: [CartItems] = []
-    var totalPriceDelegate: TotalPriceDelegte?
+//    private var totalPrice: Double {
+//        get {
+//            return cartItems.reduce(0, {$0 + $1.price * Double($1.quantity)})
+//        }
+//
+//        set (newVal) {
+//            self.totalPriceLabel.text = "$\(newVal)"
+//        }
+//    }
     
     //MARK: - ViewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configureTableView()
-        setupContinueButton()
+        setContinueButton()
+
         continueButton.addTarget(self, action: #selector(continueButtonPressed), for: .touchUpInside)
     }
     
@@ -68,17 +73,22 @@ class CartVC: UIViewController {
         guard let addAddressView = storyboard?.instantiateViewController(withIdentifier: Constants.Identifiers.addAddress) as? AddressVC else {
             return
         }
+        addAddressView.setTotalPrice(setTotalPrice())
         addAddressView.modalPresentationStyle = .fullScreen
         present(addAddressView, animated: true)
     }
     
-    private func updateTotalPrice() {
-        let totalPrice = cartItems.reduce(0, {$0 + $1.price * Double($1.quantity)})
-        totalPriceLabel.text = "$ \(totalPrice)"
+    private func setTotalPrice() -> Double {
+        return cartItems.reduce(0, {$0 + $1.price * Double($1.quantity)})
     }
     
+    private func setTotaPriceLabel() {
+        totalPriceLabel.text = "$\(self.setTotalPrice())"
+    }
+    
+    
     //MARK: - Setup
-    private func setupContinueButton() {
+    private func setContinueButton() {
         self.continueButton = UIButton(type: .custom)
         continueButton.setTitle("Continue", for: .normal)
         continueButton.addTarget(self, action: #selector(continueButtonPressed), for: .touchUpInside)
@@ -89,7 +99,7 @@ class CartVC: UIViewController {
     private func fetchCartItems() {
         do {
             cartItems = try managedContextCartItems.fetch(CartItems.fetchRequest())
-            updateTotalPrice()
+            setTotaPriceLabel()
         } catch {
             print("Error fetching items: \(error.localizedDescription)")
         }
@@ -99,8 +109,8 @@ class CartVC: UIViewController {
          managedContextCartItems.delete(cartItems[indexPath.row])
          AppDelegate.sharedAppDelegate.coreDataStackCartItems.saveContext()
          cartItems.remove(at: indexPath.row)
-        updateTotalPrice()
          cartTableView.reloadData()
+         setTotaPriceLabel()
          ProgressHUD.showSucceed("Item removed from the cart")
     }
     
@@ -110,7 +120,7 @@ class CartVC: UIViewController {
         cartItems[indexPath.row].quantity = newQuantity
         AppDelegate.sharedAppDelegate.coreDataStackCartItems.saveContext()
         cartTableView.reloadData()
-        updateTotalPrice()
+        setTotaPriceLabel()
     }
     
     func decrementItemQyantity(atIndexPath indexPath: IndexPath) {
@@ -122,7 +132,6 @@ class CartVC: UIViewController {
         cartItems[indexPath.row].quantity = Int32(newQuantity)
         AppDelegate.sharedAppDelegate.coreDataStackCartItems.saveContext()
         cartTableView.reloadData()
-        updateTotalPrice()
+        setTotaPriceLabel()
     }
- 
 }

@@ -15,7 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     lazy var coreDataStackCartItems: CoreDataStack = .init(modelName: "CartItems")
-    lazy var coreDataStackTotalPrice: CoreDataStack = .init(modelName: "TotalPrice")
     lazy var coreDataStackAddress: CoreDataStack = .init(modelName: "Address")
 
     

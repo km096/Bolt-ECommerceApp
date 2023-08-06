@@ -650,6 +650,7 @@ PODS:
     - GoogleUtilities/AppDelegateSwizzler (~> 7.8)
     - GoogleUtilities/Environment (~> 7.8)
     - GTMSessionFetcher/Core (< 4.0, >= 2.1)
+  - FirebaseAuthInterop (10.11.0)
   - FirebaseCore (10.11.0):
     - FirebaseCoreInternal (~> 10.0)
     - GoogleUtilities/Environment (~> 7.8)
@@ -677,6 +678,13 @@ PODS:
     - FirebaseFirestore (~> 10.0)
     - FirebaseSharedSwift (~> 10.0)
   - FirebaseSharedSwift (10.11.0)
+  - FirebaseStorage (10.11.0):
+    - FirebaseAppCheckInterop (~> 10.0)
+    - FirebaseAuthInterop (~> 10.0)
+    - FirebaseCore (~> 10.0)
+    - FirebaseCoreExtension (~> 10.0)
+    - GTMSessionFetcher/Core (< 4.0, >= 2.1)
+  - Gallery (2.4.0)
   - GoogleUtilities/AppDelegateSwizzler (7.11.1):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
@@ -770,6 +778,8 @@ DEPENDENCIES:
   - FirebaseAuth
   - FirebaseFirestore
   - FirebaseFirestoreSwift
+  - FirebaseStorage
+  - Gallery
   - ProgressHUD
   - SideMenu
 
@@ -784,12 +794,15 @@ SPEC REPOS:
     - FBSDKLoginKit
     - FirebaseAppCheckInterop
     - FirebaseAuth
+    - FirebaseAuthInterop
     - FirebaseCore
     - FirebaseCoreExtension
     - FirebaseCoreInternal
     - FirebaseFirestore
     - FirebaseFirestoreSwift
     - FirebaseSharedSwift
+    - FirebaseStorage
+    - Gallery
     - GoogleUtilities
     - "gRPC-C++"
     - gRPC-Core
@@ -810,12 +823,15 @@ SPEC CHECKSUMS:
   FBSDKLoginKit: 7cee95a08136391cab5175a11c8e85af56f86ace
   FirebaseAppCheckInterop: 255b6c0292fe5da995c8b2df0c02f6a3ca7f61b4
   FirebaseAuth: 7aabcb00fbf330db49c207c0d645b8b1b62df0e9
+  FirebaseAuthInterop: 44e34efef7145776a107b9e7f79ed44beb4738fa
   FirebaseCore: 62fd4d549f5e3f3bd52b7998721c5fa0557fb355
   FirebaseCoreExtension: cacdad57fdb60e0b86dcbcac058ec78237946759
   FirebaseCoreInternal: 9e46c82a14a3b3a25be4e1e151ce6d21536b89c0
   FirebaseFirestore: 09be82b113fbcb225b9797d2c525ae8886abc7a3
   FirebaseFirestoreSwift: 95ce63a643eee625fe5d5baaf09b9afbeaa091ca
   FirebaseSharedSwift: c590d181c8b80ebf85f2606f4d366cf72f82f184
+  FirebaseStorage: 8d8f23ca3688c2edb1950bd38e44f82a325ceb6f
+  Gallery: b7fc1aeb68a39ad6d2c423574750196bf9b25e5c
   GoogleUtilities: 9aa0ad5a7bc171f8bae016300bfcfa3fb8425749
   "gRPC-C++": 0968bace703459fd3e5dcb0b2bed4c573dbff046
   gRPC-Core: 17108291d84332196d3c8466b48f016fc17d816d
@@ -826,6 +842,6 @@ SPEC CHECKSUMS:
   PromisesObjC: 09985d6d70fbe7878040aa746d78236e6946d2ef
   SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
 
-PODFILE CHECKSUM: ecd3fb461b7a15dc432b76e22c8b1b18d0f939a7
+PODFILE CHECKSUM: 54bd4b7663d8b86915baecb1fac5f875bbfa80b7
 
 COCOAPODS: 1.12.1

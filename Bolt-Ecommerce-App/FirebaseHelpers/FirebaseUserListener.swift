@@ -47,7 +47,8 @@ class  FirebaseUserListener {
             }
             
             if authResult?.user != nil {
-                let user = User(id: authResult!.user.uid, username: username, email: email)
+//                let user = User(id: authResult!.user.uid, username: username, email: email)
+                let user = User(id: authResult!.user.uid, username: username, email: email, addressLane: "", city: "", gender: "", phoneNumber: "")
                 self.saveUserToFirebase(user)
             }
         }
@@ -96,14 +97,14 @@ class  FirebaseUserListener {
         }
     }
     
-    //Save cart Items
-    func saveCartItemsToFirebase(_ product: Product) {
-        do {
-            try firebaseReferance(.user).document(User.currentId).collection(FCollectionRef.cartItems.rawValue).document("product id: \(product.id)").setData(from: product)
-        } catch {
-            print("Error saving cart item to firestore: \(error.localizedDescription)")
-        }
-    }
+//    //Save cart Items
+//    func saveCartItemsToFirebase(_ product: Product) {
+//        do {
+//            try firebaseReferance(.user).document(User.currentId).collection(FCollectionRef.cartItems.rawValue).document("product id: \(product.id)").setData(from: product)
+//        } catch {
+//            print("Error saving cart item to firestore: \(error.localizedDescription)")
+//        }
+//    }
     
     
     //MARK: - Download User
@@ -145,7 +146,7 @@ class  FirebaseUserListener {
             switch result {
             case .success(let itemObject):
                 if let item = itemObject {
-                    self.saveCartItemsToFirebase(item)
+//                    self.saveCartItemsToFirebase(item)
                     saveItemLocally(item)
                 }
             case .failure(let error):
@@ -157,7 +158,6 @@ class  FirebaseUserListener {
     }
     
     func downloadFromFirestotr<T: Codable>(collectionName: FCollectionRef, documentName:  String, objectType: T.Type, completion: @escaping (Result<[T], Error>) -> ()) {
-        let db = Firestore.firestore()
         firebaseReferance(collectionName).document(documentName).getDocument { snapshot, error in
             
             if let error = error {

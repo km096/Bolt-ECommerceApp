@@ -119,11 +119,13 @@ class SignupVC: UIViewController {
     }
 
     private func registerUser() {
-        FirebaseUserListener.shared.registerWithEmail(username: usernameTextField.text!, email: emailTextField.text!, password: passwordTextField.text!) { [self] error in
+        FirebaseUserListener.shared.registerWithEmail(username: usernameTextField.text!, email: emailTextField.text!, password: passwordTextField.text!) { [weak self] error in
+            
+            guard let srtongSelf = self else { return }
             
             if error == nil {
                 ProgressHUD.showSucceed("Emai verifacation sent.")
-                self.resendEmailButton.isHidden = false
+                srtongSelf.resendEmailButton.isHidden = false
             } else {
                 ProgressHUD.showFailed(error?.localizedDescription)
             }

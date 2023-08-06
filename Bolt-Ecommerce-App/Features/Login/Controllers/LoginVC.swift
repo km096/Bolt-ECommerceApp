@@ -88,19 +88,16 @@ class LoginVC: UIViewController, UITextViewDelegate {
     }
     
     @objc private func textFieldDidChange(textField: UITextField) {
-        updatePlaceHoldersLabels(textField: textField)
+        updatePlaceHolders(textField: textField)
     }
 
     //MARK: - Animations
-    private func updatePlaceHoldersLabels(textField: UITextField) {
-        
+    private func updatePlaceHolders(textField: UITextField) {
         switch textField {
-
         case emailTextField:
             emailLabel.text = textField.hasText ? "email".localized : ""
         default:
             passwordLabel.text = textField.hasText ? "password".localized : ""
-
         }
     }
     
@@ -122,11 +119,13 @@ class LoginVC: UIViewController, UITextViewDelegate {
     }
     
     private func loginUser() {
-        FirebaseUserListener.shared.loginUserWithEmail(email: emailTextField.text!, password: passwordTextField.text!) { error, isEmailVerified in
+        FirebaseUserListener.shared.loginUserWithEmail(email: emailTextField.text!, password: passwordTextField.text!) { [weak self] error, isEmailVerified in
+            
+            guard let srtongSelf = self else { return }
             
             if error == nil {
                 if isEmailVerified {
-                    self.goToHomeScreen()
+                    srtongSelf.goToHomeScreen()
                 } else {
                     ProgressHUD.showFailed("Please verify email.")
                 }

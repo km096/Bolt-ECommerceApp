@@ -35,7 +35,6 @@ class HomeVC: UIViewController {
         configureCollectionView()
         setupSearchTextFiled()
         localizeViews()
-//        getCurrentLanguage()
     }
     
     //MARK: - IBActions
@@ -45,12 +44,12 @@ class HomeVC: UIViewController {
     
     @IBAction func featuredSeeAllButtonPressed(_ sender: UIButton) {
         buttonIndex = 1
-        performSegue(withIdentifier: Constants.Identifiers.segueToItems, sender: sender)
+        performSegue(withIdentifier: Constants.Identifiers.segueToProducts, sender: sender)
     }
     
     @IBAction func bestSellSeeAllButtonPressed(_ sender: UIButton) {
         buttonIndex = 2
-        performSegue(withIdentifier: Constants.Identifiers.segueToItems, sender: sender)
+        performSegue(withIdentifier: Constants.Identifiers.segueToProducts, sender: sender)
     }
     
   
@@ -100,7 +99,7 @@ class HomeVC: UIViewController {
                 return
             }
             sideMenuNavigationController.settings = makeSettings()
-
+            
             if getCurrentLanguage() == "en" {
                 sideMenuNavigationController.leftSide = true
                 SideMenuManager.default.leftMenuNavigationController = sideMenuNavigationController
@@ -108,7 +107,7 @@ class HomeVC: UIViewController {
                 SideMenuManager.default.rightMenuNavigationController = sideMenuNavigationController
             }
             
-        } else if segue.identifier == Constants.Identifiers.segueToItems {
+        } else if segue.identifier == Constants.Identifiers.segueToProducts {
             guard let itemsView = segue.destination as? ProductsVC else {
                 return
             }

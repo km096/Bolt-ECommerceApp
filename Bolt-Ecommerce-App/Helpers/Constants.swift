@@ -14,6 +14,8 @@ struct Constants {
         static let main = "Main"
         static let home = "Home"
         static let payment = "Payment"
+        static let sideMenu = "SideMenu"
+        
     }
     
     struct Identifiers {
@@ -24,8 +26,12 @@ struct Constants {
         static let addAddress = "AddAddressId"
         static let getLocation = "getLocationID"
         static let checkout = "checkoutID"
+        static let langugesVC = "langugesID"
+        static let favoriteVC = "favoriteID"
 
-        static let segueToItems = "gotToItems"
+
+        //Segues
+        static let segueToProducts = "gotToProducts"
         static let segueToPayment = "gotToPayment"
         
     }
@@ -69,11 +75,14 @@ enum Key: String {
     case currentUser = "currentUser"
     case cartItems = "KCARTITEMS"
     case storedImages = "StoredImages"
+    case fileReferance = "gs://bolt-ecommerceapp.appspot.com"
 }
 
+public let currentLang = Locale.current.language.languageCode?.identifier
+
 public let userDefaults = UserDefaults.standard
+
 public let managedContextCartItems = AppDelegate.sharedAppDelegate.coreDataStackCartItems.managedContext
-public let managedContextTotalPrice = AppDelegate.sharedAppDelegate.coreDataStackTotalPrice.managedContext
 public let managedContextAddress = AppDelegate.sharedAppDelegate.coreDataStackAddress.managedContext
 
 

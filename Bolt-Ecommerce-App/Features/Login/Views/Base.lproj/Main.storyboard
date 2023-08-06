@@ -176,7 +176,7 @@
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" image="eye.fill" catalog="system"/>
                                                         <connections>
-                                                            <action selector="eyeButtonPressed:" destination="8bQ-xy-cFy" eventType="touchUpInside" id="DW3-eg-zNL"/>
+                                                            <action selector="showPasswordButtonPressed:" destination="8bQ-xy-cFy" eventType="touchUpInside" id="AXI-De-glp"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -384,8 +384,7 @@
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" image="eye.fill" catalog="system"/>
                                                         <connections>
-                                                            <action selector="eyeButtonPressed:" destination="8bQ-xy-cFy" eventType="touchUpInside" id="GA0-Rk-YHU"/>
-                                                            <action selector="eyeButtonPressed:" destination="8OR-Zn-fUJ" eventType="touchUpInside" id="ZA7-dw-fuX"/>
+                                                            <action selector="showPasswordButtonPressed:" destination="8OR-Zn-fUJ" eventType="touchUpInside" id="qZP-Wq-4Co"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>

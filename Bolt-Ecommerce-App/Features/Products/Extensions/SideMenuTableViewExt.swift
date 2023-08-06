@@ -31,4 +31,34 @@ extension SideMenuVC: UITableViewDelegate, UITableViewDataSource {
         
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+      
+        let title = menus[indexPath.row].title
+        switch title {
+        case "home".localized:
+            print("home clicked: \(title)")
+        case "profile".localized:            
+            if let profileView = instantiateVC(storyboardName: Constants.Storyboard.sideMenu, identifier: "editProfileID") as? EditProfileVC {
+                present(profileView, animated: true)
+            }
+        case "cart".localized:
+            print("cart clicked: \(title)")
+        case "favorite".localized:
+            if let favoriteView = instantiateVC(storyboardName: Constants.Storyboard.sideMenu, identifier: Constants.Identifiers.favoriteVC) as? FavoriteVC {
+                present(favoriteView, animated: true)
+            }
+        case "orders".localized:
+            print("orders clicked: \(title)")
+        case "language".localized:
+            if let languageView = instantiateVC(storyboardName: Constants.Storyboard.sideMenu, identifier: Constants.Identifiers.langugesVC) as? LanguageVC {
+                present(languageView, animated: true)
+            }
+        case "settings".localized:
+            print("settings clicked: \(title)")
+        default:
+            print("home clicked: \(title)")
+        }
+    }
+    
+    
 }

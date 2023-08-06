@@ -14,6 +14,11 @@ struct User: Codable, Equatable {
     var id = ""
     var username: String
     var email: String
+    var addressLane: String
+    var city: String
+    var gender: String
+    var phoneNumber: String
+    var avatarLink = ""
     
     static var currentId: String {
         return Auth.auth().currentUser!.uid
@@ -42,6 +47,6 @@ func saveUserLocally(_ user: User) {
         let data = try encode.encode(user)
         UserDefaults.standard.set(data, forKey: Key.currentUser.rawValue)
     } catch {
-        print("Error saving user data")
+        print("Error saving user data: \(error.localizedDescription)")
     }
 }

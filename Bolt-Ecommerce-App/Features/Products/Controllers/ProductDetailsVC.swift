@@ -30,6 +30,7 @@ class ProductDetailsVC: UIViewController, rateViewDelegate {
     @IBOutlet weak var selectColorButton: UIButton!
     @IBOutlet weak var buyNowButton: UIButton!
     @IBOutlet weak var addToCartButton: UIButton!
+    @IBOutlet weak var favoriteButton: UIButton!
     
     //SizeButtonsOutlets
     @IBOutlet weak var sSizeButton: CustomButton!
@@ -44,10 +45,10 @@ class ProductDetailsVC: UIViewController, rateViewDelegate {
     @IBOutlet weak var selectSizeView: UIView!
     
     //Vars
-    var selectView = UIView()
     var product: Product!
     var color: String = ""
     var size: String = ""
+    var isFavorite: Bool? = false
     
     
     override func viewDidLoad() {
@@ -56,6 +57,11 @@ class ProductDetailsVC: UIViewController, rateViewDelegate {
         localize()
         setupTitleLabel()
         moreButton.addTarget(self, action: #selector(expandLabel), for: .touchUpInside)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        checkFavorite()
     }
 
     //MARK: - IBActions
@@ -91,6 +97,16 @@ class ProductDetailsVC: UIViewController, rateViewDelegate {
         goToCartScreen()
     }
     
+    @IBAction func favoriteButtonPressed(_ sender: UIButton) {
+        if isFavorite! {
+            self.removeProductFromFavorite()
+        } else {
+            self.saveProductToFavorite()
+        }
+
+    }
+    
+    
     //MARK: - Localization
     private func localize() {
         descriptionLabel.text = "description".localized
@@ -112,6 +128,10 @@ class ProductDetailsVC: UIViewController, rateViewDelegate {
         button.setButtonColor(defaultColor, defaultTintColor, forState: .normal)
        
         setsizeButtonsState(button: button)
+    }
+    
+    func updatUIForFavoriteButton() {
+        favoriteButton.setImage(UIImage(systemName: isFavorite! ? "heart.fill" : "heart"), for: .normal)
     }
     
     //MARK: - Setup
@@ -176,6 +196,21 @@ class ProductDetailsVC: UIViewController, rateViewDelegate {
         updateRateLabel(rate: rating)
     }
     
+    private func fetchData() -> CartItems{
+        var favoriteProduct = [CartItems]()
+        let fetchRequest = CartItems.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", product.id)
+        do {
+            favoriteProduct = try managedContextCartItems.fetch(fetchRequest)
+        } catch {
+            print("Error fetching items: \(error.localizedDescription)")
+        }
+        if let product = favoriteProduct.first {
+            return product
+        }
+        return CartItems()
+    }
+    
     private func addItemToCart() {
         let fetchRequest = CartItems.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "id == %@ AND #size == %@ AND color == %@", product.id, size, color)
@@ -204,6 +239,11 @@ class ProductDetailsVC: UIViewController, rateViewDelegate {
         }
     }
     
+    func setCartItems() {
+        let cartItem = CartItems(context: managedContextCartItems)
+        
+    }
+        
     @objc func expandLabel() {
         if moreButton.titleLabel?.text == "more".localized {
             moreButton.setTitle("collapse".localized, for: .normal)
@@ -225,7 +265,6 @@ class ProductDetailsVC: UIViewController, rateViewDelegate {
             rateLabel.text = "good".localized
         } else {
             rateLabel.text = "bad".localized
-
         }
     }
         

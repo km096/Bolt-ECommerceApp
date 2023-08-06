@@ -10,9 +10,11 @@ target 'Bolt-Ecommerce-App' do
   # Pods for Bolt-Ecommerce-App
 pod 'FirebaseAuth'
 pod 'FirebaseFirestore'
+pod 'FirebaseStorage'
 pod 'ProgressHUD'
 pod 'FirebaseFirestoreSwift'
 pod 'FBSDKLoginKit'
 pod 'SideMenu'
 pod 'Cosmos'
+pod 'Gallery'
 end

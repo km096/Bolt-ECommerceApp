@@ -9,9 +9,7 @@ import UIKit
 import CoreData
 import ProgressHUD
 
-class AddAddressVC: UIViewController, UITextFieldDelegate, UserLocationInfoDelegate {
-    
-    
+class AddAddressVC: UIViewController, UITextFieldDelegate {
     
     //MARK: - IBOutlets
     //Labels
@@ -31,7 +29,9 @@ class AddAddressVC: UIViewController, UITextFieldDelegate, UserLocationInfoDeleg
     
     //Buttons
     @IBOutlet weak var addAddressButton: UIButton!
+    @IBOutlet weak var getLocationButton: UIButton!
     
+    //Vars
     var allFieldsEmpty: Bool = true
     var addressNew: Bool = false
     var getLocation = GetLocationVC()
@@ -39,9 +39,9 @@ class AddAddressVC: UIViewController, UITextFieldDelegate, UserLocationInfoDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        checkTextField()
-        ConfigureTextFields()
+        setTextFieldsDelegates()
         updateUIForAddAddressButton()
+        updateUIForGetLocationButton()
     }
     
     //MARK: - IBActions
@@ -50,7 +50,6 @@ class AddAddressVC: UIViewController, UITextFieldDelegate, UserLocationInfoDeleg
     }
     
     @IBAction func addAddressButtonPressed(_ sender: Any) {
-
         if isTextFieldsEmpty() {
             ProgressHUD.showFailed(Constants.ErrorMessage.allFieldsRequired)
         } else {
@@ -67,7 +66,6 @@ class AddAddressVC: UIViewController, UITextFieldDelegate, UserLocationInfoDeleg
         goToLocatioScreen()
     }
     
-    
     //MARK: - UpdateUI
     private func updateUIForAddAddressButton() {
         addAddressButton.addGradientBackground()
@@ -75,8 +73,19 @@ class AddAddressVC: UIViewController, UITextFieldDelegate, UserLocationInfoDeleg
         addAddressButton.tintColor = .white
     }
     
+    private func updateUIForGetLocationButton() {
+        getLocationButton.addGradientBackground()
+        getLocationButton.addCornerRadius(cornerRadius: 5)
+    }
     
     //MARK: - Setup
+    private func setTextFieldsDelegates() {
+        for textField in self.view.subviews where textField is UITextField {
+            let textField = (textField as? UITextField)
+            textField?.delegate = self
+        }
+    }
+    
     private func saveAddressInfo() {
         let address = Address(context: managedContextAddress)
         address.name = nameTextField.text
@@ -89,21 +98,12 @@ class AddAddressVC: UIViewController, UITextFieldDelegate, UserLocationInfoDeleg
     }
     
     func getUserLocationInfo(_ name: String, _ country: String, _ postalCode: String) {
-        addressLaneTextField.text = name
+        nameTextField.text = name
         cityTextField.text = country
         postalCodeTextField.text = postalCode
-        
-        
-
     }
     
-    private func ConfigureTextFields() {
-        for textField in self.view.subviews where textField is UITextField {
-            let textField = (textField as? UITextField)
-            textField?.delegate = self
-        }
-    }
-    
+    //MARK: - Helpers
     private func isTextFieldsEmpty() -> Bool {
         for textField in self.view.subviews where textField is UITextField {
             if let text = (textField as? UITextField)?.text, text.isEmpty {
@@ -141,7 +141,7 @@ class AddAddressVC: UIViewController, UITextFieldDelegate, UserLocationInfoDeleg
         guard let getLocationView = storyboard?.instantiateViewController(withIdentifier: Constants.Identifiers.getLocation) as? GetLocationVC else {
             return
         }
-        getLocationView.locationDelegate = self
+//        getLocationView.locationDelegate = self
         present(getLocationView, animated: true)
     }
 

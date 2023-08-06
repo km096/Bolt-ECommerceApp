@@ -11,7 +11,7 @@ import CoreLocation
 import ProgressHUD
 
 protocol UserLocationInfoDelegate {
-    func getUserLocationInfo(_ name: String, _ country: String, _ postalCode: String)
+    func getUserLocationInfo(_ name: String, _ address: String, _ country: String, _ postalCode: String)
 }
 
 class GetLocationVC: UIViewController {
@@ -22,14 +22,14 @@ class GetLocationVC: UIViewController {
     //Vars
     var locationManager = CLLocationManager()
     var locationDelegate: UserLocationInfoDelegate?
-    var isLocationServiceEnabled: Bool {
-        return CLLocationManager.locationServicesEnabled()
-    }
+//    var isLocationServiceEnabled: Bool {
+//        return CLLocationManager.locationServicesEnabled()
+//    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupLocation()
+        setLocation()
         configureLocation()
     }
     
@@ -39,12 +39,24 @@ class GetLocationVC: UIViewController {
     }
     
     //MARK: - Setup
-    private func setupLocation() {
-        if isLocationServiceEnabled {
-            checkAuthorization()
-        } else {
-            ProgressHUD.showFailed("Please enable location service.")
+    private func setLocation() {
+        
+        DispatchQueue.global().async {
+            if self.isLocationServiceEnabled() {
+                self.checkAuthorization()
+                
+            } else {
+                DispatchQueue.main.async {
+                    ProgressHUD.showFailed("Please enable location service.")
+                }
+            }
         }
+        
+    }
+    
+    //MARK: - Helpers
+    func isLocationServiceEnabled() -> Bool {
+        return CLLocationManager.locationServicesEnabled()
     }
     
     private func checkAuthorization() {
@@ -79,12 +91,16 @@ class GetLocationVC: UIViewController {
             guard let placemark = placemark?.first else {
                 return
             }
-            
-            self.locationDelegate?.getUserLocationInfo(placemark.name ?? "", placemark.country ?? "", placemark.postalCode ?? "")
+            self.locationDelegate?.getUserLocationInfo(placemark.name!, placemark.name!, placemark.locality!, placemark.postalCode!)
         }
     }
     
     //MARK: - UpdateUI
+    private func zoomToUserLocation(location: CLLocation) {
+        let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 500, longitudinalMeters: 500)
+        mapView.setRegion(region, animated: true)
+    }
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last {
             zoomToUserLocation(location: location)
@@ -92,10 +108,7 @@ class GetLocationVC: UIViewController {
         locationManager.stopUpdatingLocation()
     }
     
-    private func zoomToUserLocation(location: CLLocation) {
-        let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 500, longitudinalMeters: 500)
-        mapView.setRegion(region, animated: true)
-    }
+    
     
     
     

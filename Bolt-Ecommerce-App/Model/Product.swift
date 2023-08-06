@@ -17,12 +17,12 @@ struct Product: Codable {
 }
 
 func saveItemLocally(_ product: Product) {
-    let encode = JSONEncoder()
     
+    let encode = JSONEncoder()
     do {
         let data = try encode.encode(product)
         userDefaults.set(data, forKey: Key.cartItems.rawValue)
     } catch {
-        print("Error saving cart items locally")
+        print("Error saving cart items locally: \(error.localizedDescription)")
     }
 }

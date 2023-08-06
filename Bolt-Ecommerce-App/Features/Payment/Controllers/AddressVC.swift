@@ -24,13 +24,13 @@ class AddressVC: UIViewController {
     //Vars
     var selectedIndex = -1
     var address: [Address] = []
+    private var totalPrice: Double?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         updateUIForContinueButton()
         configureTableView()
-//        fetchAddressInfo()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,10 +50,6 @@ class AddressVC: UIViewController {
         dismiss(animated: true)
     }
     
-    @IBAction func addAddressButtonPressed(_ sender: Any) {
-        
-    }
-    
     @IBAction func continueToPaymentButtonPressed(_ sender: Any) {
         goToCheckoutScreen()
     }
@@ -65,9 +61,12 @@ class AddressVC: UIViewController {
         continueToPaymentButton.addCornerRadius(cornerRadius: 5)
     }
     
+    //MARK: - Setup
+    func setTotalPrice(_ totalPrice: Double) {
+        self.totalPrice = totalPrice
+    }
     
     func fetchAddressInfo() {
-        
         do {
             address = try managedContextAddress.fetch(Address.fetchRequest())
         } catch {
@@ -77,12 +76,17 @@ class AddressVC: UIViewController {
     
     //MARK: - Navigation
     func goToCheckoutScreen() {
-        guard let checkoutView = storyboard?.instantiateViewController(withIdentifier: Constants.Identifiers.checkout) as? CheckoutVC else {
+        guard let checkoutView = storyboard?.instantiateViewController(withIdentifier: Constants.Identifiers.checkout) as? PaymentVC else {
             return
         }
+        guard let totalPrice = self.totalPrice else {
+            return
+        }
+        checkoutView.setSubtotalPrice(totalPrice)
         checkoutView.modalPresentationStyle = .fullScreen
         present(checkoutView, animated: true)
     }
     
 
 }
+
