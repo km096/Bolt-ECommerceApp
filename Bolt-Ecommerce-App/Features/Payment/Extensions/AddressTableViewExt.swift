@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 extension AddressVC: UITableViewDelegate, UITableViewDataSource {
     
@@ -30,7 +31,26 @@ extension AddressVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedIndex = indexPath.row
+        address[indexPath.row].checkmarked = indexPath.row == selectedIndex
         addressTableView.reloadData()
+        
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            
+            managedContextAddress.delete(address[indexPath.row])
+            AppDelegate.sharedAppDelegate.coreDataStackAddress.saveContext()
+            
+            self.address.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            addressTableView.reloadData()
+        }
+        
     }
     
     

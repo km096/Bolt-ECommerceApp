@@ -6,14 +6,19 @@
 //
 
 import UIKit
+import MOLH
 import FirebaseAuth
 import FBSDKCoreKit
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+class SceneDelegate: UIResponder, UIWindowSceneDelegate, MOLHResetable {
 
     var window: UIWindow?
     var authListener: AuthStateDidChangeListenerHandle?
 
+    func reset() {
+        let stry = UIStoryboard(name: Constants.Storyboard.main, bundle: nil)
+        window?.rootViewController = stry.instantiateInitialViewController()
+    }
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -21,6 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         autoLogin()
+//        reset()
         guard let _ = (scene as? UIWindowScene) else { return }
     }
 
@@ -50,8 +56,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called as the scene transitions from the foreground to the background.
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
-        AppDelegate.sharedAppDelegate.coreDataStackCartItems.saveContext()
+        
         AppDelegate.sharedAppDelegate.coreDataStackAddress.saveContext()
+        AppDelegate.sharedAppDelegate.coreDataStackProducts.saveContext()
 
     }
 
@@ -70,8 +77,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     private func goToHomeScreen(){
-        let homeView = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: Constants.Identifiers.homeView) as! HomeVC
+        let homeView = UIStoryboard(name: Constants.Storyboard.home, bundle: nil).instantiateViewController(withIdentifier: Constants.Identifiers.homeVC) as! HomeVC
         self.window?.rootViewController = homeView
+
     }
 
 }

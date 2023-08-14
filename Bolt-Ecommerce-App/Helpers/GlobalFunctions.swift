@@ -56,11 +56,6 @@ func getProducts() -> [Product] {
     return item
 }
 
-//func saveProductsToCoreData() {
-//    let cart = CartItems(context: managedContextCartItems)
-//    
-//}
-
 func setCollectionViewSize(collectionView: UICollectionView, collectionViewLayout: UICollectionViewLayout, itemInOneLine: CGFloat, height: CGFloat) -> CGSize {
     
     let layout = collectionViewLayout as! UICollectionViewFlowLayout
@@ -74,7 +69,9 @@ func setCollectionViewSize(collectionView: UICollectionView, collectionViewLayou
     return CGSize(width: width / itemInOneLine, height: height)
 }
 
-func instantiateVC(storyboardName: String, identifier: String) -> UIViewController {
+func instantiateVC(_ storyboardName: String, _ identifier: String) -> UIViewController {
     return UIStoryboard(name: storyboardName, bundle: nil).instantiateViewController(withIdentifier: identifier)
 }
+
+
 

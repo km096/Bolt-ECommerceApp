@@ -49,9 +49,7 @@ class ProductsVC: UIViewController {
     private func ConfigureCollctionView() {
         productsCollectionView.delegate = self
         productsCollectionView.dataSource = self
-        productsCollectionView.register(UINib(nibName: "ProductCell", bundle: nil), forCellWithReuseIdentifier: "ProductCell")
-        
-        
+        productsCollectionView.register(UINib(nibName: "ProductCell", bundle: nil), forCellWithReuseIdentifier: "ProductCell")        
     }
     
     //MARK: - Localization

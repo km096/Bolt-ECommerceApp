@@ -18,16 +18,20 @@ extension HomeVC : UICollectionViewDelegate, UICollectionViewDataSource, UIColle
         
         if collectionView.tag == 0 {
             let categoryCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCell", for: indexPath) as! CategoryCell
+            
             categoryCell.updateCellFor(indexpath: indexPath.row)
             return categoryCell
+            
         } else if collectionView.tag == 1 {
             let featuredCell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCell.identifier, for: indexPath) as! ProductCell
+            
             featuredCell.setupCell(product: getProducts()[indexPath.row])
             return featuredCell
+            
         } else {
             let bestSellCell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCell.identifier, for: indexPath) as! ProductCell
+            
             bestSellCell.setupCell(product: getProducts()[indexPath.row])
-
             return bestSellCell
         }
                 

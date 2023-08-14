@@ -32,11 +32,11 @@ extension ProductsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let productDetailsView = storyboard?.instantiateViewController(withIdentifier: "ProductDetailsID") as? ProductDetailsVC else {
+        guard let productDetailsVC = storyboard?.instantiateViewController(withIdentifier: "ProductDetailsID") as? ProductDetailsVC else {
             return
         }
-        productDetailsView.product =  isSearching ? searchedItems[indexPath.row] : getProducts()[indexPath.row]
-        present(productDetailsView, animated: true)
+        productDetailsVC.product =  isSearching ? searchedItems[indexPath.row] : getProducts()[indexPath.row]
+        presentVC(productDetailsVC)
 
     }
     

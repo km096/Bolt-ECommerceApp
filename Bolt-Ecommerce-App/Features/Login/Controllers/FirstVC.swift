@@ -18,6 +18,11 @@ class FirstVC: UIViewController {
         updateViews()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        autoLogin()
+    }
+    
     private func updateViews() {
         loginButton.tintColor = .white
         loginButton.addGradientBackground()
@@ -27,5 +32,10 @@ class FirstVC: UIViewController {
         signUpButton.setTitle("signup".localized, for: .normal)
     }
     
+    func autoLogin() {
+        if let scene = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
+            scene.autoLogin()
+        }
+    }
 }
 

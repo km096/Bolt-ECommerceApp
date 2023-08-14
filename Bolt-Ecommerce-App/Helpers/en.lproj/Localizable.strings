@@ -42,18 +42,39 @@
 "bad" = "Bad";
 "" = "";
 
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
+//Payment
+"cart" = "cart";
+"continue" = "Continue";
+
+"address" = "Address";
+"addAddress" = "Add Address";
+"continueToPayment" = "Continue To Payment";
+
+"createAddress" = "Create Address";
+"name" = "Name";
+"addressLane" = "Address Lane";
+"city" = "City";
+"postalCode" = "Postal Code";
+"phoneNumber" = "Phone Number";
+"getLocation" = "Get Location";
+
+"payment" = "Payment";
+"subtotal" = "Subtotal";
+"discount" = "Discount";
+"shipping" = "Shipping";
+"total" = "Total";
+
+"checkout" = "Checkout";
+"buy" = "Buy";
+"color" = "Color";
+"size" = "Size";
+"small" = "Small";
+"medium" = "Medium";
+"large" = "Large";
+"brown" = "Brown";
+"red" = "Red";
+"blue" = "Blue";
+"enterYour" = "Enter Your";
 "" = "";
 "" = "";
 

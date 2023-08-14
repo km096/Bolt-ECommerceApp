@@ -20,8 +20,7 @@ extension GetLocationVC: CLLocationManagerDelegate, MKMapViewDelegate {
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        switch manager.authorizationStatus {
-            
+        switch manager.authorizationStatus {            
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
         case .restricted:

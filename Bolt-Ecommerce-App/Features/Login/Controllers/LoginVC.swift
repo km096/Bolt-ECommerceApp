@@ -149,9 +149,10 @@ class LoginVC: UIViewController, UITextViewDelegate {
         
     // MARK: - Navigation
     private func goToHomeScreen() {
-        let homeView = UIStoryboard(name: Constants.Storyboard.home, bundle: nil).instantiateViewController(withIdentifier: Constants.Identifiers.homeView) as! HomeVC
-        homeView.modalPresentationStyle = .fullScreen
-        present(homeView, animated: true)
+        guard let homeVC = UIStoryboard(name: Constants.Storyboard.home, bundle: nil).instantiateViewController(withIdentifier: Constants.Identifiers.homeVC) as? HomeVC  else {
+            return
+        }
+        presentVC(homeVC)
     }
 
 }

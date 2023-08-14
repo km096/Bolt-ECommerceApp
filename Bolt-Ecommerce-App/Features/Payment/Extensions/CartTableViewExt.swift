@@ -11,12 +11,12 @@ extension CartVC: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cartItems.count
+        return cartProducts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: CartCell.identifier, for: indexPath) as? CartCell {
-            cell.setupCell(cartItems[indexPath.row])
+            cell.setupCell(cartProducts[indexPath.row])
             cell.cancelAction = { 
                 self.removeItem(atIndexPath: indexPath)
             }

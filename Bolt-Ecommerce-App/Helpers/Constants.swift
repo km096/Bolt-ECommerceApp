@@ -19,16 +19,17 @@ struct Constants {
     }
     
     struct Identifiers {
-        static let loginView = "LoginVC"
-        static let homeView = "HomeVC"
+        static let loginVC = "LoginVC"
+        static let homeVC = "homeID"
         static let productDetails = "ProductDetailsID"
         static let cart = "CartId"
         static let addAddress = "AddAddressId"
         static let getLocation = "getLocationID"
-        static let checkout = "checkoutID"
+        static let payment = "paymentID"
+        static let checkoutVC = "checkoutID"
         static let langugesVC = "langugesID"
         static let favoriteVC = "favoriteID"
-
+        static let editProfileeVC = "editProfileID"
 
         //Segues
         static let segueToProducts = "gotToProducts"
@@ -73,17 +74,36 @@ enum Color: String {
 
 enum Key: String {
     case currentUser = "currentUser"
-    case cartItems = "KCARTITEMS"
+    case language = "kLanguage"
+    case cartProductsKey = "KCARTITEMS"
     case storedImages = "StoredImages"
     case fileReferance = "gs://bolt-ecommerceapp.appspot.com"
+}
+
+//enum Language: String {
+//    case english = "English"
+//    case arabic = "Arabic"
+//    
+//    var code: String {
+//        switch self {
+//        case .english: return "en"
+//        case .arabic: return "ar"
+//        }
+//    }
+//}
+
+enum LanguageDirection: Int {
+    case leftToRight = 1
+    case rightToLeft = 2
 }
 
 public let currentLang = Locale.current.language.languageCode?.identifier
 
 public let userDefaults = UserDefaults.standard
 
-public let managedContextCartItems = AppDelegate.sharedAppDelegate.coreDataStackCartItems.managedContext
+
 public let managedContextAddress = AppDelegate.sharedAppDelegate.coreDataStackAddress.managedContext
+public let managedContextProducts = AppDelegate.sharedAppDelegate.coreDataStackProducts.managedContext
 
 
 

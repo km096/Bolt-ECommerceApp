@@ -17,4 +17,5 @@ pod 'FBSDKLoginKit'
 pod 'SideMenu'
 pod 'Cosmos'
 pod 'Gallery'
+pod 'MOLH'
 end

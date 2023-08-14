@@ -49,7 +49,7 @@ class PaymentVC: UIViewController {
     }
     
     @IBAction func checkoutButtonPressed(_ sender: Any) {
-        
+        goToCheckoutVC()
     }
         
     //MARK: - UpdateUI
@@ -66,6 +66,12 @@ class PaymentVC: UIViewController {
     }
     
     private func updateViews() {
+        paymentLabel.text = "payment".localized
+        subtotalLabel.text = "subtotal".localized
+        discountLabel.text = "discount".localized
+        shippingLabel.text = "shipping".localized
+        totalLabel.text = "total".localized
+        
         subtotalPriceLabel.text = "$\(subtotalPrice)"
         discountPercentageLabel.text = "%\(discount)"
         shippingPriceLabel.text = "$\(shipping)"
@@ -80,6 +86,17 @@ class PaymentVC: UIViewController {
         return subtotalPrice - (subtotalPrice * discount / 100) + shipping
     }
     
+    
+    //MARK: - Navigation
+    private func goToCheckoutVC() {
+        guard let checkoutVC = instantiateVC(Constants.Storyboard.payment, Constants.Identifiers.checkoutVC) as? CheckoutVC else {
+            return
+        }
+        checkoutVC.subtotalPrice = self.subtotalPrice
+        checkoutVC.totalPrice = self.setTotalPrice()
+        presentVC(checkoutVC)
+
+    }
     
 
 }

@@ -7,6 +7,7 @@
 
 import UIKit
 import SideMenu
+import MOLH
 
 class HomeVC: UIViewController {
 
@@ -31,7 +32,6 @@ class HomeVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configureCollectionView()
         setupSearchTextFiled()
         localizeViews()
@@ -90,7 +90,6 @@ class HomeVC: UIViewController {
         return settings
     }
     
-    
     //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -100,7 +99,7 @@ class HomeVC: UIViewController {
             }
             sideMenuNavigationController.settings = makeSettings()
             
-            if getCurrentLanguage() == "en" {
+            if MOLHLanguage.currentAppleLanguage() == "en" {
                 sideMenuNavigationController.leftSide = true
                 SideMenuManager.default.leftMenuNavigationController = sideMenuNavigationController
             } else {
@@ -108,15 +107,15 @@ class HomeVC: UIViewController {
             }
             
         } else if segue.identifier == Constants.Identifiers.segueToProducts {
-            guard let itemsView = segue.destination as? ProductsVC else {
+            guard let productsVC = segue.destination as? ProductsVC else {
                 return
             }
-            
+            productsVC.modalTransitionStyle = .crossDissolve
             switch buttonIndex {
             case 1:
-                itemsView.titleText = "featured".localized
+                productsVC.titleText = "featured".localized
             case 2:
-                itemsView.titleText = "bestSell".localized
+                productsVC.titleText = "bestSell".localized
             default:
                 break
             }

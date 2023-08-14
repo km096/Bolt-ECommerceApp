@@ -1,8 +1,8 @@
 //
-//  CartItems+CoreDataProperties.swift
+//  Products+CoreDataProperties.swift
 //  Bolt-Ecommerce-App
 //
-//  Created by ME-MAC on 7/31/23.
+//  Created by ME-MAC on 8/8/23.
 //
 //
 
@@ -10,12 +10,14 @@ import Foundation
 import CoreData
 
 
-extension CartItems {
+extension Products {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<CartItems> {
-        return NSFetchRequest<CartItems>(entityName: "CartItems")
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<Products> {
+        return NSFetchRequest<Products>(entityName: "Products")
     }
 
+    @NSManaged public var addToCart: Bool
+    @NSManaged public var addToFavorite: Bool
     @NSManaged public var color: String?
     @NSManaged public var id: String?
     @NSManaged public var imageName: String?
@@ -23,10 +25,9 @@ extension CartItems {
     @NSManaged public var quantity: Int32
     @NSManaged public var size: String?
     @NSManaged public var title: String?
-    @NSManaged public var isFavorite: Bool
 
 }
 
-extension CartItems : Identifiable {
+extension Products : Identifiable {
 
 }

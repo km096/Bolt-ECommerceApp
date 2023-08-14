@@ -36,6 +36,10 @@ class SideMenuVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         showUserInfo()
+        
+        if #available(iOS 13.0, *) {
+        navigationController?.navigationBar.setNeedsLayout()
+        }
     }
     
     //MARK: - Table View Delegates
@@ -50,7 +54,7 @@ class SideMenuVC: UIViewController {
     @IBAction func logOutButtonPressed(_ sender: Any) {
         FirebaseUserListener.shared.logOutCurrentUder { error in
             if error == nil {
-                let loginView = UIStoryboard(name: Constants.Storyboard.main, bundle: nil).instantiateViewController(withIdentifier: Constants.Identifiers.loginView)
+                let loginView = UIStoryboard(name: Constants.Storyboard.main, bundle: nil).instantiateViewController(withIdentifier: Constants.Identifiers.loginVC)
                 
                 DispatchQueue.main.async {
                     loginView.modalPresentationStyle = .fullScreen

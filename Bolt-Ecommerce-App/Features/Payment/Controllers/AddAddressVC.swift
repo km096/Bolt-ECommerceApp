@@ -34,11 +34,11 @@ class AddAddressVC: UIViewController, UITextFieldDelegate {
     //Vars
     var allFieldsEmpty: Bool = true
     var addressNew: Bool = false
-    var getLocation = GetLocationVC()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        updateViews()
         setTextFieldsDelegates()
         updateUIForAddAddressButton()
         updateUIForGetLocationButton()
@@ -71,11 +71,23 @@ class AddAddressVC: UIViewController, UITextFieldDelegate {
         addAddressButton.addGradientBackground()
         addAddressButton.addCornerRadius(cornerRadius: 5)
         addAddressButton.tintColor = .white
+        addAddressButton.setTitle("addAddress".localized, for: .normal)
     }
     
     private func updateUIForGetLocationButton() {
         getLocationButton.addGradientBackground()
+        getLocationButton.setTitle("getLocation".localized, for: .normal)
         getLocationButton.addCornerRadius(cornerRadius: 5)
+    }
+    
+    private func updateViews() {
+        createAddressLabel.text = "createAddress".localized
+        nameLabel.text = "name".localized
+        addressLaneLabel.text = "address".localized
+        cityLabel.text = "city".localized
+        postalCodeLabel.text = "postalCode".localized
+        phoneNumberLabel.text = "phoneNumber".localized
+        
     }
     
     //MARK: - Setup
@@ -138,11 +150,11 @@ class AddAddressVC: UIViewController, UITextFieldDelegate {
     
     //MARK: - Navigation
     private func goToLocatioScreen() {
-        guard let getLocationView = storyboard?.instantiateViewController(withIdentifier: Constants.Identifiers.getLocation) as? GetLocationVC else {
+        guard let getLocationVC = storyboard?.instantiateViewController(withIdentifier: Constants.Identifiers.getLocation) as? GetLocationVC else {
             return
         }
-//        getLocationView.locationDelegate = self
-        present(getLocationView, animated: true)
+        presentVC(getLocationVC)
+
     }
 
 }

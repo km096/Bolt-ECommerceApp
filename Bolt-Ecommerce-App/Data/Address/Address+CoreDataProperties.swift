@@ -21,6 +21,7 @@ extension Address {
     @NSManaged public var postalCode: String?
     @NSManaged public var city: String?
     @NSManaged public var phoneNumber: String?
+    @NSManaged public var checkmarked: Bool
 
 }
 

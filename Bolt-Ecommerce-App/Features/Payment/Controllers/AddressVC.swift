@@ -25,12 +25,14 @@ class AddressVC: UIViewController {
     var selectedIndex = -1
     var address: [Address] = []
     private var totalPrice: Double?
+    var checked = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        updateUIForContinueButton()
+        updteViews()
         configureTableView()
+        updateUIForContinueButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,14 +53,20 @@ class AddressVC: UIViewController {
     }
     
     @IBAction func continueToPaymentButtonPressed(_ sender: Any) {
-        goToCheckoutScreen()
+        goToPaymentScreen()
     }
     
     //MARK: - UpdateUI
     private func updateUIForContinueButton() {
-        continueToPaymentButton.addGradientBackground()
         continueToPaymentButton.tintColor = .white
+        continueToPaymentButton.addGradientBackground()
         continueToPaymentButton.addCornerRadius(cornerRadius: 5)
+    }
+    
+    private func updteViews() {
+        addressLabel.text = "address".localized
+        addAddressButton.setTitle("addAddress".localized, for: .normal)
+        continueToPaymentButton.setTitle("continueToPayment".localized, for: .normal)
     }
     
     //MARK: - Setup
@@ -75,17 +83,17 @@ class AddressVC: UIViewController {
     }
     
     //MARK: - Navigation
-    func goToCheckoutScreen() {
-        guard let checkoutView = storyboard?.instantiateViewController(withIdentifier: Constants.Identifiers.checkout) as? PaymentVC else {
+    func goToPaymentScreen() {
+        guard let paymentVC = storyboard?.instantiateViewController(withIdentifier: Constants.Identifiers.payment) as? PaymentVC else {
             return
         }
         guard let totalPrice = self.totalPrice else {
             return
         }
-        checkoutView.setSubtotalPrice(totalPrice)
-        checkoutView.modalPresentationStyle = .fullScreen
-        present(checkoutView, animated: true)
+        paymentVC.setSubtotalPrice(totalPrice)
+        presentVC(paymentVC)
     }
+    
     
 
 }

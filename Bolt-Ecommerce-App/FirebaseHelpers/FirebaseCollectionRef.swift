@@ -13,7 +13,6 @@ import FirebaseFirestore
 enum FCollectionRef: String {
     case user
     case recent
-    case cartItems
 }
 
 func  firebaseReferance(_ collectionReferance: FCollectionRef) -> CollectionReference {

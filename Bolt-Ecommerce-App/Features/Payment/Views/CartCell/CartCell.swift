@@ -21,6 +21,8 @@ class CartCell: UITableViewCell {
     @IBOutlet weak var productquantityLabel: UILabel!
     @IBOutlet weak var productSize: UILabel!
     @IBOutlet weak var productColor: UILabel!
+    @IBOutlet weak var sizeLabel: UILabel!
+    @IBOutlet weak var colorLabel: UILabel!
     
     //Views
     @IBOutlet weak var containerView: UIView!
@@ -38,15 +40,12 @@ class CartCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        upfateViews()
         containerView.addShadow(shadowOpacity: 0.5, shadowColor: UIColor.gray.cgColor)
+        
         cancelButton.addTarget(self, action: #selector(cancelButtonPressed), for: .touchUpInside)
         incrementButton.addTarget(self, action: #selector(incrementButtonPressed), for: .touchUpInside)
         decrementButton.addTarget(self, action: #selector(decrementButtonPressed), for: .touchUpInside)
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -67,7 +66,12 @@ class CartCell: UITableViewCell {
         super.init(coder: coder)
     }
     
-    func setupCell(_ cartItem: CartItems) {
+    func upfateViews() {
+        sizeLabel.text = "size".localized
+        colorLabel.text = "color".localized
+    }
+    
+    func setupCell(_ cartItem: Products) {
         productTitle.text = cartItem.title
         productPrice.text = "$\(cartItem.price)"
         productquantityLabel.text = "\(cartItem.quantity)"

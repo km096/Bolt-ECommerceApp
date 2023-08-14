@@ -18,7 +18,7 @@
         <!--HomeVC-->
         <scene sceneID="5NZ-aS-piU">
             <objects>
-                <viewController storyboardIdentifier="HomeVC" modalPresentationStyle="fullScreen" id="p40-oh-0vz" customClass="HomeVC" customModule="Bolt_Ecommerce_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="homeID" modalPresentationStyle="fullScreen" id="p40-oh-0vz" customClass="HomeVC" customModule="Bolt_Ecommerce_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eIT-Ug-yTg">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -298,6 +298,7 @@
                             <constraint firstItem="dI2-C5-xGb" firstAttribute="width" secondItem="eIT-Ug-yTg" secondAttribute="width" id="rfA-nR-PhE"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="dUF-kz-8za"/>
                     <connections>
                         <outlet property="bestSellCollectionView" destination="4sy-EH-gmq" id="Ukz-O1-lLZ"/>
                         <outlet property="bestsellLabel" destination="q08-8f-naL" id="1gF-nH-H5A"/>
@@ -315,7 +316,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4UB-8L-9gL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-344.27480916030532" y="9.8591549295774659"/>
+            <point key="canvasLocation" x="582.44274809160299" y="9.8591549295774659"/>
         </scene>
         <!--ProductsVC-->
         <scene sceneID="xXi-LA-1f7">
@@ -412,7 +413,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s4K-gS-cVA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="597.70992366412213" y="9.8591549295774659"/>
+            <point key="canvasLocation" x="1524.4274809160304" y="9.8591549295774659"/>
         </scene>
         <!--Side MenuVC-->
         <scene sceneID="78p-Wz-K3u">
@@ -952,7 +953,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fQH-cE-kaP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1507.6335877862596" y="9.8591549295774659"/>
+            <point key="canvasLocation" x="2434.3511450381679" y="9.8591549295774659"/>
         </scene>
         <!--Rate Pop Up View-->
         <scene sceneID="PcT-O2-oai">

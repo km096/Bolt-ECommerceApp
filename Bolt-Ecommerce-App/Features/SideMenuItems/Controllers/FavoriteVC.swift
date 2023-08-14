@@ -9,15 +9,16 @@ import UIKit
 
 class FavoriteVC: UIViewController {
 
+    //MARK: - IBOutlets
     @IBOutlet weak var favoriteeCollectionView: UICollectionView!
-    
+    //Vars
     var favoriteProduct = [Product]()
     
+    //MARK: - ViewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setCollectionView()
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -25,11 +26,12 @@ class FavoriteVC: UIViewController {
         fetchFavoriteProductData()
     }
     
-
+    //MARK: - IBActions
     @IBAction func backButtonPressed(_ sender: Any) {
         dismiss(animated: true)
     }
     
+    //MARK: - Setup
     private func setCollectionView() {
         favoriteeCollectionView.delegate = self
         favoriteeCollectionView.dataSource = self
@@ -38,19 +40,18 @@ class FavoriteVC: UIViewController {
     
     
     private func fetchFavoriteProductData() {
-        let fetchRequest = CartItems.fetchRequest()
-//        fetchRequest.predicate = NSPredicate(format: "isFavorite == YES")
+        let bool = NSNumber(booleanLiteral: true)
+        let fetchRequest = Products.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "addToFavorite == %@", bool as CVarArg)
         
         do {
-            let favorite = try managedContextCartItems.fetch(fetchRequest)
-            let count = try managedContextCartItems.count(for: fetchRequest)
-            for product in favorite {
-                for i in 0 ..< count {
-                    if product.isFavorite {
-                        favoriteProduct[i].title = product.title ?? ""
-                        favoriteProduct[i].imageName = product.imageName ?? ""
-                        favoriteProduct[i].price = product.price
-                    }
+             let favoriteProducts = try managedContextProducts.fetch(fetchRequest)
+            print("favorite product count: \(favoriteProducts.count)")
+            
+            if favoriteProducts.count > 0 {
+                for product in  favoriteProducts {
+                    let data = Product(id: product.id!, title: product.title!, price: product.price, imageName: product.imageName ?? "")
+                    favoriteProduct.append(data)
                 }
             }
         } catch {

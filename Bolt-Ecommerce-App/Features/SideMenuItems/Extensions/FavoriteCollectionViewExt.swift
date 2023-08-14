@@ -22,5 +22,9 @@ extension FavoriteVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
         return UICollectionViewCell()
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return setCollectionViewSize(collectionView: collectionView, collectionViewLayout: collectionViewLayout, itemInOneLine: 2, height: 250)
+    }
+    
     
 }

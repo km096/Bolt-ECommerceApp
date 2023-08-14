@@ -54,7 +54,7 @@ class ProductDetailsVC: UIViewController, rateViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        localize()
+        updateViews()
         setupTitleLabel()
         moreButton.addTarget(self, action: #selector(expandLabel), for: .touchUpInside)
     }
@@ -90,7 +90,7 @@ class ProductDetailsVC: UIViewController, rateViewDelegate {
     }
     
     @IBAction func addToCarrtButtonPressed(_ sender: Any) {
-        addItemToCart()
+        addProductToCart()
     }
     
     @IBAction func buyNowButtonPressed(_ sender: Any) {
@@ -98,17 +98,12 @@ class ProductDetailsVC: UIViewController, rateViewDelegate {
     }
     
     @IBAction func favoriteButtonPressed(_ sender: UIButton) {
-        if isFavorite! {
-            self.removeProductFromFavorite()
-        } else {
-            self.saveProductToFavorite()
-        }
-
+        addToFavorite()
     }
     
     
     //MARK: - Localization
-    private func localize() {
+    private func updateViews() {
         descriptionLabel.text = "description".localized
         selectSizeButton.setTitle("selectSize".localized, for: .normal)
         selectColorButton.setTitle("selectColor".localized, for: .normal)
@@ -196,54 +191,6 @@ class ProductDetailsVC: UIViewController, rateViewDelegate {
         updateRateLabel(rate: rating)
     }
     
-    private func fetchData() -> CartItems{
-        var favoriteProduct = [CartItems]()
-        let fetchRequest = CartItems.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "id == %@", product.id)
-        do {
-            favoriteProduct = try managedContextCartItems.fetch(fetchRequest)
-        } catch {
-            print("Error fetching items: \(error.localizedDescription)")
-        }
-        if let product = favoriteProduct.first {
-            return product
-        }
-        return CartItems()
-    }
-    
-    private func addItemToCart() {
-        let fetchRequest = CartItems.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "id == %@ AND #size == %@ AND color == %@", product.id, size, color)
-        
-        do {
-            let matchingItems = try managedContextCartItems.fetch(fetchRequest)
-            
-            if let existingItems = matchingItems.first{
-                existingItems.quantity += 1
-            } else {
-                let cartItem = CartItems(context: managedContextCartItems)
-                cartItem.quantity = 1
-                cartItem.id = product.id
-                cartItem.title = product.title
-                cartItem.price = product.price
-                cartItem.imageName = product.imageName
-                cartItem.color = color
-                cartItem.size = size
-            }
-            
-            AppDelegate.sharedAppDelegate.coreDataStackCartItems.saveContext()
-            ProgressHUD.showSucceed("Item added to the cart")
-
-        } catch {
-            print("Error fetching items: \(error.localizedDescription)")
-        }
-    }
-    
-    func setCartItems() {
-        let cartItem = CartItems(context: managedContextCartItems)
-        
-    }
-        
     @objc func expandLabel() {
         if moreButton.titleLabel?.text == "more".localized {
             moreButton.setTitle("collapse".localized, for: .normal)
@@ -270,22 +217,22 @@ class ProductDetailsVC: UIViewController, rateViewDelegate {
         
     //MARK: - PresentPopUpView
     private func presentPopUpView() {
-        guard let popupView = storyboard?.instantiateViewController(withIdentifier: "ratePopUpID") as? RatePopUpView else {
+        guard let rateView = storyboard?.instantiateViewController(withIdentifier: "ratePopUpID") as? RatePopUpView else {
             return
         }
 
-        popupView.rateDelegate = self
-        popupView.modalPresentationStyle = .overFullScreen
-        popupView.modalTransitionStyle = .crossDissolve
-        self.present(popupView, animated: true, completion: nil)
+        rateView.rateDelegate = self
+        rateView.modalPresentationStyle = .overFullScreen
+        rateView.modalTransitionStyle = .crossDissolve
+        self.present(rateView, animated: true, completion: nil)
     }
     
     //MARK: - Navigation
     private func goToCartScreen() {
-        guard let cartView = UIStoryboard(name: Constants.Storyboard.payment, bundle: nil).instantiateViewController(withIdentifier: Constants.Identifiers.cart) as? CartVC else {
+        guard let cartVC = UIStoryboard(name: Constants.Storyboard.payment, bundle: nil).instantiateViewController(withIdentifier: Constants.Identifiers.cart) as? CartVC else {
             return
         }
-        present(cartView, animated: true)
+        presentVC(cartVC)
     }
         
 }

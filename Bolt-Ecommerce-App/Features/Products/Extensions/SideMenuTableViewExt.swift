@@ -32,29 +32,36 @@ extension SideMenuVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-      
         let title = menus[indexPath.row].title
         switch title {
+            
         case "home".localized:
             print("home clicked: \(title)")
+            
         case "profile".localized:            
-            if let profileView = instantiateVC(storyboardName: Constants.Storyboard.sideMenu, identifier: "editProfileID") as? EditProfileVC {
-                present(profileView, animated: true)
+            if let editProfileVC = instantiateVC(Constants.Storyboard.sideMenu, Constants.Identifiers.editProfileeVC) as? EditProfileVC {
+                presentVC(editProfileVC)
             }
+            
         case "cart".localized:
             print("cart clicked: \(title)")
+            
         case "favorite".localized:
-            if let favoriteView = instantiateVC(storyboardName: Constants.Storyboard.sideMenu, identifier: Constants.Identifiers.favoriteVC) as? FavoriteVC {
-                present(favoriteView, animated: true)
+            if let favoriteVC = instantiateVC(Constants.Storyboard.sideMenu, Constants.Identifiers.favoriteVC) as? FavoriteVC {
+                presentVC(favoriteVC)
             }
+            
         case "orders".localized:
             print("orders clicked: \(title)")
+            
         case "language".localized:
-            if let languageView = instantiateVC(storyboardName: Constants.Storyboard.sideMenu, identifier: Constants.Identifiers.langugesVC) as? LanguageVC {
-                present(languageView, animated: true)
+            if let languageVC = instantiateVC(Constants.Storyboard.sideMenu, Constants.Identifiers.langugesVC) as? LanguageVC {
+                presentVC(languageVC)
             }
+            
         case "settings".localized:
             print("settings clicked: \(title)")
+            
         default:
             print("home clicked: \(title)")
         }
@@ -62,3 +69,5 @@ extension SideMenuVC: UITableViewDelegate, UITableViewDataSource {
     
     
 }
+
+

@@ -22,10 +22,6 @@ class GetLocationVC: UIViewController {
     //Vars
     var locationManager = CLLocationManager()
     var locationDelegate: UserLocationInfoDelegate?
-//    var isLocationServiceEnabled: Bool {
-//        return CLLocationManager.locationServicesEnabled()
-//    }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +36,6 @@ class GetLocationVC: UIViewController {
     
     //MARK: - Setup
     private func setLocation() {
-        
         DispatchQueue.global().async {
             if self.isLocationServiceEnabled() {
                 self.checkAuthorization()
@@ -107,9 +102,6 @@ class GetLocationVC: UIViewController {
         }
         locationManager.stopUpdatingLocation()
     }
-    
-    
-    
     
     
 }

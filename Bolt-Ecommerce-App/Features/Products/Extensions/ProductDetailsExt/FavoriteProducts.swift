@@ -6,24 +6,26 @@
 //
 
 import UIKit
+import CoreData
+import ProgressHUD
 
 extension ProductDetailsVC {
     
     func checkFavorite() {
-        let fetchRequest = CartItems.fetchRequest()
+        let bool = NSNumber(booleanLiteral: true)
+        let fetchRequest = Products.fetchRequest()
+//        fetchRequest.predicate = NSPredicate(format: "addToFavorite == %@", bool as CVarArg)
         fetchRequest.predicate = NSPredicate(format: "id == %@", product.id)
 
         do {
-            let result = try managedContextCartItems.fetch(fetchRequest)
-            print("product id: \(product.id)")
-            print("fetched product count: \(result.count)")
-            if let favoriteProduct = result.first {
-                if favoriteProduct.isFavorite {
+            let result = try managedContextProducts.fetch(fetchRequest)
+            let favoriteProduct = result.last
+            if favoriteProduct != nil {
+                if favoriteProduct!.addToFavorite {
                     self.isFavorite = true
                 } else {
                     self.isFavorite = false
                 }
-                print(favoriteProduct.isFavorite)
             }
             updatUIForFavoriteButton()
         } catch {
@@ -32,41 +34,35 @@ extension ProductDetailsVC {
        
     }
     
-    func saveProductToFavorite() {
-        let fetchRequest = CartItems.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "id == %@", product.id)
+    func addToFavorite() {
+        let bool = NSNumber(booleanLiteral: true)
+        let fetchRequest = Products.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "addToFavorite == %@ AND id == %@", bool as CVarArg, product.id)
         
         do {
-            let favoriteProduct = try managedContextCartItems.fetch(fetchRequest)
-            if let product = favoriteProduct.first {
-                product.isFavorite = true
+            let favoriteProducts = try managedContextProducts.fetch(fetchRequest)
+            if favoriteProducts.count > 0 {
+                favoriteProducts.first?.addToFavorite = false
+                managedContextProducts.delete(favoriteProducts.first!)
+                isFavorite = favoriteProducts.first?.addToFavorite
+                ProgressHUD.showSucceed("Product removed from Favorite")
+            } else {
+                let favoriteProduct = Products(context: managedContextProducts)
+                favoriteProduct.id = product.id
+                favoriteProduct.addToFavorite = true
+                isFavorite = favoriteProduct.addToFavorite
+                favoriteProduct.imageName = product.imageName
+                favoriteProduct.price = product.price
+                favoriteProduct.title = product.title
+                ProgressHUD.showSucceed("Product added to Favorite")
             }
-            isFavorite = true
-            AppDelegate.sharedAppDelegate.coreDataStackCartItems.saveContext()
-            print("product \(product.id) removed from favorite")
             updatUIForFavoriteButton()
+            AppDelegate.sharedAppDelegate.coreDataStackProducts.saveContext()
+            
         } catch {
-            print("Error fetching items: \(error.localizedDescription)")
+            print("Error fetching data: \(error.localizedDescription)")
         }
     }
     
-    func removeProductFromFavorite() {
-        let fetchRequest = CartItems.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "id == %@", product.id)
-        
-        do {
-            let favoriteProduct = try managedContextCartItems.fetch(fetchRequest)
-            if let product = favoriteProduct.first {
-                product.isFavorite = false
-            }
-            isFavorite = false
-            AppDelegate.sharedAppDelegate.coreDataStackCartItems.saveContext()
-            print(favoriteProduct.first!.isFavorite)
-            print("product \(product.id) removed from favorite")
-            updatUIForFavoriteButton()
-        } catch {
-            print("Error fetching items: \(error.localizedDescription)")
-        }
-        
-    }
+
 }

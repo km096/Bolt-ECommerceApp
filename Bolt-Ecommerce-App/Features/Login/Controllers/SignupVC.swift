@@ -33,11 +33,9 @@ class SignupVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        updateViews()
         setTextFieldsDelegstes()
         updateUIForSignupButton()
-        localizeViews()
-        // Do any additional setup after loading the view.
     }
     
     //MARK: - IBActions
@@ -63,7 +61,7 @@ class SignupVC: UIViewController {
     }
     
     //MARK: - Localization
-    private func localizeViews() {
+    private func updateViews() {
         signupLabel.text = "signup".localized
         alreadyHaveAccountLabel.text = "alreadyHaveAccount".localized
         

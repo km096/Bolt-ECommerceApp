@@ -10,6 +10,7 @@ import Foundation
 extension String {
     
     var localized: String {
+//        return LocalizationManager.shared.localizedString(forKey: self, value: "")
         return NSLocalizedString(self, comment: "")
     }
     

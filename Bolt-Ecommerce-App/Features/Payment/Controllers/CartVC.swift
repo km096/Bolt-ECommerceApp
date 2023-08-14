@@ -14,18 +14,10 @@ class CartVC: UIViewController {
 
     @IBOutlet weak var cartTableView: UITableView!
     @IBOutlet weak var totalPriceLabel: UILabel!
+    @IBOutlet weak var cartLabel: UILabel!
     
     var continueButton = UIButton()
-    var cartItems: [CartItems] = []
-//    private var totalPrice: Double {
-//        get {
-//            return cartItems.reduce(0, {$0 + $1.price * Double($1.quantity)})
-//        }
-//
-//        set (newVal) {
-//            self.totalPriceLabel.text = "$\(newVal)"
-//        }
-//    }
+    var cartProducts = [Products]()
     
     //MARK: - ViewLifeCycle
     override func viewDidLoad() {
@@ -33,13 +25,13 @@ class CartVC: UIViewController {
 
         configureTableView()
         setContinueButton()
-
+        cartLabel.text = "cart".localized
         continueButton.addTarget(self, action: #selector(continueButtonPressed), for: .touchUpInside)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        fetchCartItems()
+        fetchCartProducts()
         cartTableView.reloadData()
     }
     
@@ -70,16 +62,17 @@ class CartVC: UIViewController {
     }
     
     @objc func continueButtonPressed() {
-        guard let addAddressView = storyboard?.instantiateViewController(withIdentifier: Constants.Identifiers.addAddress) as? AddressVC else {
+        guard let addressVC = storyboard?.instantiateViewController(withIdentifier: Constants.Identifiers.addAddress) as? AddressVC else {
             return
         }
-        addAddressView.setTotalPrice(setTotalPrice())
-        addAddressView.modalPresentationStyle = .fullScreen
-        present(addAddressView, animated: true)
+        addressVC.setTotalPrice(setTotalPrice())
+        presentVC(addressVC)
     }
     
+    //MARK: - UpdateUI
     private func setTotalPrice() -> Double {
-        return cartItems.reduce(0, {$0 + $1.price * Double($1.quantity)})
+        return cartProducts.reduce(0, {$0 + $1.price * Double($1.quantity)})
+
     }
     
     private func setTotaPriceLabel() {
@@ -90,15 +83,18 @@ class CartVC: UIViewController {
     //MARK: - Setup
     private func setContinueButton() {
         self.continueButton = UIButton(type: .custom)
-        continueButton.setTitle("Continue", for: .normal)
+        continueButton.setTitle("continue".localized, for: .normal)
         continueButton.addTarget(self, action: #selector(continueButtonPressed), for: .touchUpInside)
         view.addSubview(continueButton)
     }
         
     //MARK: - Helpers
-    private func fetchCartItems() {
+    private func fetchCartProducts() {
+        let bool = NSNumber(booleanLiteral: true)
+        let fetchRequest = Products.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "addToCart == %@", bool as CVarArg)
         do {
-            cartItems = try managedContextCartItems.fetch(CartItems.fetchRequest())
+            cartProducts = try managedContextProducts.fetch(fetchRequest)
             setTotaPriceLabel()
         } catch {
             print("Error fetching items: \(error.localizedDescription)")
@@ -106,31 +102,36 @@ class CartVC: UIViewController {
     }
     
     func removeItem(atIndexPath indexPath: IndexPath) {
-         managedContextCartItems.delete(cartItems[indexPath.row])
-         AppDelegate.sharedAppDelegate.coreDataStackCartItems.saveContext()
-         cartItems.remove(at: indexPath.row)
-         cartTableView.reloadData()
-         setTotaPriceLabel()
-         ProgressHUD.showSucceed("Item removed from the cart")
+        cartProducts[indexPath.row].addToCart = false
+        managedContextProducts.delete(cartProducts[indexPath.row])
+        AppDelegate.sharedAppDelegate.coreDataStackProducts.saveContext()
+        cartProducts.remove(at: indexPath.row)
+
+        cartTableView.reloadData()
+        setTotaPriceLabel()
+        ProgressHUD.showSucceed("Item removed from the cart")
     }
     
     func incrementItemQyantity(atIndexPath indexPath: IndexPath) {
-        var newQuantity = cartItems[indexPath.row].quantity
+        var newQuantity = cartProducts[indexPath.row].quantity
+
         newQuantity += 1
-        cartItems[indexPath.row].quantity = newQuantity
-        AppDelegate.sharedAppDelegate.coreDataStackCartItems.saveContext()
+        cartProducts[indexPath.row].quantity = newQuantity
+        AppDelegate.sharedAppDelegate.coreDataStackProducts.saveContext()
+
         cartTableView.reloadData()
         setTotaPriceLabel()
     }
     
     func decrementItemQyantity(atIndexPath indexPath: IndexPath) {
-        var newQuantity = cartItems[indexPath.row].quantity
+        var newQuantity = cartProducts[indexPath.row].quantity
         newQuantity -= 1
         if newQuantity < 0 {
             newQuantity = 0
         }
-        cartItems[indexPath.row].quantity = Int32(newQuantity)
-        AppDelegate.sharedAppDelegate.coreDataStackCartItems.saveContext()
+        cartProducts[indexPath.row].quantity = newQuantity
+        AppDelegate.sharedAppDelegate.coreDataStackProducts.saveContext()
+        
         cartTableView.reloadData()
         setTotaPriceLabel()
     }

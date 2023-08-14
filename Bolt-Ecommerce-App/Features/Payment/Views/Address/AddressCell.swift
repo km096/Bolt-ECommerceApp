@@ -14,8 +14,8 @@ class AddressCell: UITableViewCell {
 
     
     @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var houseNumberLabel: UILabel!
-    @IBOutlet weak var roadNumberLabel: UILabel!
+    @IBOutlet weak var postalCodeLabel: UILabel!
+    @IBOutlet weak var cityLabel: UILabel!
     
     @IBOutlet weak var checkBox: CheckBox!
     
@@ -37,9 +37,9 @@ class AddressCell: UITableViewCell {
     }
     
     func setupCell(address: Address) {
-        addressLabel.text = address.city
-        houseNumberLabel.text = address.postalCode
-        roadNumberLabel.text = address.address
+        addressLabel.text = address.address
+        postalCodeLabel.text = address.postalCode
+        cityLabel.text = address.city
     }
     
 }

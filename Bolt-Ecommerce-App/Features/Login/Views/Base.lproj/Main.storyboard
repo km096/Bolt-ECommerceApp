@@ -16,7 +16,7 @@
         <!--FirstVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="FirstVC" customModule="Bolt_Ecommerce_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FirstID" id="BYZ-38-t0r" customClass="FirstVC" customModule="Bolt_Ecommerce_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -84,6 +84,7 @@
                             <constraint firstItem="75D-7r-w32" firstAttribute="top" secondItem="7JC-7S-mQ6" secondAttribute="bottom" constant="16" id="ywE-gp-1J0"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="UfM-cs-xlU"/>
                     <connections>
                         <outlet property="loginButton" destination="udh-lt-VXF" id="vWc-Pp-cMB"/>
                         <outlet property="signUpButton" destination="deZ-Zk-Xxn" id="DYs-Ds-dsi"/>
@@ -91,7 +92,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-260" y="-2"/>
+            <point key="canvasLocation" x="1593.1297709923663" y="-2.1126760563380285"/>
         </scene>
         <!--LoginVC-->
         <scene sceneID="H2S-7G-xZa">
@@ -283,7 +284,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tUq-Ts-v0r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="564" y="-268"/>
+            <point key="canvasLocation" x="2416.030534351145" y="-268.3098591549296"/>
         </scene>
         <!--SignupVC-->
         <scene sceneID="MVh-4K-9sG">
@@ -507,7 +508,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V9O-pb-iz5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="564" y="468"/>
+            <point key="canvasLocation" x="2416.030534351145" y="467.6056338028169"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
