@@ -1,8 +1,8 @@
 //
-//  AddAddressCell.swift
+//  AddressCell1.swift
 //  Bolt-Ecommerce-App
 //
-//  Created by ME-MAC on 7/18/23.
+//  Created by ME-MAC on 10/8/23.
 //
 
 import UIKit
@@ -12,29 +12,24 @@ class AddressCell: UITableViewCell {
     class var identifier: String { return String(describing: self) }
     class var nib: UINib { return UINib(nibName: identifier, bundle: nil) }
 
-    
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var postalCodeLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
     
-    @IBOutlet weak var checkBox: CheckBox!
+    @IBOutlet weak var postalCodeLbl: UILabel!
+    @IBOutlet weak var cityLbl: UILabel!
+    
+    @IBOutlet weak var checkBoxImageView: UIImageView!
+    
+    var status: Bool?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        updateCheckBox()
-
+        // Initialization code
+        postalCodeLbl.text = "postalCode".localized
+        cityLbl.text = "city".localized
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-//        self.checkBox.isChecked = selected
-       
-    }
-    
-    func updateCheckBox() {
-        checkBox.style = .circle
-        checkBox.borderStyle = .rounded
-    }
     
     func setupCell(address: Address) {
         addressLabel.text = address.address

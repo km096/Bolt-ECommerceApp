@@ -24,11 +24,19 @@ extension AddressVC: UITableViewDelegate, UITableViewDataSource {
             cell.setupCell(address: address[indexPath.row])
             
             if let index = userDefaults.object(forKey: Key.selectedRow.rawValue) {
-                cell.checkBox.isChecked = index as! Int == indexPath.row
+                cell.status = index as! Int == indexPath.row
             }
-            address[indexPath.row].checkmarked = cell.checkBox.isChecked
+            address[indexPath.row].checkmarked = cell.status ?? false
             AppDelegate.sharedAppDelegate.coreDataStackAddress.saveContext()
+
+            if address[indexPath.row].checkmarked == true {
+                cell.checkBoxImageView.image = UIImage(named: "checked")
+            } else {
+                cell.checkBoxImageView.image = UIImage(named: "unchecked")
+            }
             
+            AppDelegate.sharedAppDelegate.coreDataStackAddress.saveContext()
+
             return cell
         } else {
             return UITableViewCell()

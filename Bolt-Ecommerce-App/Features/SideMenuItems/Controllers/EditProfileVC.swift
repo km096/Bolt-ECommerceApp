@@ -96,8 +96,6 @@ class EditProfileVC: UIViewController {
             genderTextField.text = user.gender
             phoneTextField.text = user.phoneNumber
             
-            print("email: \(user.email)")
-
             if user.avatarLink != "" {
                 FileStorage.downloadImage(imageUrl: user.avatarLink) { [weak self] image in
                     guard let strongSrlf = self else { return }

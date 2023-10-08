@@ -22,7 +22,7 @@ class AddressVC: UIViewController {
     @IBOutlet weak var continueToPaymentButton: UIButton!
     
     //Vars
-    var selectedIndex = -1
+    var selectedIndex = -1 
     var checked = false
 
     var address: [Address] = []
@@ -31,7 +31,7 @@ class AddressVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        updteViews()
+        updateViews()
         configureTableView()
         updateUIForContinueButton()
     }
@@ -64,7 +64,7 @@ class AddressVC: UIViewController {
         continueToPaymentButton.addCornerRadius(cornerRadius: 5)
     }
     
-    private func updteViews() {
+    private func updateViews() {
         addressLabel.text = "address".localized
         addAddressButton.setTitle("addAddress".localized, for: .normal)
         continueToPaymentButton.setTitle("continueToPayment".localized, for: .normal)
@@ -78,9 +78,6 @@ class AddressVC: UIViewController {
     func fetchAddressInfo() {
         do {
             address = try managedContextAddress.fetch(Address.fetchRequest())
-//            for i in address {
-//                print("\(i.address!) = \(i.checkmarked)")
-//            }
         } catch {
             print("Error fetching address info: \(error.localizedDescription)")
         }

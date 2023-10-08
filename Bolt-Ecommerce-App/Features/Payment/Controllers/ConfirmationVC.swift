@@ -10,9 +10,7 @@ import UIKit
 class ConfirmationVC: UIViewController {
 
     //MARK: - IBOutlets
-    @IBOutlet weak var confirmationLabel: UILabel!
-    
-    
+    @IBOutlet weak var confirmationLabel: UILabel!    
     @IBOutlet weak var backToHomeButton: UIButton!
     
     override func viewDidLoad() {

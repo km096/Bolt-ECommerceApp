@@ -114,7 +114,7 @@ class CheckoutVC: UIViewController {
         fetchRequest.predicate = NSPredicate(format: "checkmarked == %@", bool as CVarArg)
         do {
             addressInfo = try managedContextAddress.fetch(fetchRequest)
-            print(addressInfo.count)
+//            print(addressInfo.count)
         } catch {
             print("Error fetching address info: \(error.localizedDescription)")
         }

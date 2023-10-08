@@ -49,7 +49,7 @@ class FavoriteVC: UIViewController {
         
         do {
              let favoriteProducts = try managedContextProducts.fetch(fetchRequest)
-            print("favorite product count: \(favoriteProducts.count)")
+//            print("favorite product count: \(favoriteProducts.count)")
             
             if favoriteProducts.count > 0 {
                 for product in  favoriteProducts {
