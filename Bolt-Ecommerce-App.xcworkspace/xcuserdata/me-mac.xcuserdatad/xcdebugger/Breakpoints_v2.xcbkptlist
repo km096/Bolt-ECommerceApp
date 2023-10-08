@@ -46,74 +46,10 @@
             filePath = "Bolt-Ecommerce-App/Features/SideMenuItems/Controllers/FavoriteVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
             landmarkName = "fetchFavoriteProductData()"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "5C5982A9-68CF-4BA1-9940-6D569FCB1D0C"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Bolt-Ecommerce-App/Features/SideMenuItems/Controllers/FavoriteVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
-            landmarkName = "fetchFavoriteProductData()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "8801F1DF-27A5-432A-A1BF-FEAF38D459C9"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Bolt-Ecommerce-App/Features/SideMenuItems/Controllers/FavoriteVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
-            landmarkName = "fetchFavoriteProductData()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "8801F1DF-27A5-432A-A1BF-FEAF38D459C9 - b4d482b3ca73568"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Bolt_Ecommerce_App.FavoriteVC.fetchFavoriteProductData() -&gt; ()"
-                  moduleName = "Bolt-Ecommerce-App"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/me-mac/Desktop/IOSApps/Bolt-Ecommerce-App/Bolt-Ecommerce-App/Features/SideMenuItems/Controllers/FavoriteVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "53"
-                  endingLineNumber = "53"
-                  offsetFromSymbolStart = "1327">
-               </Location>
-               <Location
-                  uuid = "8801F1DF-27A5-432A-A1BF-FEAF38D459C9 - b4d482b3ca73568"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Bolt_Ecommerce_App.FavoriteVC.fetchFavoriteProductData() -&gt; ()"
-                  moduleName = "Bolt-Ecommerce-App"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/me-mac/Desktop/IOSApps/Bolt-Ecommerce-App/Bolt-Ecommerce-App/Features/SideMenuItems/Controllers/FavoriteVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "53"
-                  endingLineNumber = "53"
-                  offsetFromSymbolStart = "2101">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

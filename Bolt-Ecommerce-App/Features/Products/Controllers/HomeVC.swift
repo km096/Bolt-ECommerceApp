@@ -78,7 +78,7 @@ class HomeVC: UIViewController {
     
     //MARK: - Setup
     private func setupSearchTextFiled() {
-        searchTextField.setPlaceholderColor ( Constants.Colors.searchPlacHolder )
+        searchTextField.updatePlaceholder ( Constants.Colors.searchPlacHolder )
         searchView.addShadow(shadowOpacity: 0.3, shadowColor: UIColor.lightGray.cgColor)
     }
     

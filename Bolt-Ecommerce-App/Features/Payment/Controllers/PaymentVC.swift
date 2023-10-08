@@ -55,6 +55,7 @@ class PaymentVC: UIViewController {
     //MARK: - UpdateUI
     private func updateUIForCheckoutButton() {
         checkoutButton.addGradientBackground()
+        checkoutButton.setTitle("checkout".localized, for: .normal)
         checkoutButton.addCornerRadius(cornerRadius: 5)
     }
     

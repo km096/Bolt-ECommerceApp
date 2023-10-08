@@ -22,7 +22,7 @@
 "logout" = " Log Out";
 "home" = "Home";
 "profile" = "Profile";
-"cart" = "My Cart";
+"cart" = "Cart";
 "favorite" = "Favorite";
 "orders" = "My Orders";
 "language" = "Language";
@@ -40,10 +40,9 @@
 "veryGood" = "Ver Good";
 "good" = "Good";
 "bad" = "Bad";
-"" = "";
 
 //Payment
-"cart" = "cart";
+"cart" = "Cart";
 "continue" = "Continue";
 
 "address" = "Address";
@@ -75,9 +74,18 @@
 "red" = "Red";
 "blue" = "Blue";
 "enterYour" = "Enter Your";
-"" = "";
-"" = "";
+"gender" = "Gender";
+"editProfile" = "Edit Profile";
+"save" = "Save";
+"backToHome" = "Back To Home";
 
+"arabic" = "Arabic";
+"english" = "English";
+
+"searchProduct" = "Search Your Product";
+"" = "";
+"" = "";
+"" = "";
 
 
 

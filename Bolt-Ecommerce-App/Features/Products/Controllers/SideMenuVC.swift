@@ -28,13 +28,14 @@ class SideMenuVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        updateViews()
         configureTableView()
-        updateUIForUserImage()
-        localize()
+        userImageView.makeRounded()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         showUserInfo()
         
         if #available(iOS 13.0, *) {
@@ -52,25 +53,21 @@ class SideMenuVC: UIViewController {
 
     //MARK: - IBActions
     @IBAction func logOutButtonPressed(_ sender: Any) {
-        FirebaseUserListener.shared.logOutCurrentUder { error in
+        FirebaseUserListener.shared.logOutCurrentUder { [weak self] error in
+            
+            guard let srtongSelf = self else { return }
+
             if error == nil {
-                let loginView = UIStoryboard(name: Constants.Storyboard.main, bundle: nil).instantiateViewController(withIdentifier: Constants.Identifiers.loginVC)
-                
+                let loginVC = UIStoryboard(name: Constants.Storyboard.main, bundle: nil).instantiateViewController(withIdentifier: Constants.Identifiers.loginVC)
                 DispatchQueue.main.async {
-                    loginView.modalPresentationStyle = .fullScreen
-                    self.present(loginView, animated: true)
+                    srtongSelf.presentVC(loginVC)
                 }
-                
             }
         }
     }
     
-    private func updateUIForUserImage() {
-        userImageView.makeRounded()
-    }
-    
     //MARK: - Localization
-    private func localize() {
+    private func updateViews() {
         logOutButton.setTitle("logout".localized, for: .normal)
     }
     

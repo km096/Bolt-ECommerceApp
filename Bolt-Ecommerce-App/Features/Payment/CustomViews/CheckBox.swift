@@ -79,23 +79,6 @@ open class CheckBox: UIControl {
     }
     
     //MARK: - Helpers
-//    open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        super.touchesBegan(touches, with: event)
-//        self.feedbackGenerator = UIImpactFeedbackGenerator.init(style: .light)
-//        self.feedbackGenerator?.prepare()
-//    }
-//
-//
-//    open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-//
-//        self.isChecked = !isChecked
-//        self.sendActions(for: .valueChanged)
-//        if useHapticFeedback {
-//            self.feedbackGenerator?.impactOccurred()
-//            self.feedbackGenerator = nil
-//        }
-//    }
-    
     open override func draw(_ rect: CGRect) {
         
         let newRect = rect.insetBy(dx: borderWidth / 2, dy: borderWidth / 2)

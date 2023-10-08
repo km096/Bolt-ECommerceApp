@@ -63,7 +63,7 @@ class AddAddressVC: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func getLocationButtonPressed(_ sender: Any) {
-        goToLocatioScreen()
+        goToLocationScreen()
     }
     
     //MARK: - UpdateUI
@@ -109,11 +109,7 @@ class AddAddressVC: UIViewController, UITextFieldDelegate {
         AppDelegate.sharedAppDelegate.coreDataStackAddress.saveContext()
     }
     
-    func getUserLocationInfo(_ name: String, _ country: String, _ postalCode: String) {
-        nameTextField.text = name
-        cityTextField.text = country
-        postalCodeTextField.text = postalCode
-    }
+    
     
     //MARK: - Helpers
     private func isTextFieldsEmpty() -> Bool {
@@ -149,12 +145,23 @@ class AddAddressVC: UIViewController, UITextFieldDelegate {
     }
     
     //MARK: - Navigation
-    private func goToLocatioScreen() {
+    private func goToLocationScreen() {
         guard let getLocationVC = storyboard?.instantiateViewController(withIdentifier: Constants.Identifiers.getLocation) as? GetLocationVC else {
             return
         }
+        getLocationVC.locationDelegate = self
         presentVC(getLocationVC)
 
+    }
+
+}
+
+extension AddAddressVC: UserLocationInfoDelegate {
+    func getUserLocationInfo(_ name: String, _ address: String, _ city: String, _ postalCode: String) {
+        nameTextField.text = name
+        addressLaneTextField.text = address
+        cityTextField.text = city
+        postalCodeTextField.text = postalCode
     }
 
 }

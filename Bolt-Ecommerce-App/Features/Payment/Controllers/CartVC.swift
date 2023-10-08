@@ -15,6 +15,7 @@ class CartVC: UIViewController {
     @IBOutlet weak var cartTableView: UITableView!
     @IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var cartLabel: UILabel!
+    @IBOutlet weak var totalLabel: UILabel!
     
     var continueButton = UIButton()
     var cartProducts = [Products]()
@@ -26,7 +27,8 @@ class CartVC: UIViewController {
         configureTableView()
         setContinueButton()
         cartLabel.text = "cart".localized
-        continueButton.addTarget(self, action: #selector(continueButtonPressed), for: .touchUpInside)
+        totalLabel.text = "total".localized
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,10 +43,11 @@ class CartVC: UIViewController {
         continueButton.addCornerRadius(cornerRadius: 5)
         continueButton.addGradientBackground()
         continueButton.translatesAutoresizingMaskIntoConstraints = false
+        let safeAreaGuide = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
             continueButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             continueButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            continueButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
+            continueButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0),
             continueButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }

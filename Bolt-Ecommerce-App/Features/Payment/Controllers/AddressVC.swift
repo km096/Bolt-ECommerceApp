@@ -23,9 +23,10 @@ class AddressVC: UIViewController {
     
     //Vars
     var selectedIndex = -1
+    var checked = false
+
     var address: [Address] = []
     private var totalPrice: Double?
-    var checked = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,6 +78,9 @@ class AddressVC: UIViewController {
     func fetchAddressInfo() {
         do {
             address = try managedContextAddress.fetch(Address.fetchRequest())
+//            for i in address {
+//                print("\(i.address!) = \(i.checkmarked)")
+//            }
         } catch {
             print("Error fetching address info: \(error.localizedDescription)")
         }

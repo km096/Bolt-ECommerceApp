@@ -84,7 +84,9 @@
                             <constraint firstItem="75D-7r-w32" firstAttribute="top" secondItem="7JC-7S-mQ6" secondAttribute="bottom" constant="16" id="ywE-gp-1J0"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="UfM-cs-xlU"/>
+                    <navigationItem key="navigationItem" id="UfM-cs-xlU">
+                        <barButtonItem key="backBarButtonItem" title=" " id="hck-Bk-fYY"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="loginButton" destination="udh-lt-VXF" id="vWc-Pp-cMB"/>
                         <outlet property="signUpButton" destination="deZ-Zk-Xxn" id="DYs-Ds-dsi"/>
@@ -92,7 +94,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1593.1297709923663" y="-2.1126760563380285"/>
+            <point key="canvasLocation" x="2519.8473282442746" y="-2.1126760563380285"/>
         </scene>
         <!--LoginVC-->
         <scene sceneID="H2S-7G-xZa">
@@ -269,7 +271,9 @@
                             <constraint firstItem="wAD-pB-Ux0" firstAttribute="top" secondItem="Okx-CN-D5u" secondAttribute="bottom" constant="65" id="rN2-8i-S82"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="vFn-47-65L"/>
+                    <navigationItem key="navigationItem" id="vFn-47-65L">
+                        <barButtonItem key="backBarButtonItem" title=" " id="Ntw-P9-Fri"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="dontHaveAnAccountLabel" destination="9da-WC-sQ7" id="gpN-sw-JNv"/>
                         <outlet property="emailLabel" destination="1Bf-Yc-MzY" id="tDE-lq-Uxl"/>
@@ -284,7 +288,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tUq-Ts-v0r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2416.030534351145" y="-268.3098591549296"/>
+            <point key="canvasLocation" x="3342.7480916030531" y="-268.3098591549296"/>
         </scene>
         <!--SignupVC-->
         <scene sceneID="MVh-4K-9sG">
@@ -491,7 +495,9 @@
                             <constraint firstItem="hrj-iW-fX2" firstAttribute="leading" secondItem="xFG-Oa-8wo" secondAttribute="leading" constant="20" id="yP3-a1-94a"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="bfY-XO-hmJ"/>
+                    <navigationItem key="navigationItem" id="bfY-XO-hmJ">
+                        <barButtonItem key="backBarButtonItem" title=" " id="Hev-WU-uYO"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="alreadyHaveAccountLabel" destination="kc4-Xh-KJq" id="5he-IE-t8n"/>
                         <outlet property="emailLabel" destination="Iz4-ka-mcC" id="t7V-yM-uA2"/>
@@ -508,11 +514,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V9O-pb-iz5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2416.030534351145" y="467.6056338028169"/>
+            <point key="canvasLocation" x="3342.7480916030531" y="467.6056338028169"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="PFs-n0-mBN"/>
+        <segue reference="2ar-3a-ebe"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Image 1" width="340" height="217"/>

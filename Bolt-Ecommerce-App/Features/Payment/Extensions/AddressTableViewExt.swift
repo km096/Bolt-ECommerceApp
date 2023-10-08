@@ -22,7 +22,13 @@ extension AddressVC: UITableViewDelegate, UITableViewDataSource {
             cell.selectedBackgroundView = customSelectionColorView
             
             cell.setupCell(address: address[indexPath.row])
-            cell.checkBox.isChecked = indexPath.row == selectedIndex
+            
+            if let index = userDefaults.object(forKey: Key.selectedRow.rawValue) {
+                cell.checkBox.isChecked = index as! Int == indexPath.row
+            }
+            address[indexPath.row].checkmarked = cell.checkBox.isChecked
+            AppDelegate.sharedAppDelegate.coreDataStackAddress.saveContext()
+            
             return cell
         } else {
             return UITableViewCell()
@@ -31,9 +37,8 @@ extension AddressVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedIndex = indexPath.row
-        address[indexPath.row].checkmarked = indexPath.row == selectedIndex
+        userDefaults.set(selectedIndex, forKey: Key.selectedRow.rawValue)
         addressTableView.reloadData()
-        
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

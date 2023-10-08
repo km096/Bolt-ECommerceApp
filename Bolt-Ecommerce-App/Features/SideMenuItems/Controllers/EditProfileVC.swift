@@ -42,7 +42,7 @@ class EditProfileVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        updateViews()
         userImageView.makeRounded()
         updateUIForConfirmButton()
     }
@@ -65,6 +65,16 @@ class EditProfileVC: UIViewController {
     }
     
     //MARK: - UpdateUI
+    private func updateViews() {
+        EditProfileLabel.text = "editProfile".localized
+        usernameLabel.text = "username".localized
+        emailLabel.text = "email".localized
+        addressLabel.text = "address".localized
+        cityLabel.text = "city".localized
+        genderLabel.text = "gender".localized
+        phoneLabel.text = "phoneNumber".localized
+    }
+    
     private func updateUIForEditButton() {
         editButton.addGradientBackground()
         editButton.tintColor = .white
@@ -74,6 +84,7 @@ class EditProfileVC: UIViewController {
         saveButton.addGradientBackground()
         saveButton.addCornerRadius(cornerRadius: 5)
         saveButton.tintColor = .white
+        saveButton.setTitle("save".localized, for: .normal)
     }
     
     func showUserInfo() {
@@ -85,6 +96,8 @@ class EditProfileVC: UIViewController {
             genderTextField.text = user.gender
             phoneTextField.text = user.phoneNumber
             
+            print("email: \(user.email)")
+
             if user.avatarLink != "" {
                 FileStorage.downloadImage(imageUrl: user.avatarLink) { [weak self] image in
                     guard let strongSrlf = self else { return }
@@ -134,6 +147,7 @@ class EditProfileVC: UIViewController {
                 
                 saveUserLocally(user)
                 FirebaseUserListener.shared.saveUserToFirebase(user)
+            
             }
             dismiss(animated: true)
         } else {

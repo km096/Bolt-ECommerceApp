@@ -51,7 +51,7 @@ class CheckoutVC: UIViewController {
         super.viewWillAppear(animated)
         fetchAddressInfo()
         fetchCartProducts()
-        addressTableView.reloadData()
+//        addressTableView.reloadData()
     }
     
     //MARK: - IBActions
@@ -60,7 +60,7 @@ class CheckoutVC: UIViewController {
     }
     
     @IBAction func buyButtonPressed(_ sender: Any) {
-        
+        goToConfirmationScreen()
     }
     
     //MARK: - ConfigureTableViews
@@ -74,7 +74,7 @@ class CheckoutVC: UIViewController {
         addressTableView.register(AddressCell.nib, forCellReuseIdentifier: AddressCell.identifier)
     }
     
-    //MARK: - UPdateUI
+    //MARK: - UpdateUI
     private func updateViews() {
         checkoutLabel.text = "checkout".localized
         subtotalLabel.text = "subtotal".localized
@@ -96,6 +96,7 @@ class CheckoutVC: UIViewController {
         buyButton.tintColor = .white
         buyButton.setTitle("buy".localized, for: .normal)
     }
+    
     private func fetchCartProducts() {
         let bool = NSNumber(booleanLiteral: true)
         let fetchRequest = Products.fetchRequest()
@@ -106,20 +107,28 @@ class CheckoutVC: UIViewController {
             print("Error fetching items: \(error.localizedDescription)")
         }
     }
-    
-  
-    
+        
     func fetchAddressInfo() {
         let bool = NSNumber(booleanLiteral: true)
         let fetchRequest = Address.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "checkmarked == %@", bool as CVarArg)
         do {
-            addressInfo = try managedContextAddress.fetch(Address.fetchRequest())
+            addressInfo = try managedContextAddress.fetch(fetchRequest)
+            print(addressInfo.count)
         } catch {
             print("Error fetching address info: \(error.localizedDescription)")
         }
     }
     
+    
+    //MARK: - Navigation
+    private func goToConfirmationScreen() {
+        guard let confirmationVC = instantiateVC(Constants.Storyboard.payment, Constants.Identifiers.confirmationVC) as? ConfirmationVC else {
+            return
+        }
+        
+        presentVC(confirmationVC)
+    }
 }
 
 extension CheckoutVC: UITableViewDelegate, UITableViewDataSource {

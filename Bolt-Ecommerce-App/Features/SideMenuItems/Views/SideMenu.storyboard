@@ -389,6 +389,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Dg5-02-rRw"/>
                     <connections>
+                        <outlet property="favoriteLabel" destination="Xlb-UM-eeF" id="eL6-3G-BGp"/>
                         <outlet property="favoriteeCollectionView" destination="3GL-Bu-O80" id="MYa-Fs-4Ja"/>
                     </connections>
                 </viewController>
@@ -602,6 +603,22 @@
                             <constraint firstItem="d0K-ee-gAd" firstAttribute="top" secondItem="eug-r1-rmz" secondAttribute="bottom" id="yky-At-ge3"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="addressLabel" destination="8Tv-uI-r0S" id="0qr-Vs-T5C"/>
+                        <outlet property="addressLbl" destination="RU5-X9-bKi" id="dVZ-4a-S9z"/>
+                        <outlet property="cityLabel" destination="ROq-y9-5hR" id="Fyk-Bu-hL7"/>
+                        <outlet property="cityLbl" destination="TRd-Ev-k8w" id="ebz-43-u1s"/>
+                        <outlet property="editProfileButton" destination="5mB-Xi-Tsr" id="2O8-46-2AJ"/>
+                        <outlet property="emailLabel" destination="d0K-ee-gAd" id="LXw-Th-rSp"/>
+                        <outlet property="emailLbl" destination="eug-r1-rmz" id="SNM-TA-fPj"/>
+                        <outlet property="genderLabel" destination="5VZ-xz-w5G" id="nO4-ZG-dlk"/>
+                        <outlet property="genderLbl" destination="ULI-tR-yQn" id="CgH-W4-8Sf"/>
+                        <outlet property="phoneNumberLabel" destination="SlQ-eD-ln8" id="g93-Vu-wg5"/>
+                        <outlet property="phoneNumberLbl" destination="xWC-qJ-byy" id="gfZ-Nh-dr3"/>
+                        <outlet property="userImageView" destination="72t-f8-SyZ" id="XZk-1r-FWF"/>
+                        <outlet property="usernameLabel" destination="Otr-NR-FaP" id="2ye-94-c2M"/>
+                        <outlet property="usernameLbl" destination="HoB-NG-Go9" id="zxX-66-ja2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xjX-kA-GBu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

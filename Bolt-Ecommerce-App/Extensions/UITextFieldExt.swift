@@ -8,8 +8,10 @@
 import UIKit
 
 extension UITextField {
-    func setPlaceholderColor(_ color: UIColor) {
-        self.attributedPlaceholder = NSAttributedString(string: self.placeholder!, attributes: [.foregroundColor: color] )
+    
+    func updatePlaceholder(_ color: UIColor) {
+        self.attributedPlaceholder = NSAttributedString(string: self.placeholder!, attributes: [.foregroundColor: color])
 
+        self.placeholder = "searchProduct".localized
     }
 }

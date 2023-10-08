@@ -39,8 +39,8 @@ extension SideMenuVC: UITableViewDelegate, UITableViewDataSource {
             print("home clicked: \(title)")
             
         case "profile".localized:            
-            if let editProfileVC = instantiateVC(Constants.Storyboard.sideMenu, Constants.Identifiers.editProfileeVC) as? EditProfileVC {
-                presentVC(editProfileVC)
+            if let profileVC = instantiateVC(Constants.Storyboard.sideMenu, Constants.Identifiers.profileeVC) as? ProfileVC {
+                presentVC(profileVC)
             }
             
         case "cart".localized:

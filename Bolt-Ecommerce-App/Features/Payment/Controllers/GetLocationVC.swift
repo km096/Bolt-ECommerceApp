@@ -11,11 +11,10 @@ import CoreLocation
 import ProgressHUD
 
 protocol UserLocationInfoDelegate {
-    func getUserLocationInfo(_ name: String, _ address: String, _ country: String, _ postalCode: String)
+    func getUserLocationInfo(_ name: String, _ address: String, _ city: String, _ postalCode: String)
 }
 
 class GetLocationVC: UIViewController {
-    
     
     @IBOutlet weak var mapView: MKMapView!
     
@@ -39,7 +38,6 @@ class GetLocationVC: UIViewController {
         DispatchQueue.global().async {
             if self.isLocationServiceEnabled() {
                 self.checkAuthorization()
-                
             } else {
                 DispatchQueue.main.async {
                     ProgressHUD.showFailed("Please enable location service.")
@@ -59,17 +57,22 @@ class GetLocationVC: UIViewController {
             
         case .notDetermined:
             locationManager.requestAlwaysAuthorization()
+            
         case .restricted:
             ProgressHUD.showFailed("Authorization restricted")
+            
         case .denied:
             ProgressHUD.showFailed("Please authorize access to location")
+            
         case .authorizedAlways:
             locationManager.startUpdatingLocation()
             mapView.showsUserLocation = true
+            
         case .authorizedWhenInUse:
             locationManager.requestAlwaysAuthorization()
             locationManager.startUpdatingLocation()
             mapView.showsUserLocation = true
+            
         @unknown default:
             print("default")
         }
@@ -83,10 +86,11 @@ class GetLocationVC: UIViewController {
                 return
             }
             
-            guard let placemark = placemark?.first else {
+            guard let placemark = placemark?.first  else {
                 return
             }
-            self.locationDelegate?.getUserLocationInfo(placemark.name!, placemark.name!, placemark.locality!, placemark.postalCode!)
+            
+            self.locationDelegate?.getUserLocationInfo(placemark.name ?? "", (placemark.subLocality ?? placemark.name)!, placemark.locality ?? "", placemark.postalCode ?? "")
         }
     }
     

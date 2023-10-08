@@ -10,7 +10,9 @@ import UIKit
 class FavoriteVC: UIViewController {
 
     //MARK: - IBOutlets
+    @IBOutlet weak var favoriteLabel: UILabel!
     @IBOutlet weak var favoriteeCollectionView: UICollectionView!
+    
     //Vars
     var favoriteProduct = [Product]()
     
@@ -19,6 +21,7 @@ class FavoriteVC: UIViewController {
         super.viewDidLoad()
 
         setCollectionView()
+        favoriteLabel.text = "favorite".localized
     }
     
     override func viewWillAppear(_ animated: Bool) {
