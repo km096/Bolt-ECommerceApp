@@ -36,6 +36,9 @@ class SignupVC: UIViewController {
         updateViews()
         setTextFieldsDelegstes()
         updateUIForSignupButton()
+        usernameTextField.updatePlaceholder()
+        emailTextField.updatePlaceholder()
+        passwordTextField.updatePlaceholder()
     }
     
     //MARK: - IBActions

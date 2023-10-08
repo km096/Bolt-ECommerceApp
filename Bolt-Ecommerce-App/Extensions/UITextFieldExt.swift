@@ -9,9 +9,10 @@ import UIKit
 
 extension UITextField {
     
-    func updatePlaceholder(_ color: UIColor) {
-        self.attributedPlaceholder = NSAttributedString(string: self.placeholder!, attributes: [.foregroundColor: color])
+    func updatePlaceholder() {
+//        self.attributedPlaceholder = NSAttributedString(string: self.placeholder!, attributes: [.foregroundColor: color])
+        self.textAlignment = getCurrentLanguage() == "en" ? .left : .right
 
-        self.placeholder = "searchProduct".localized
+//        self.placeholder = "searchProduct".localized
     }
 }

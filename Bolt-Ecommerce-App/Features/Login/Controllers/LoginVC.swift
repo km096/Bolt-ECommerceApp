@@ -41,6 +41,8 @@ class LoginVC: UIViewController, UITextViewDelegate {
         updateUIForLoginButton()
         setTextFieldsDelegates()
         localizeViews()
+        emailTextField.updatePlaceholder()
+        passwordTextField.updatePlaceholder()
     }
     
     //MARK: - IBActions

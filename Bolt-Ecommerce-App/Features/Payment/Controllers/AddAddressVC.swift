@@ -95,6 +95,7 @@ class AddAddressVC: UIViewController, UITextFieldDelegate {
         for textField in self.view.subviews where textField is UITextField {
             let textField = (textField as? UITextField)
             textField?.delegate = self
+            textField?.updatePlaceholder()
         }
     }
     
